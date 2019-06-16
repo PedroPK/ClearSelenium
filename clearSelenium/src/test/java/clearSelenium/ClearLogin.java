@@ -87,7 +87,7 @@ public class ClearLogin {
 	}
 	
 	public ClearLogin fillPassword(String pPassword) {
-		fillInputByXPath(CPF_INPUT_XPATH, pPassword);
+		fillInputByXPath(PASSWORD_INPUT_XPATH, pPassword);
 		
 		return this;
 	}
