@@ -25,6 +25,9 @@ public class ClearLogin {
 	private static final String BIRTHDAY_INPUT_XPATH			= "//*[@id=\"dob\"]";
 	private static final String ACCESS_MY_ACCOINT_INPUT_XPATH	= "//*[@id=\"form_id\"]/input[2]";
 	private static final String NEW_PIT_SPAN_XPATH				= "//*[@id=\"content_middle\"]/div[2]/div[1]/a/span";
+	private static final String MENU_BUTTON_XPATH				= "/html/body/div/div/header/aside/button";
+	private static final String VARIABLE_INCOME_LINK_XPATH		= "/html/body/div/div/nav/ul[2]/li[2]/a";
+	private static final String SWING_TRADE_LINK_XPATH			= "/html/body/div/div/nav/ul[2]/li[2]/ul/li[1]/a";
 	
 	private static WebDriver aWebDriver;
 	
@@ -100,6 +103,33 @@ public class ClearLogin {
 	
 	public ClearLogin pressNewPitSpan() {
 		WebElement field = getElementByXPath(NEW_PIT_SPAN_XPATH);
+		
+		// Click in the Element
+		field.click();
+		
+		return this;
+	}
+	
+	public ClearLogin pressMenuButton() {
+		WebElement field = getElementByXPath(MENU_BUTTON_XPATH);
+		
+		// Click in the Element
+		field.click();
+		
+		return this;
+	}
+	
+	public ClearLogin pressVariableIncomeLink() {
+		WebElement field = getElementByXPath(VARIABLE_INCOME_LINK_XPATH);
+		
+		// Click in the Element
+		field.click();
+		
+		return this;
+	}
+	
+	public ClearLogin pressSwingTradeLink() {
+		WebElement field = getElementByXPath(SWING_TRADE_LINK_XPATH);
 		
 		// Click in the Element
 		field.click();

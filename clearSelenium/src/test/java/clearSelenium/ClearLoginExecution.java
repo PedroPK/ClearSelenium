@@ -22,6 +22,9 @@ public class ClearLoginExecution {
 			.pressAccessMyAccountSubmitButton()
 			
 			.pressNewPitSpan()
+			.pressMenuButton()
+			.pressVariableIncomeLink()
+			.pressSwingTradeLink()
 		;	
 	}
 	
