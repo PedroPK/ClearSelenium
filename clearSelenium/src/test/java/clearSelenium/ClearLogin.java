@@ -23,6 +23,7 @@ public class ClearLogin {
 	private static final String CPF_INPUT_XPATH					= "//*[@id=\"identificationNumber\"]";
 	private static final String PASSWORD_INPUT_XPATH			= "//*[@id=\"password\"]";
 	private static final String BIRTHDAY_INPUT_XPATH			= "//*[@id=\"dob\"]";
+	private static final String ACCESS_MY_ACCOINT_INPUT_XPATH	= "//*[@id=\"form_id\"]/input[2]";
 	
 	private static WebDriver aDriver;
 	
@@ -77,6 +78,21 @@ public class ClearLogin {
 		
 		// Fill the Field
 		field.sendKeys(pValue);
+		
+		return field;
+	}
+	
+	private static WebElement getElementByXPath(String pXPath) {
+		WebElement field = aDriver.findElement(By.xpath(pXPath));
+		
+		return field;
+	}
+	
+	public WebElement pressAccessMyAccountSubmitButton() {
+		WebElement field = getElementByXPath(ACCESS_MY_ACCOINT_INPUT_XPATH);
+		
+		// Submit the Form
+		field.submit();
 		
 		return field;
 	}
