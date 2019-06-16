@@ -24,11 +24,12 @@ public class ClearLogin {
 	private static final String PASSWORD_INPUT_XPATH			= "//*[@id=\"password\"]";
 	private static final String BIRTHDAY_INPUT_XPATH			= "//*[@id=\"dob\"]";
 	private static final String ACCESS_MY_ACCOINT_INPUT_XPATH	= "//*[@id=\"form_id\"]/input[2]";
+	private static final String NEW_PIT_SPAN_XPATH				= "//*[@id=\"content_middle\"]/div[2]/div[1]/a/span";
 	
-	private static WebDriver aDriver;
+	private static WebDriver aWebDriver;
 	
 	public ClearLogin( WebDriver pWebDriver ) {
-		aDriver = pWebDriver;
+		aWebDriver = pWebDriver;
 	}
 	
 	public static ClearLogin setSystemPropertyChromeWebDriver() {
@@ -40,9 +41,9 @@ public class ClearLogin {
 			WEBDRIVER_CHROME_DRIVER, 
 			PATH_CHROME_DRIVER);
 		
-		aDriver = new ChromeDriver();
+		aWebDriver = new ChromeDriver();
 		
-		ClearLogin clearLogin = new ClearLogin(aDriver);
+		ClearLogin clearLogin = new ClearLogin(aWebDriver);
 		ClearLogin.accessURL();
 		
 		return clearLogin;
@@ -55,11 +56,11 @@ public class ClearLogin {
 	}
 	
 	public static void accessURL() {
-		aDriver.get(URL_CLEAR);
+		aWebDriver.get(URL_CLEAR);
 	}
 	
 	private static WebElement fillInputByXPath(String pXPath, String pValue) {
-		WebElement field = aDriver.findElement(By.xpath(pXPath));
+		WebElement field = aWebDriver.findElement(By.xpath(pXPath));
 		
 		// Clear previously filled values
 		field.clear();
@@ -71,7 +72,7 @@ public class ClearLogin {
 	}
 	
 	private static WebElement fillInputById(String pId, String pValue) {
-		WebElement field = aDriver.findElement(By.id(pId));
+		WebElement field = aWebDriver.findElement(By.id(pId));
 		
 		// Clear previously filled values
 		field.clear();
@@ -83,18 +84,27 @@ public class ClearLogin {
 	}
 	
 	private static WebElement getElementByXPath(String pXPath) {
-		WebElement field = aDriver.findElement(By.xpath(pXPath));
+		WebElement field = aWebDriver.findElement(By.xpath(pXPath));
 		
 		return field;
 	}
 	
-	public WebElement pressAccessMyAccountSubmitButton() {
+	public ClearLogin pressAccessMyAccountSubmitButton() {
 		WebElement field = getElementByXPath(ACCESS_MY_ACCOINT_INPUT_XPATH);
 		
 		// Submit the Form
 		field.submit();
 		
-		return field;
+		return this;
+	}
+	
+	public ClearLogin pressNewPitSpan() {
+		WebElement field = getElementByXPath(NEW_PIT_SPAN_XPATH);
+		
+		// Click in the Element
+		field.click();
+		
+		return this;
 	}
 	
 	public ClearLogin fillCPF(String pCPF) {
@@ -116,8 +126,8 @@ public class ClearLogin {
 	}
 	
 	public void close() {
-		if ( aDriver != null ) {
-			aDriver.close();
+		if ( aWebDriver != null ) {
+			aWebDriver.close();
 		}
 	}
 	

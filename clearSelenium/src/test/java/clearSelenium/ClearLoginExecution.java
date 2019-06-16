@@ -20,6 +20,8 @@ public class ClearLoginExecution {
 			.fillPassword("")		// TODO Delete this value before Commit
 			.fillBirthday("13/02/1983")
 			.pressAccessMyAccountSubmitButton()
+			
+			.pressNewPitSpan()
 		;	
 	}
 	
