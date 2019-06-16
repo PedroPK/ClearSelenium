@@ -21,6 +21,7 @@ public class ClearLogin {
 	private static final String PATH_CHROME_DRIVER			= "/Users/pedropk/Downloads/Apps/Development/SeleniumWebDriver/chromedriver";
 	
 	private static final String CPF_INPUT_XPATH					= "//*[@id=\"identificationNumber\"]";
+	private static final String PASSWORD_INPUT_XPATH			= "//*[@id=\"password\"]";
 	
 	private static WebDriver aDriver;
 	
@@ -79,8 +80,14 @@ public class ClearLogin {
 		return field;
 	}
 	
-	public ClearLogin fillCPF(String pNome) {
-		fillInputByXPath(CPF_INPUT_XPATH, pNome);
+	public ClearLogin fillCPF(String pCPF) {
+		fillInputByXPath(CPF_INPUT_XPATH, pCPF);
+		
+		return this;
+	}
+	
+	public ClearLogin fillPassword(String pPassword) {
+		fillInputByXPath(CPF_INPUT_XPATH, pPassword);
 		
 		return this;
 	}

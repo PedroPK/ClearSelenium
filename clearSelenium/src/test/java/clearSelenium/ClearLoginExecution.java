@@ -15,7 +15,10 @@ public class ClearLoginExecution {
 	
 	@Test
 	public void login() {
-		clearLogin.fillCPF("039.821.084-54");
+		clearLogin
+			.fillCPF("039.821.084-54")
+			.fillPassword("")		// TODO Delete this value before Commit
+		;	
 	}
 	
 	@AfterClass
