@@ -18,6 +18,7 @@ public class ClearLoginExecution {
 		clearLogin
 			.fillCPF("039.821.084-54")
 			.fillPassword("")		// TODO Delete this value before Commit
+			.fillBirthday("13/02/1983")
 		;	
 	}
 	

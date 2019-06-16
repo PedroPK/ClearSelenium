@@ -22,6 +22,7 @@ public class ClearLogin {
 	
 	private static final String CPF_INPUT_XPATH					= "//*[@id=\"identificationNumber\"]";
 	private static final String PASSWORD_INPUT_XPATH			= "//*[@id=\"password\"]";
+	private static final String BIRTHDAY_INPUT_XPATH			= "//*[@id=\"dob\"]";
 	
 	private static WebDriver aDriver;
 	
@@ -88,6 +89,12 @@ public class ClearLogin {
 	
 	public ClearLogin fillPassword(String pPassword) {
 		fillInputByXPath(PASSWORD_INPUT_XPATH, pPassword);
+		
+		return this;
+	}
+	
+	public ClearLogin fillBirthday(String pBirthday) {
+		fillInputByXPath(BIRTHDAY_INPUT_XPATH, pBirthday);
 		
 		return this;
 	}
