@@ -1,11 +1,15 @@
 package brokerDealer.repositories;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.util.Optional;
 
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +18,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import brokerDealer.springBoot.SpringBootWebApplication;
@@ -30,7 +33,15 @@ import seleniumWebDriver.entities.enums.OrderType;
 public class StockOrderRepositoryTest {
 	
 	@Autowired
-	StockOrderRepository repository;
+	private StockOrderRepository repository;
+	
+	private static Logger logger;
+	
+	
+	@BeforeClass
+	public static void getLogger() {
+		logger = LoggerFactory.getLogger(StockOrderRepositoryTest.class);
+	}
 	
 	@Ignore @Test
 	public void testFindAll() {
@@ -79,12 +90,10 @@ public class StockOrderRepositoryTest {
 		assertTrue(findedOrder.isPresent());
 		assertFalse(findedOrder.isEmpty());
 		
-		Logger logger = LoggerFactory.getLogger(StockOrderRepositoryTest.class);
-		
-		logger.info(order.toString());
+		logger.info("Original Order: " + order.toString());
 		//System.out.println(order);
 		
-		System.out.println(findedOrder);
+		logger.info("Finded Order:   " + findedOrder.get().toString());
 		//fail("Not yet implemented");
 	}
 	
