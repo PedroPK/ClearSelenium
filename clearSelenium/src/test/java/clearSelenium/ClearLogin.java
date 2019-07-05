@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 
 public class ClearLogin {
 	
@@ -28,6 +29,9 @@ public class ClearLogin {
 	private static final String MENU_BUTTON_XPATH				= "/html/body/div/div/header/aside/button";
 	private static final String VARIABLE_INCOME_LINK_XPATH		= "/html/body/div/div/nav/ul[2]/li[2]/a";
 	private static final String SWING_TRADE_LINK_XPATH			= "/html/body/div/div/nav/ul[2]/li[2]/ul/li[1]/a";
+	
+	@FindBy(xpath="//*[contains(text(), 'Best Choice')]")
+	private WebElement btow3f;
 	
 	private static WebDriver aWebDriver;
 	
@@ -97,6 +101,21 @@ public class ClearLogin {
 		
 		// Submit the Form
 		field.submit();
+		
+		return this;
+	}
+	
+	private WebElement getSpanByTickerContent(String pTicker) {
+		WebElement field = getElementByXPath("//*[contains(text(), '" + pTicker + "')]\"");
+		
+		return field;
+	}
+	
+	public ClearLogin clickSpanByTickerContent(String pTicker) {
+		WebElement field = getSpanByTickerContent(pTicker);
+		
+		// Click the Element
+		field.click();
 		
 		return this;
 	}

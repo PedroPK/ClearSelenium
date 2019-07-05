@@ -17,7 +17,7 @@ public class ClearLoginExecution {
 	public void login() {
 		clearLogin
 			.fillCPF("039.821.084-54")
-			.fillPassword("")		// TODO Delete this value before Commit
+			.fillPassword("293994")		// TODO Delete this value before Commit
 			.fillBirthday("13/02/1983")
 			.pressAccessMyAccountSubmitButton()
 			
@@ -25,6 +25,8 @@ public class ClearLoginExecution {
 			.pressMenuButton()
 			.pressVariableIncomeLink()
 			.pressSwingTradeLink()
+			
+			.clickSpanByTickerContent("KROT3F")
 		;	
 	}
 	
