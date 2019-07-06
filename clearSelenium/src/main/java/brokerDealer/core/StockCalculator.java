@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import brokerDealer.repositories.StockOrderJpaRepository;
+import brokerDealer.repositories.StockOrderRepository;
 
 public class StockCalculator {
 	
 	@Autowired
-	private StockOrderJpaRepository repository;
+	private StockOrderRepository repository;
 	
 	public BigDecimal calcProfit(String pTicker) {
 		BigDecimal result = BigDecimal.ZERO;

@@ -2,24 +2,15 @@ package brokerDealer.repositories;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import seleniumWebDriver.entities.StockOrder;
 
-public class StockOrderRepository 
-	implements StockOrderRepositoryInterface {
+@Repository
+public interface StockOrderRepository extends JpaRepository<StockOrder, Integer> {
 	
-	@Autowired
-	private StockOrderJpaRepository stockOrderJpaRepository;
+	public List<StockOrder> findByTicker(String ticker);
 	
-	@Override
-	public List<StockOrder> findAllStockOrdersByTicker(String pTicker) {
-		Example<StockOrder> exampleOrder = StockOrderJpaRepository.getStockOrderExample(pTicker);
-		
-		List<StockOrder> orders = stockOrderJpaRepository.findAll(exampleOrder);
-		
-		return orders;
-	}
-
 }
