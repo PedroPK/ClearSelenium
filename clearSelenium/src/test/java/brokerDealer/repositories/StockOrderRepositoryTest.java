@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.BeforeClass;
@@ -35,7 +37,10 @@ import seleniumWebDriver.entities.enums.OrderType;
 public class StockOrderRepositoryTest {
 	
 	@Autowired
-	private StockOrderRepository repository;
+	private StockOrderJpaRepository jpaRepository;
+	
+	/*@Autowired
+	private StockOrderRepository	repository;*/
 	
 	private static Logger logger;
 	
@@ -73,81 +78,176 @@ public class StockOrderRepositoryTest {
 	@Test
 	public void testFirstSaveAndFlush() {
 		// Arrange
+		StockOrder order = getBuyPetr4StockOrder();
+		
+		Example<StockOrder> orderExample = Example.of(order);
+		
+		// Act
+		jpaRepository.saveAndFlush(order);
+		
+		Optional<StockOrder> findedOrder = jpaRepository.findOne(orderExample);
+		
+		// Assert
+		assertNotNull(findedOrder);
+		assertTrue(findedOrder.isPresent());
+		assertFalse(findedOrder.isEmpty());
+		
+		// Logging
+		logger.info("Original Order: " + order.toString());
+		logger.info("Finded Order:   " + findedOrder.get().toString());
+		
+		// Tear Down
+		jpaRepository.delete(order);
+	}
+
+	private StockOrder getBuyPetr4StockOrder() {
 		StockOrder order = new StockOrder();
 		order.setDateTime(LocalDateTime.now());
 		order.setTicker("PETR4F");
 		order.setQuantity(10);
 		order.setPrice(BigDecimal.valueOf(40));
 		order.setType(OrderType.BUY);
-		
-		Example<StockOrder> orderExample = Example.of(order);
-		
-		// Act
-		repository.saveAndFlush(order);
-		
-		Optional<StockOrder> findedOrder = repository.findOne(orderExample);
-		
-		// Assert
-		assertNotNull(findedOrder);
-		assertTrue(findedOrder.isPresent());
-		assertFalse(findedOrder.isEmpty());
-		
-		logger.info("Original Order: " + order.toString());
-		logger.info("Finded Order:   " + findedOrder.get().toString());
+		return order;
 	}
 	
 	@Test
 	public void testSaveAndFlush_1Buy_3Sell() {
 		// Arrange
-		StockOrder orderBuyVVAR3 = new StockOrder();
-		orderBuyVVAR3.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 02), LocalTime.of(10, 01, 02)));
-		orderBuyVVAR3.setTicker("VVAR3");
-		orderBuyVVAR3.setQuantity(90);
-		orderBuyVVAR3.setPrice(5.13);
-		orderBuyVVAR3.setType(OrderType.BUY);
+		List<StockOrder> listStockOrdersToSaveAndFlush = get1Buy3SellVvar3StockOrders();
 		
-		StockOrder orderSellVVAR3_First = new StockOrder();
-		orderSellVVAR3_First.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 03), LocalTime.of(11, 02, 03)));
-		orderSellVVAR3_First.setTicker("VVAR3");
-		orderSellVVAR3_First.setQuantity(45);
-		orderSellVVAR3_First.setPrice(5.5);
-		orderSellVVAR3_First.setType(OrderType.SELL);
+		// Act
+		saveAndFlush(listStockOrdersToSaveAndFlush);
 		
-		StockOrder orderSellVVAR3_Second = new StockOrder();
-		orderSellVVAR3_Second.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 03), LocalTime.of(12, 03, 04)));
-		orderSellVVAR3_Second.setTicker("VVAR3");
-		orderSellVVAR3_Second.setQuantity(30);
-		orderSellVVAR3_Second.setPrice(5.9);
-		orderSellVVAR3_Second.setType(OrderType.SELL);
+		Optional<StockOrder> findedOrder = 
+			this.jpaRepository.findOne(
+				getExample(getOrderBuyVvar3())
+			);
 		
+		// Assert
+		assertNotNull(	findedOrder);
+		assertTrue(		findedOrder.isPresent());
+		assertFalse(	findedOrder.isEmpty());
+		
+		// Logging
+		logger.info("Buy VVAR3: 	" + getOrderBuyVvar3().toString());
+		logger.info("Finded VAAR3:	" + findedOrder.get().toString());
+		
+		logger.info("Sell VVAR3 1: 	" + getOrderSellVvar3_First().toString());
+		logger.info("Sell VVAR3 2: 	" + getOrderSellVvar3_Second().toString());
+		logger.info("Sell VVAR3 3: 	" + getOrderSellVvar3_Third().toString());
+		
+		// Tear Down
+		jpaRepository.deleteAll(listStockOrdersToSaveAndFlush);
+	}
+
+	private List<StockOrder> get1Buy3SellVvar3StockOrders() {
+		List<StockOrder> listStockOrdersToSaveAndFlush = new ArrayList<>();
+		listStockOrdersToSaveAndFlush.add(getOrderBuyVvar3());
+		listStockOrdersToSaveAndFlush.add(getOrderSellVvar3_First());
+		listStockOrdersToSaveAndFlush.add(getOrderSellVvar3_Second());
+		listStockOrdersToSaveAndFlush.add(getOrderSellVvar3_Third());
+		return listStockOrdersToSaveAndFlush;
+	}
+
+	private void saveAndFlush(List<StockOrder> pListStockOrdersToSaveAndFlush) {
+		for ( StockOrder stockOrder: pListStockOrdersToSaveAndFlush ) {
+			jpaRepository.save(stockOrder);
+		}
+		jpaRepository.flush();
+	}
+
+	private Example<StockOrder> getExample(StockOrder pStockOrder) {
+		Example<StockOrder> orderBuyVVAR3Example = Example.of(pStockOrder);
+		return orderBuyVVAR3Example;
+	}
+
+	private StockOrder getOrderSellVvar3_Third() {
 		StockOrder orderSellVVAR3_Third = new StockOrder();
 		orderSellVVAR3_Third.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 05), LocalTime.of(12, 34, 35)));
 		orderSellVVAR3_Third.setTicker("VVAR3");
 		orderSellVVAR3_Third.setQuantity(55);
 		orderSellVVAR3_Third.setPrice(6.5);
 		orderSellVVAR3_Third.setType(OrderType.SELL);
-		
-		Example<StockOrder> orderBuyVVAR3Example = Example.of(orderBuyVVAR3);
+		return orderSellVVAR3_Third;
+	}
+
+	private StockOrder getOrderSellVvar3_Second() {
+		StockOrder orderSellVVAR3_Second = new StockOrder();
+		orderSellVVAR3_Second.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 03), LocalTime.of(12, 03, 04)));
+		orderSellVVAR3_Second.setTicker("VVAR3");
+		orderSellVVAR3_Second.setQuantity(30);
+		orderSellVVAR3_Second.setPrice(5.9);
+		orderSellVVAR3_Second.setType(OrderType.SELL);
+		return orderSellVVAR3_Second;
+	}
+
+	private StockOrder getOrderSellVvar3_First() {
+		StockOrder orderSellVVAR3_First = new StockOrder();
+		orderSellVVAR3_First.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 03), LocalTime.of(11, 02, 03)));
+		orderSellVVAR3_First.setTicker("VVAR3");
+		orderSellVVAR3_First.setQuantity(45);
+		orderSellVVAR3_First.setPrice(5.5);
+		orderSellVVAR3_First.setType(OrderType.SELL);
+		return orderSellVVAR3_First;
+	}
+
+	private StockOrder getOrderBuyVvar3() {
+		StockOrder orderBuyVVAR3 = new StockOrder();
+		orderBuyVVAR3.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 02), LocalTime.of(10, 01, 02)));
+		orderBuyVVAR3.setTicker("VVAR3");
+		orderBuyVVAR3.setQuantity(90);
+		orderBuyVVAR3.setPrice(5.13);
+		orderBuyVVAR3.setType(OrderType.BUY);
+		return orderBuyVVAR3;
+	}
+	
+	@Test
+	public void testGetStockOrderExample() {
+		// Arrange
+		String ticker = "VVAR3";
 		
 		// Act
-		repository.saveAndFlush(orderBuyVVAR3);
-		repository.saveAndFlush(orderSellVVAR3_First);
-		repository.saveAndFlush(orderSellVVAR3_Second);
-		repository.saveAndFlush(orderSellVVAR3_Third);
-		
-		Optional<StockOrder> findedOrder = repository.findOne(orderBuyVVAR3Example);
+		Example<StockOrder> example = StockOrderJpaRepository.getStockOrderExample(ticker);
 		
 		// Assert
-		assertNotNull(findedOrder);
-		assertTrue(findedOrder.isPresent());
-		assertFalse(findedOrder.isEmpty());
+		assertNotNull(example);
+	}
+	
+	@Test
+	public void testFindAByTicker_Vvar3Only() {
+		// Arrange
+		List<StockOrder> listStockOrdersToSaveAndFlush = get1Buy3SellVvar3StockOrders();
 		
-		logger.info("Buy VVAR3: 	" + orderBuyVVAR3.toString());
-		logger.info("Finded VAAR3:	" + findedOrder.get().toString());
+		// Act
+		saveAndFlush(listStockOrdersToSaveAndFlush);
 		
-		logger.info("Sell VVAR3 1: 	" + orderSellVVAR3_First.toString());
-		logger.info("Sell VVAR3 2: 	" + orderSellVVAR3_Second.toString());
-		logger.info("Sell VVAR3 3: 	" + orderSellVVAR3_Third.toString());
+		List<StockOrder> listOrders = jpaRepository.findByTicker("VVAR3");
+		
+		// Assert
+		assertNotNull(listOrders);
+		assertFalse(listOrders.isEmpty());
+		
+		// Tear Down
+		jpaRepository.deleteAll(listStockOrdersToSaveAndFlush);
+	}
+	@Test
+	public void testFindAByTicker_Vvar3_with_Petr4() {
+		// Arrange
+		List<StockOrder> listStockOrdersToSaveAndFlush = get1Buy3SellVvar3StockOrders();
+		listStockOrdersToSaveAndFlush.add(getBuyPetr4StockOrder());
+		
+		// Act
+		saveAndFlush(listStockOrdersToSaveAndFlush);
+		
+		List<StockOrder> listOrders = jpaRepository.findByTicker("VVAR3");
+		
+		// Assert
+		assertNotNull(listOrders);
+		assertFalse(listOrders.isEmpty());
+		assertTrue(listOrders.size() == 4);
+		
+		// Tear Down
+		jpaRepository.deleteAll(listStockOrdersToSaveAndFlush);
 	}
 	
 	@Ignore @Test

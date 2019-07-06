@@ -1,7 +1,7 @@
 package seleniumWebDriver.entities;
 
 import java.math.BigDecimal;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +32,7 @@ public class StockOrder {
 	/**
 	 * Indicates when the Order was sent
 	 */
-	private LocalTime	dateTime;
+	private LocalDateTime 	dateTime;
 	
 	/**
 	 * Indicates how much were paid for each Stock individually
@@ -43,5 +43,13 @@ public class StockOrder {
 	 * This Ticker indicates which Stock its been Bought or Sold 
 	 */
 	private String ticker;
+	
+	
+	public void setPrice(BigDecimal pPrice) {
+		this.price = pPrice;
+	}
+	public void setPrice(double pPrice) {
+		this.price = BigDecimal.valueOf(pPrice);
+	}
 	
 }
