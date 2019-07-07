@@ -17,7 +17,7 @@ public class StockOrderDatasetGenerator {
 	public static List<StockOrder> get1Buy3SellVvar3StockOrders() {
 		List<StockOrder> listStockOrdersToSaveAndFlush = new ArrayList<>();
 		
-		listStockOrdersToSaveAndFlush.add(getOrderBuyVvar3());
+		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder());
 		listStockOrdersToSaveAndFlush.add(getOrderSellVvar3_First());
 		listStockOrdersToSaveAndFlush.add(getOrderSellVvar3_Second());
 		listStockOrdersToSaveAndFlush.add(getOrderSellVvar3_Third());
@@ -25,7 +25,7 @@ public class StockOrderDatasetGenerator {
 		return listStockOrdersToSaveAndFlush;
 	}
 	
-	public static StockOrder getOrderBuyVvar3() {
+	public static StockOrder getBuyVvar3StockOrder() {
 		StockOrder orderBuyVVAR3 = new StockOrder();
 		
 		orderBuyVVAR3.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 02), LocalTime.of(10, 01, 02)));

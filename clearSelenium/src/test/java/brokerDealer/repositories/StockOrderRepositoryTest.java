@@ -83,9 +83,9 @@ public class StockOrderRepositoryTest {
 		Optional<StockOrder> findedOrder = jpaRepository.findOne(orderExample);
 		
 		// Assert
-		assertNotNull(findedOrder);
-		assertTrue(findedOrder.isPresent());
-		assertFalse(findedOrder.isEmpty());
+		assertNotNull(	findedOrder);
+		assertTrue(		findedOrder.isPresent());
+		assertFalse(	findedOrder.isEmpty());
 		
 		// Logging
 		logger.info("Original Order: " + order.toString());
@@ -106,7 +106,7 @@ public class StockOrderRepositoryTest {
 		
 		Optional<StockOrder> findedOrder = 
 			this.jpaRepository.findOne(
-				getExample(getOrderBuyVvar3())
+				getExample(getBuyVvar3StockOrder())
 			);
 		
 		// Assert
@@ -115,7 +115,7 @@ public class StockOrderRepositoryTest {
 		assertFalse(	findedOrder.isEmpty());
 		
 		// Logging
-		logger.info("Buy VVAR3: 	" + getOrderBuyVvar3().toString());
+		logger.info("Buy VVAR3: 	" + getBuyVvar3StockOrder().toString());
 		logger.info("Finded VAAR3:	" + findedOrder.get().toString());
 		
 		logger.info("Sell VVAR3 1: 	" + getOrderSellVvar3_First().toString());
