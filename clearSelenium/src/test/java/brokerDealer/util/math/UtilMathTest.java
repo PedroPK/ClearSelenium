@@ -149,18 +149,144 @@ public class UtilMathTest {
 		assertEquals(BigDecimal.ONE.negate(), result);
 	}
 	
-	@Test	@Ignore
-	public void testMultiply() {
+	@Test
+	public void testMultiply_NullByZero() {
 		// Arrange
-		
+		BigDecimal	first = null;
+		int			second = 0;
 		
 		// Act
-		
+		BigDecimal result = UtilMath.multiply(first, second);
 		
 		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ZERO, result);
+	}
+	
+	@Test
+	public void testMultiply_ZeroByZero() {
+		// Arrange
+		BigDecimal	first = BigDecimal.ZERO;
+		int			second = 0;
 		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
 		
-		fail("Not yet implemented");
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ZERO, result);
+	}
+	
+	@Test
+	public void testMultiply_OneByZero() {
+		// Arrange
+		BigDecimal	first = BigDecimal.ONE;
+		int			second = 0;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ZERO, result);
+	}
+	
+	@Test
+	public void testMultiply_OneByOne() {
+		// Arrange
+		BigDecimal	first = BigDecimal.ONE;
+		int			second = 1;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ONE, result);
+	}
+	
+	@Test
+	public void testMultiply_OneByMinusOne() {
+		// Arrange
+		BigDecimal	first = BigDecimal.ONE;
+		int			second = -1;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ONE.negate(), result);
+	}
+	
+	@Test
+	public void testMultiply_MinusOneByOne() {
+		// Arrange
+		BigDecimal	first = BigDecimal.ONE.negate();
+		int			second = 1;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ONE.negate(), result);
+	}
+	
+	@Test
+	public void testMultiply_TenByOne() {
+		// Arrange
+		BigDecimal	first = BigDecimal.TEN;
+		int			second = 1;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.TEN, result);
+	}
+	
+	@Test
+	public void testMultiply_TenByMinusOne() {
+		// Arrange
+		BigDecimal	first = BigDecimal.TEN;
+		int			second = -1;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.TEN.negate(), result);
+	}
+	
+	@Test
+	public void testMultiply_TenByTen() {
+		// Arrange
+		BigDecimal	first = BigDecimal.TEN;
+		int			second = 10;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.valueOf(100), result);
+	}
+	
+	@Test
+	public void testMultiply_TenByMinusTen() {
+		// Arrange
+		BigDecimal	first = BigDecimal.TEN;
+		int			second = -10;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.valueOf(100).negate(), result);
 	}
 
 }
