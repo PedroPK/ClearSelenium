@@ -26,9 +26,17 @@ import static brokerDealer.repositories.StockOrderDatasetGenerator.*;
 )*/
 public class StockCalculatorTest {
 	
-	@Ignore @Test
+	@Test
 	public void testCalcProfit() {
+		// Arrange
 		List<StockOrder> listVvar3StockOrders = get1Buy3SellVvar3StockOrders();
+		
+		// Act
+		BigDecimal result = StockCalculator.calcProfit(listVvar3StockOrders);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.valueOf(32030, 2), result);
 	}
 	
 	@Test

@@ -25,18 +25,6 @@ public class StockOrderDatasetGenerator {
 		return listStockOrdersToSaveAndFlush;
 	}
 	
-	public static StockOrder getBuyVvar3StockOrder() {
-		StockOrder orderBuyVVAR3 = new StockOrder();
-		
-		orderBuyVVAR3.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 02), LocalTime.of(10, 01, 02)));
-		orderBuyVVAR3.setTicker("VVAR3");
-		orderBuyVVAR3.setQuantity(90);
-		orderBuyVVAR3.setPrice(5.13);
-		orderBuyVVAR3.setType(OrderType.BUY);
-		
-		return orderBuyVVAR3;
-	}
-	
 	public static StockOrder getBuyPetr4StockOrder() {
 		StockOrder order = new StockOrder();
 		
@@ -47,6 +35,18 @@ public class StockOrderDatasetGenerator {
 		order.setType(OrderType.BUY);
 		
 		return order;
+	}
+	
+	public static StockOrder getBuyVvar3StockOrder() {
+		StockOrder orderBuyVVAR3 = new StockOrder();
+		
+		orderBuyVVAR3.setDateTime(LocalDateTime.of(LocalDate.of(2019, 07, 02), LocalTime.of(10, 01, 02)));
+		orderBuyVVAR3.setTicker("VVAR3");
+		orderBuyVVAR3.setQuantity(90);
+		orderBuyVVAR3.setPrice(5.13);
+		orderBuyVVAR3.setType(OrderType.BUY);
+		
+		return orderBuyVVAR3;
 	}
 	
 	public static StockOrder getOrderSellVvar3_First() {
