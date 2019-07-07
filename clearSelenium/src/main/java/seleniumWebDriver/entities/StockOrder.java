@@ -1,5 +1,7 @@
 package seleniumWebDriver.entities;
 
+import static brokerDealer.util.math.UtilMath.getBigDecimalFromInteger;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -50,6 +52,11 @@ public class StockOrder {
 	}
 	public void setPrice(double pPrice) {
 		this.price = BigDecimal.valueOf(pPrice);
+	}
+	
+	public BigDecimal getOrderValue() {
+		// 			Price		*			Quantity
+		return this.getPrice().multiply(	getBigDecimalFromInteger(this.getQuantity()));
 	}
 	
 }
