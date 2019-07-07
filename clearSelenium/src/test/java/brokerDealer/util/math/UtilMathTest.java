@@ -288,5 +288,19 @@ public class UtilMathTest {
 		assertNotNull(result);
 		assertEquals(BigDecimal.valueOf(100).negate(), result);
 	}
+	
+	@Test
+	public void testMultiply_MinusTenByTen() {
+		// Arrange
+		BigDecimal	first = BigDecimal.TEN.negate();
+		int			second = 10;
+		
+		// Act
+		BigDecimal result = UtilMath.multiply(first, second);
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.valueOf(100).negate(), result);
+	}
 
 }
