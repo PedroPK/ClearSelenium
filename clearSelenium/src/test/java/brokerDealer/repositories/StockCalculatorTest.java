@@ -1,22 +1,21 @@
 package brokerDealer.repositories;
 
-import static org.junit.Assert.*;
+import static brokerDealer.repositories.StockOrderDatasetGenerator.get1Buy3SellVvar3StockOrders;
+import static brokerDealer.repositories.StockOrderDatasetGenerator.getBuyPetr4StockOrder;
+import static brokerDealer.repositories.StockOrderDatasetGenerator.getBuyVvar3StockOrder;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import brokerDealer.core.StockCalculator;
-import brokerDealer.springBoot.SpringBootWebApplication;
 import seleniumWebDriver.entities.StockOrder;
-
-import static brokerDealer.repositories.StockOrderDatasetGenerator.*;
 
 @RunWith(SpringRunner.class)
 /*@SpringBootTest(
@@ -37,6 +36,20 @@ public class StockCalculatorTest {
 		// Assert
 		assertNotNull(result);
 		assertEquals(BigDecimal.valueOf(32030, 2), result);
+	}
+	
+	@Test
+	public void testGetBuyOrders() {
+		// Arrange
+		List<StockOrder> listVvar3StockOrders = get1Buy3SellVvar3StockOrders();
+		
+		// Act
+		List<StockOrder> listBuyOrders = StockCalculator.getBuyOrders(listVvar3StockOrders);
+		
+		// Assert
+		assertNotNull(listBuyOrders);
+		assertEquals(1, listBuyOrders.size());
+		assertEquals(getBuyVvar3StockOrder(), listBuyOrders.get(0));
 	}
 	
 	@Test
