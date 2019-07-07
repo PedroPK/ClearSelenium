@@ -74,18 +74,79 @@ public class UtilMathTest {
 		assertEquals(BigDecimal.TEN.negate(), result);
 	}
 	
-	@Test	@Ignore
-	public void testDivide() {
+	@Test
+	public void testDivide_10By0() {
 		// Arrange
-		
+		BigDecimal	dividend	= BigDecimal.TEN;
+		int			divisor		= 0;
 		
 		// Act
+		BigDecimal result = UtilMath.divide(dividend, divisor);
 		
 		
 		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ZERO, result);
+	}
+	
+	@Test
+	public void testDivide_10By1() {
+		// Arrange
+		BigDecimal	dividend	= BigDecimal.TEN;
+		int			divisor		= 1;
+		
+		// Act
+		BigDecimal result = UtilMath.divide(dividend, divisor);
 		
 		
-		fail("Not yet implemented");
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.TEN, result);
+	}
+	
+	@Test
+	public void testDivide_10By10() {
+		// Arrange
+		BigDecimal	dividend	= BigDecimal.TEN;
+		int			divisor		= 10;
+		
+		// Act
+		BigDecimal result = UtilMath.divide(dividend, divisor);
+		
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ONE, result);
+	}
+	
+	@Test
+	public void testDivide_10ByMinus1() {
+		// Arrange
+		BigDecimal	dividend	= BigDecimal.TEN;
+		int			divisor		= -1;
+		
+		// Act
+		BigDecimal result = UtilMath.divide(dividend, divisor);
+		
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.TEN.negate(), result);
+	}
+	
+	@Test
+	public void testDivide_Minus10By10() {
+		// Arrange
+		BigDecimal	dividend	= BigDecimal.TEN.negate();
+		int			divisor		= 10;
+		
+		// Act
+		BigDecimal result = UtilMath.divide(dividend, divisor);
+		
+		
+		// Assert
+		assertNotNull(result);
+		assertEquals(BigDecimal.ONE.negate(), result);
 	}
 	
 	@Test	@Ignore

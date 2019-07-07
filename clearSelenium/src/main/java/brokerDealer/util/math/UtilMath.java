@@ -11,13 +11,25 @@ public class UtilMath {
 	}
 	
 	public static BigDecimal divide(BigDecimal pDividend, int pDivisor) {
-		return pDividend.divide(getBigDecimalFromInteger(pDivisor));
+		BigDecimal result = BigDecimal.ZERO;
+		
+		if ( pDividend != null && pDivisor != 0 ) {
+			result = pDividend.divide(getBigDecimalFromInteger(pDivisor));
+		}
+		
+		return result;
 	}
 	
 	public static BigDecimal multiply(BigDecimal pMultiplierBigDecimal, int pMultiplierInteger) {
-		return pMultiplierBigDecimal.multiply(
-			getBigDecimalFromInteger(pMultiplierInteger)
-		);
+		BigDecimal result = BigDecimal.ZERO;
+		
+		if ( pMultiplierBigDecimal != null ) {
+			result = pMultiplierBigDecimal.multiply(
+					getBigDecimalFromInteger(pMultiplierInteger)
+					);
+		}
+		
+		return result;
 	}
 	
 }
