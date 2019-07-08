@@ -187,7 +187,7 @@ public class StockOrderDatasetGenerator {
 		orderBuyVVAR3.setTicker("VVAR3");
 		orderBuyVVAR3.setQuantity(10);
 		orderBuyVVAR3.setPrice(4.80);
-		orderBuyVVAR3.setType(OrderType.BUY);
+		orderBuyVVAR3.setType(OrderType.SELL);
 		
 		return orderBuyVVAR3;
 	}

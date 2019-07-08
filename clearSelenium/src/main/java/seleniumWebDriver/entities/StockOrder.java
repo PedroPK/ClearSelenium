@@ -51,12 +51,15 @@ public class StockOrder {
 		this.price = pPrice;
 	}
 	public void setPrice(double pPrice) {
-		this.price = BigDecimal.valueOf(pPrice);
+		this.price = BigDecimal.valueOf(pPrice).setScale(2);
 	}
 	
 	public BigDecimal getOrderValue() {
-		// 			Price		*			Quantity
-		return this.getPrice().multiply(	getBigDecimalFromInteger(this.getQuantity()));
+		BigDecimal result =
+			//	 	Price		*			Quantity
+			this.getPrice().multiply(	getBigDecimalFromInteger(this.getQuantity()));
+		
+		return result;
 	}
 	
 }

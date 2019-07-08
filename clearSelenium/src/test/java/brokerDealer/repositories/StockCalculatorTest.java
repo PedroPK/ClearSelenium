@@ -1,8 +1,6 @@
 package brokerDealer.repositories;
 
-import static brokerDealer.repositories.StockOrderDatasetGenerator.get1Buy3SellVvar3StockOrders;
-import static brokerDealer.repositories.StockOrderDatasetGenerator.getBuyPetr4StockOrder;
-import static brokerDealer.repositories.StockOrderDatasetGenerator.getBuyVvar3StockOrder;
+import static brokerDealer.repositories.StockOrderDatasetGenerator.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -35,11 +33,11 @@ public class StockCalculatorTest {
 		
 		// Assert
 		assertNotNull(result);
-		assertEquals(BigDecimal.valueOf(32030, 2), result);
+		assertEquals(BigDecimal.valueOf(76850, 2), result);
 	}
 	
 	@Test
-	public void testGetBuyOrders() {
+	public void testGetBuyOrders_FromListWithOnlyOneBuyOrderAmongOtherSellOrders() {
 		// Arrange
 		List<StockOrder> listVvar3StockOrders = get1Buy3SellVvar3StockOrders();
 		
@@ -49,7 +47,35 @@ public class StockCalculatorTest {
 		// Assert
 		assertNotNull(listBuyOrders);
 		assertEquals(1, listBuyOrders.size());
-		assertEquals(getBuyVvar3StockOrder(), listBuyOrders.get(0));
+		assertEquals(getBuyVvar3StockOrder_2019_07_02(), listBuyOrders.get(0));
+	}
+	
+	@Test
+	public void testGetBuyOrders_FromListWithTwoBuyOrderAmongOtherSellOrders() {
+		// Arrange
+		List<StockOrder> listVvar3StockOrders = get1Buy3SellVvar3StockOrders();
+		
+		// Act
+		List<StockOrder> listBuyOrders = StockCalculator.getBuyOrders(listVvar3StockOrders);
+		
+		// Assert
+		assertNotNull(listBuyOrders);
+		assertEquals(1, listBuyOrders.size());
+		assertEquals(getBuyVvar3StockOrder_2019_07_02(), listBuyOrders.get(0));
+	}
+	
+	@Test
+	public void testGetBuyOrders_FromAllVvar3StockOrders() {
+		// Arrange
+		List<StockOrder> listVvar3StockOrders = getAllVvar3StockOrders();
+		
+		// Act
+		List<StockOrder> listBuyOrders = StockCalculator.getBuyOrders(listVvar3StockOrders);
+		
+		// Assert
+		assertNotNull(listBuyOrders);
+		assertEquals(9, listBuyOrders.size());
+		assertEquals(BigDecimal.valueOf(-74268,2), StockCalculator.calcProfit(listBuyOrders));
 	}
 	
 	@Test
@@ -70,14 +96,14 @@ public class StockCalculatorTest {
 	public void testCalcProfit_BuyOnly_Vvar3() {
 		// Arrange
 		List<StockOrder> listPetr4BuyStockOrder = new ArrayList<>();
-		listPetr4BuyStockOrder.add(getBuyVvar3StockOrder());
+		listPetr4BuyStockOrder.add(getBuyVvar3StockOrder_2019_07_02());
 		
 		// Act
 		BigDecimal result = StockCalculator.calcProfit(listPetr4BuyStockOrder);
 		
 		// Assert
 		assertNotNull(result);			// The way to set the 461,70 Value with right Scale
-		assertEquals(BigDecimal.valueOf(-46170, 2), result);
+		assertEquals(BigDecimal.valueOf(-1350, 2), result);
 	}
 	
 	@Test

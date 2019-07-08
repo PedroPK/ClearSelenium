@@ -1,6 +1,6 @@
 package brokerDealer.core;
 
-import static brokerDealer.util.math.UtilMath.getBigDecimalFromInteger;
+import static brokerDealer.util.math.UtilMath.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -32,7 +32,6 @@ public class StockCalculator {
 		
 		if ( pListStockOrder != null && !pListStockOrder.isEmpty() ) {
 			for ( StockOrder stockOrder: pListStockOrder ) {
-				int quantity = stockOrder.getQuantity();
 				if ( stockOrder.getType() == OrderType.BUY ) {
 					response = response.subtract(
 						stockOrder.getOrderValue()
@@ -56,7 +55,10 @@ public class StockCalculator {
 		if ( pListStockOrder != null && !pListStockOrder.isEmpty() ) {
 			
 			int totalQuantityStocks = 0;
-			for ( StockOrder stockOrder: pListStockOrder ) {
+			
+			List<StockOrder> listBuyOrders = getBuyOrders(pListStockOrder);
+			
+			for ( StockOrder stockOrder: listBuyOrders ) {
 				totalQuantityStocks = totalQuantityStocks + stockOrder.getQuantity();
 				
 				response = response.add(
@@ -64,7 +66,7 @@ public class StockCalculator {
 				);
 			}
 			
-			response = response.divide(getBigDecimalFromInteger(totalQuantityStocks));
+			response = divide(response, totalQuantityStocks);
 		}
 		
 		return response;
@@ -91,18 +93,15 @@ public class StockCalculator {
 			for ( StockOrder stockOrder: pListStockOrder ) {
 				
 				int quantity = stockOrder.getQuantity();
+				BigDecimal price = stockOrder.getPrice();
 				if ( stockOrder.getType() == OrderType.BUY ) {
 					response = response.subtract(
-						stockOrder.getPrice().multiply(
-							getBigDecimalFromInteger(quantity)
-						)
+						multiply(price, quantity)
 					);
 				} else {
 					if ( stockOrder.getType() == OrderType.SELL ) {
 						response = response.add(
-							stockOrder.getPrice().multiply(
-								getBigDecimalFromInteger(quantity)
-							)
+							multiply(price, quantity)
 						);
 					}
 				}
