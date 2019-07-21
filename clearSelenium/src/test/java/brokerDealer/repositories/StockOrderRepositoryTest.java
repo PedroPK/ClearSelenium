@@ -99,7 +99,7 @@ public class StockOrderRepositoryTest {
 	public void testSaveAndFlush_1Buy_3Sell() {
 		// Arrange
 		List<StockOrder> listStockOrdersToSaveAndFlush = 
-			get1Buy3SellVvar3StockOrders();
+			get1Vvar3_1Buy3SellStockOrders();
 		
 		// Act
 		saveAndFlush(listStockOrdersToSaveAndFlush);
@@ -153,7 +153,7 @@ public class StockOrderRepositoryTest {
 	@Test
 	public void testFindAByTicker_Vvar3Only() {
 		// Arrange
-		List<StockOrder> listStockOrdersToSaveAndFlush = get1Buy3SellVvar3StockOrders();
+		List<StockOrder> listStockOrdersToSaveAndFlush = get1Vvar3_1Buy3SellStockOrders();
 		
 		// Act
 		saveAndFlush(listStockOrdersToSaveAndFlush);
@@ -170,7 +170,7 @@ public class StockOrderRepositoryTest {
 	@Test
 	public void testFindAByTicker_Vvar3_with_Petr4() {
 		// Arrange
-		List<StockOrder> listStockOrdersToSaveAndFlush = get1Buy3SellVvar3StockOrders();
+		List<StockOrder> listStockOrdersToSaveAndFlush = get1Vvar3_1Buy3SellStockOrders();
 		listStockOrdersToSaveAndFlush.add(getBuyPetr4StockOrder());
 		
 		// Act
