@@ -17,16 +17,16 @@ public class DateTimeUtils {
 		LocalDateTime localDateTime =
 			LocalDateTime.of(
 				getLocalDate(pYear, pMonth, pDay), 
-				getLocalTime(pDay, pMinute, pSecond));
+				getLocalTime(pHour, pMinute, pSecond));
 		
 		return localDateTime;
 	}
 
-	private static LocalTime getLocalTime(int pDay, int pMinute, int pSecond) {
+	public static LocalTime getLocalTime(int pDay, int pMinute, int pSecond) {
 		return LocalTime.of(pDay, pMinute, pSecond);
 	}
 
-	private static LocalDate getLocalDate(int pYear, int pMonth, int pDay) {
+	public static LocalDate getLocalDate(int pYear, int pMonth, int pDay) {
 		return LocalDate.of(pYear, pMonth, pDay);
 	}
 	
