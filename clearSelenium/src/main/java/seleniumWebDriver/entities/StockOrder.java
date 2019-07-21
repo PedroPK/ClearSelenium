@@ -81,7 +81,7 @@ public class StockOrder {
 		this.dateTime	= DateTimeUtils.getLocalDateTime(pYear, pMonth, pDay, pHour, pMinute, pSecond);
 		this.ticker		= pTicker;
 		this.quantity	= pQuantity;
-		this.price		= BigDecimal.valueOf(pPrice);
+		this.price		= BigDecimal.valueOf(pPrice).setScale(2);
 		this.type		= pOrderType;
 		
 	}
