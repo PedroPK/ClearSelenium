@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import brokerDealer.core.utils.DateTimeUtils;
 import lombok.Data;
 import seleniumWebDriver.entities.enums.OrderType;
 
@@ -46,11 +47,52 @@ public class StockOrder {
 	 */
 	private String ticker;
 	
+	/**
+	 * No Arguments Constructor
+	 */
+	public StockOrder() {}
+	
+	/**
+	 * Full arguments Constructor
+	 * 
+	 * @param pYear
+	 * @param pMonth
+	 * @param pDay
+	 * @param pHour
+	 * @param pMinute
+	 * @param pSecond
+	 * @param pTicker
+	 * @param pQuantity
+	 * @param pPrice
+	 * @param pOrderType
+	 */
+	public StockOrder(
+		int				pYear,
+		int				pMonth,
+		int				pDay,
+		int				pHour,
+		int				pMinute,
+		int				pSecond,
+		String			pTicker,
+		int				pQuantity,
+		double			pPrice,
+		OrderType		pOrderType
+	) {
+		this.dateTime	= DateTimeUtils.getLocalDateTime(pYear, pMonth, pDay, pHour, pMinute, pSecond);
+		this.ticker		= pTicker;
+		this.quantity	= pQuantity;
+		this.price		= BigDecimal.valueOf(pPrice);
+		this.type		= pOrderType;
+		
+	}
+	
 	
 	public void setPrice(BigDecimal pPrice) {
 		this.price = pPrice;
 	}
 	public void setPrice(double pPrice) {
+		// Converts a Double into a BigDecimal
+		//										Set Scale to have 2 Decimal digits
 		this.price = BigDecimal.valueOf(pPrice).setScale(2);
 	}
 	
