@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import brokerDealer.core.utils.DateTimeUtils;
+import brokerDealer.util.dateTime.DateTimeUtils;
 import lombok.Data;
 import seleniumWebDriver.entities.enums.OrderType;
 
