@@ -36,18 +36,6 @@ public class StockCalculatorTest {
 		assertEquals(BigDecimal.valueOf(76850, 2), result);
 	}
 	
-	/**
-	 * TODO Calc Profit Percentual
-	 */
-	
-	/**
-	 * TODO Calc Total Order Value
-	 */
-	
-	/**
-	 * TODO Calc Total Profit Value
-	 */
-	
 	@Test
 	public void testGetBuyOrders_FromListWithOnlyOneBuyOrderAmongOtherSellOrders() {
 		// Arrange
@@ -145,5 +133,17 @@ public class StockCalculatorTest {
 		
 		// Logging
 	}
+	
+	/**
+	 * TODO Calc Profit Percentual
+	 */
+	
+	/**
+	 * TODO Calc Total Order Value
+	 */
+	
+	/**
+	 * TODO Calc Total Profit Value
+	 */
 	
 }
