@@ -1,6 +1,6 @@
 package brokerDealer.repositories;
 
-import static brokerDealer.core.utils.DateTimeUtils.getLocalDateTime;
+import static brokerDealer.util.dateTime.DateTimeUtils.getLocalDateTime;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
