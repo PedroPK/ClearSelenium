@@ -100,25 +100,86 @@ public class StockOrderDatasetGenerator {
 	 * @return		List with all Stock Orders
 	 */
 	public static List<StockOrder> getAllVvar3StockOrders() {
-		List<StockOrder> listStockOrdersToSaveAndFlush = new ArrayList<>();
+		List<StockOrder> listAllVvar3StockOrders = new ArrayList<>();
 		
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2018_10_18());
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_02_05());
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_02_08());
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_02_14());
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_02_15());
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_02_19());
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_02_21_First());
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_02_21_Second());
-		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_02_25());
-		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_02_26());
-		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_07_02());
-		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_07_02());
-		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_07_03_First());
-		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_07_03_Second());
-		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_07_05());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2018_10_18());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_05());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_08());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_14());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_15());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_19());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_21_First());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_21_Second());
+		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_02_25());
+		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_02_26());
+		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_07_02());
+		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_02());
+		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_03_First());
+		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_03_Second());
+		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_05());
 		
-		return listStockOrdersToSaveAndFlush;
+		return listAllVvar3StockOrders;
+	}
+	
+	/**
+	 * Type of Order					Buy				Buy			Buy			Buy			Buy			Buy			Buy			Buy			Buy
+	 * Quantity of Stocks:				90		+		10		+	1		+	10		+	9		+	10		+	5		+	5		+	90
+	 * Price of each Stock:				5.13			5.79		5.56		5.33		5.38		5.39		4.79		4.89		5.13
+	 * -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 * Values of Buy Orders:			461.7	+		57.9	+	5.56	+	53.3	+	48.42	+	53.90	+	23.95	+	24.45	+	461.7
+	 * Total Values of Buy Orders:		1190.88
+	 * 
+	 * Quantity of Buy	Stocks:			90		+		10		+	1		+	10		+	9		+	10	+		5		+	5		+	90
+	 * Total Quantity of Buy Stocks: 	230
+	 * 
+	 * Mean Buy Value:					1190.88 / 230	= 5.1777
+	 * 
+	 * 
+	 * @return		List with all Stock Orders
+	 */
+	public static List<StockOrder> getBuyVvar3StockOrders() {
+		List<StockOrder> listBuyVvar3StockOrders = new ArrayList<>();
+		
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2018_10_18());
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_05());
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_08());
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_14());
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_15());
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_19());
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_21_First());
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_21_Second());
+		listBuyVvar3StockOrders.add(getBuyVvar3StockOrder_2019_07_02());
+		
+		return listBuyVvar3StockOrders;
+	}
+	
+	/**
+	 * Type of Order					Sell		Sell		Sell		Sell		Sell
+	 * Quantity of Stocks:				10		+	10		+	45		+	30		+	55
+	 * Price of each Stock:				4.99		4.8			5.5			5.9			6.5
+	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 * Values of Sell Orders:			49.90	+	48		+	247.50	+	177		+	357.50
+	 * Total Values of Sell Orders:		882.90
+	 * 
+	 * Quantity of Sell	Stocks:			10		+	10		+	45		+	30		+	55
+	 * Total Quantity of Sell Stocks: 	150
+	 * 
+	 * Mean Sell Value:					882.90  / 150	= 5.886
+	 * 
+	 * 
+	 * @return		List with all Stock Orders
+	 */
+	public static List<StockOrder> getSellVvar3StockOrders() {
+		List<StockOrder> listSellVvar3StockOrders = new ArrayList<>();
+		
+		listSellVvar3StockOrders.add(getSellVvar3StockOrder_2019_02_25());
+		listSellVvar3StockOrders.add(getSellVvar3StockOrder_2019_02_26());
+		listSellVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_02());
+		listSellVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_03_First());
+		listSellVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_03_Second());
+		listSellVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_05());
+		
+		return listSellVvar3StockOrders;
 	}
 	
 	/**
