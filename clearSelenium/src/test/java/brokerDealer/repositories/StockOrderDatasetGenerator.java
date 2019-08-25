@@ -84,7 +84,7 @@ public class StockOrderDatasetGenerator {
 	 * 
 	 * 
 	 * Mean Buy Value:					1190.88 / 230	= 5.1777
-	 * Mean Sell Value:					882.90  / 150	= 5.886
+	 * Mean Sell Value:					933.7  / 160	= 5.8356
 	 * 
 	 * Profit:
 	 * 	- Value:							153,85
@@ -93,7 +93,7 @@ public class StockOrderDatasetGenerator {
 	 * 
 	 * Total Value:								1639.21
 	 * ------------------------------------------------
-	 * Total Quantity of Stocks:				 380
+	 * Total Quantity of Stocks:				 390
 	 * 
 	 * 
 	 * 
