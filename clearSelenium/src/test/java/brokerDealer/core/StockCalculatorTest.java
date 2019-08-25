@@ -1,6 +1,6 @@
-package brokerDealer.repositories;
+package brokerDealer.core;
 
-import static brokerDealer.repositories.StockOrderDatasetGenerator.*;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -8,11 +8,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static brokerDealer.core.StockCalculator.*;
+import static brokerDealer.repositories.StockOrderDatasetGenerator.*;
+
 import seleniumWebDriver.entities.StockOrder;
 
 @RunWith(SpringRunner.class)
@@ -120,7 +123,7 @@ public class StockCalculatorTest {
 	}
 	
 	@Test
-	public void testCalProfit_BRFS3_06Jun2019_OneBuy_ThreeSells() {
+	public void testCalProfit_BRFS3_04Jun2019_OneBuy_ThreeSells() {
 		// Arrange
 		List<StockOrder>	listBRFS3StockOrders	=	getBrfs3_1Buy3SellsStockOrders();
 		
@@ -128,15 +131,46 @@ public class StockCalculatorTest {
 		BigDecimal result = calcProfit(listBRFS3StockOrders);
 		
 		// Assert
-		assertNotNull(result);
+		assertNotNull(result);		// R$91,50
 		assertEquals(BigDecimal.valueOf(9150, 2), result);
 		
 		// Logging
 	}
 	
 	/**
+	 * TODO		Calc Average Buy Price
+	 */
+	@Test
+	public void testCalcAverageBuyPrice() {
+		// Arrange
+		List<StockOrder>	listBRFS3StockOrders	=	getBuyVvar3StockOrders();
+		
+		// Act
+		
+		
+		// Assert
+		
+	}
+	
+	/**
+	 * TODO		Calc Average Sell Price
+	 */
+	
+	/**
 	 * TODO Calc Profit Percentual
 	 */
+	@Test
+	public void testCalcProficPercentage_BRFS3_04Jun2019_OnBuy_ThreeSells() {
+		// Arrange
+		List<StockOrder>	listBRFS3StockOrders	=	getBrfs3_1Buy3SellsStockOrders();
+		
+		// Act
+		BigDecimal result = calcProfitPercentage(listBRFS3StockOrders);
+		
+		// Assert
+		assertNotNull(result);		//  10,46%
+		assertEquals(BigDecimal.valueOf(1046, 2), result);
+	}
 	
 	/**
 	 * TODO Calc Total Order Value
@@ -145,5 +179,21 @@ public class StockCalculatorTest {
 	/**
 	 * TODO Calc Total Profit Value
 	 */
+	
+	
+	// Template Test Method
+	@Ignore
+	@Test
+	public void testTeplateMethod() {
+		// Arrange
+		
+		
+		// Act
+		
+		
+		// Assert
+		
+		
+	}
 	
 }
