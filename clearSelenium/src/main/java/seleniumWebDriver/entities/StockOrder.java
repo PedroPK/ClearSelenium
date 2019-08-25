@@ -104,4 +104,12 @@ public class StockOrder {
 		return result;
 	}
 	
+	public boolean isBuyOrder() {
+		return this.getType() == OrderType.BUY;
+	}
+	
+	public boolean isSellOrder() {
+		return this.getType() == OrderType.SELL;
+	}
+	
 }
