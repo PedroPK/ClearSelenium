@@ -107,7 +107,7 @@ public class StockCalculatorTest {
 		
 		// Assert
 		assertNotNull(result);			// The way to set the 461,70 Value with right Scale
-		assertEquals(BigDecimal.valueOf(-1350, 2), result);
+		assertEquals(BigDecimal.valueOf(-46170, 2), result);
 	}
 	
 	@Test
@@ -126,10 +126,10 @@ public class StockCalculatorTest {
 	@Test
 	public void testCalProfit_BRFS3_04Jun2019_OneBuy_ThreeSells() {
 		// Arrange
-		List<StockOrder>	listBRFS3StockOrders	=	getBrfs3_1Buy3SellsStockOrders();
+		List<StockOrder>	listBuyVvar3StockOrders	=	getBrfs3_1Buy3SellsStockOrders();
 		
 		// Act
-		BigDecimal result = calcProfit(listBRFS3StockOrders);
+		BigDecimal result = calcProfit(listBuyVvar3StockOrders);
 		
 		// Assert
 		assertNotNull(result);		// R$91,50
@@ -139,25 +139,40 @@ public class StockCalculatorTest {
 	}
 	
 	/**
-	 * TODO		Calc Average Buy Price
+	 * 	Calc Average Buy Price
 	 */
 	@Test
-	public void testCalcAverageBuyPrice() {
+	public void testCalcAverageBuyPrice_OnlyWithBuyOrders() {
 		// Arrange
-		List<StockOrder>	listBRFS3StockOrders	=	getBuyVvar3StockOrders();
+		List<StockOrder>	listSellVvar3StockOrders	=	getBuyVvar3StockOrders();
 		
 		// Act
-		BigDecimal averageBuyPrice = calcBuyAveragePrice(listBRFS3StockOrders);
+		BigDecimal averageBuyPrice = calcBuyAveragePrice(listSellVvar3StockOrders);
 		
-		// Assert
-		assertEquals(new BigDecimal(5.17), averageBuyPrice);
+		// Assert					R$  5,17
+		assertEquals(BigDecimal.valueOf(517, 2), averageBuyPrice);
+	}
+	
+	/**
+	 * 	Calc Average Buy Price
+	 */
+	@Test
+	public void testCalcAverageBuyPrice_MixedBuyAndSellOrders() {
+		// Arrange
+		List<StockOrder>	listBuyAndSellVvar3StockOrders	=	getAllVvar3StockOrders();
+		
+		// Act
+		BigDecimal averageBuyPrice = calcBuyAveragePrice(listBuyAndSellVvar3StockOrders);
+		
+		// Assert					R$  5,17
+		assertEquals(BigDecimal.valueOf(517, 2), averageBuyPrice);
 	}
 	
 	/**
 	 * TODO		Calc Average Sell Price
 	 */
 	@Test
-	public void testCalcAverageSellPrice() {
+	public void testCalcAverageSellPrice_OnlyWithSellOrders() {
 		// Arrange
 		List<StockOrder>	listBRFS3StockOrders	=	getSellVvar3StockOrders();
 		
@@ -166,8 +181,8 @@ public class StockCalculatorTest {
 		
 		// Assert
 		assertEquals(
-			new BigDecimal(5.84)	.setScale(2, RoundingMode.HALF_DOWN), 
-			averageSellPrice		.setScale(2, RoundingMode.HALF_DOWN));
+			BigDecimal.valueOf(584, 2), 
+			averageSellPrice			.setScale(2, RoundingMode.HALF_DOWN));
 	}
 	
 	/**
