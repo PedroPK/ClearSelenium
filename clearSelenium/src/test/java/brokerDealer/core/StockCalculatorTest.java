@@ -30,20 +30,20 @@ public class StockCalculatorTest {
 	@Test
 	public void testCalcProfit() {
 		// Arrange
-		List<StockOrder> listVvar3StockOrders = get1Vvar3_1Buy3SellStockOrders();
+		List<StockOrder> listVvar3StockOrders = getVvar3_1Buy3SellStockOrders();
 		
 		// Act
 		BigDecimal result = calcProfit(listVvar3StockOrders);
 		
 		// Assert
 		assertNotNull(result);
-		assertEquals(BigDecimal.valueOf(76850, 2), result);
+		assertEquals(BigDecimal.valueOf(32030, 2), result);
 	}
 	
 	@Test
 	public void testGetBuyOrders_FromListWithOnlyOneBuyOrderAmongOtherSellOrders() {
 		// Arrange
-		List<StockOrder> listVvar3StockOrders = get1Vvar3_1Buy3SellStockOrders();
+		List<StockOrder> listVvar3StockOrders = getVvar3_1Buy3SellStockOrders();
 		
 		// Act
 		List<StockOrder> listBuyOrders = getBuyOrders(listVvar3StockOrders);
@@ -57,7 +57,7 @@ public class StockCalculatorTest {
 	@Test
 	public void testGetBuyOrders_FromListWithTwoBuyOrderAmongOtherSellOrders() {
 		// Arrange
-		List<StockOrder> listVvar3StockOrders = get1Vvar3_1Buy3SellStockOrders();
+		List<StockOrder> listVvar3StockOrders = getVvar3_1Buy3SellStockOrders();
 		
 		// Act
 		List<StockOrder> listBuyOrders = getBuyOrders(listVvar3StockOrders);
