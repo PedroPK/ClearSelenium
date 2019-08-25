@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -164,7 +165,9 @@ public class StockCalculatorTest {
 		BigDecimal averageSellPrice = calcSellAveragePrice(listBRFS3StockOrders);
 		
 		// Assert
-		assertEquals(new BigDecimal(5.88), averageSellPrice);
+		assertEquals(
+			new BigDecimal(5.84)	.setScale(2, RoundingMode.HALF_DOWN), 
+			averageSellPrice		.setScale(2, RoundingMode.HALF_DOWN));
 	}
 	
 	/**

@@ -154,17 +154,17 @@ public class StockOrderDatasetGenerator {
 	}
 	
 	/**
-	 * Type of Order					Sell		Sell		Sell		Sell		Sell
-	 * Quantity of Stocks:				10		+	10		+	45		+	30		+	55
-	 * Price of each Stock:				4.99		4.8			5.5			5.9			6.5
+	 * Type of Order					Sell		Sell		Sell		Sell		Sell		Sell
+	 * Quantity of Stocks:				10		+	10		+	10		+	45		+	30		+	55
+	 * Price of each Stock:				4.99		4.8		+	5.38	+	5.5			5.9			6.5
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	 * Values of Sell Orders:			49.90	+	48		+	247.50	+	177		+	357.50
-	 * Total Values of Sell Orders:		882.90
+	 * Values of Sell Orders:			49.90	+	48		+	53.8	+	247.50	+	177		+	357.50
+	 * Total Values of Sell Orders:		933.7
 	 * 
-	 * Quantity of Sell	Stocks:			10		+	10		+	45		+	30		+	55
-	 * Total Quantity of Sell Stocks: 	150
+	 * Quantity of Sell	Stocks:			10		+	10		+	10		+	45		+	30		+	55
+	 * Total Quantity of Sell Stocks: 	160
 	 * 
-	 * Mean Sell Value:					882.90  / 150	= 5.886
+	 * Mean Sell Value:					933.7  / 160	= 5.8356
 	 * 
 	 * 
 	 * @return		List with all Stock Orders

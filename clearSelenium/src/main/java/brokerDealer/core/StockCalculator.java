@@ -81,9 +81,9 @@ public class StockCalculator {
 			
 			int totalQuantityStocks = 0;
 			
-			List<StockOrder> listBuyOrders = getBuyOrders(pListStockOrder);
+			List<StockOrder> listSellOrders = getSellOrders(pListStockOrder);
 			
-			for ( StockOrder stockOrder: listBuyOrders ) {
+			for ( StockOrder stockOrder: listSellOrders ) {
 				if ( stockOrder.getType().equals(OrderType.SELL) ) {
 					totalQuantityStocks = totalQuantityStocks + stockOrder.getQuantity();
 					
@@ -111,6 +111,20 @@ public class StockCalculator {
 		}
 		
 		return listBuyOrders;
+	}
+	
+	public static List<StockOrder> getSellOrders( List<StockOrder> pListStockOrder ) {
+		List<StockOrder> listSellOrders = new ArrayList<>();
+		
+		if ( isListValid(pListStockOrder) ) {
+			for ( StockOrder stockOrder: pListStockOrder ) {
+				if ( stockOrder.getType() == OrderType.SELL ) {
+					listSellOrders.add(stockOrder);
+				}
+			}
+		}
+		
+		return listSellOrders;
 	}
 	
 	public static BigDecimal calcProfitPercentage( List<StockOrder> pListStockOrder ) {
