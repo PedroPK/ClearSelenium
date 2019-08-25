@@ -146,15 +146,26 @@ public class StockCalculatorTest {
 		List<StockOrder>	listBRFS3StockOrders	=	getBuyVvar3StockOrders();
 		
 		// Act
-		
+		BigDecimal averageBuyPrice = calcBuyAveragePrice(listBRFS3StockOrders);
 		
 		// Assert
-		
+		assertEquals(new BigDecimal(5.17), averageBuyPrice);
 	}
 	
 	/**
 	 * TODO		Calc Average Sell Price
 	 */
+	@Test
+	public void testCalcAverageSellPrice() {
+		// Arrange
+		List<StockOrder>	listBRFS3StockOrders	=	getSellVvar3StockOrders();
+		
+		// Act
+		BigDecimal averageSellPrice = calcSellAveragePrice(listBRFS3StockOrders);
+		
+		// Assert
+		assertEquals(new BigDecimal(5.88), averageSellPrice);
+	}
 	
 	/**
 	 * TODO Calc Profit Percentual
