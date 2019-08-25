@@ -20,26 +20,68 @@ public class StockOrderDatasetGenerator {
 	private static final String VVAR11_TICKER	= "VVAR11";
 	
 	/**
-	 * Quantity of Stocks:		1			45			30			55
-	 * Price of each Stock:		13.5		5.5			5.9			6.5
-	 * ------------------------------------------------------------------
-	 * Total Order Value:		13.5	+	247,5	+	177		+	357,5
+	 * Type of Order					Buy			Sell		Sell		Sell
+	 * Quantity of Stocks:				90			45		+	30		+	55
+	 * Price of each Stock:				5.13		5.5			5.9			6.5
+	 * -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 * Total Order Value:				461.70		247.50	+	177		+	357.50
 	 * 
-	 * Total Value:								795,5
-	 * -----------------------------------------------
-	 * Total Quantity of Stocks:				131
+	 * Values of Buy Orders:			461.70
+	 * Values of Sell Orders:						247.50	+	177		+	357.50
 	 * 
-	 * Mean Value	==========================	6,0725
+	 * Total Values of Buy Orders:		461.70
+	 * Total Values of Sell Orders:		782
+	 * ----------------------------------------
+	 * Sell - Buy Orders:				320.30
+	 * 
+	 * Quantity of Buy	Stocks:			90
+	 * Quantity of Sell	Stocks:						45		+	30		+	55
+	 * 
+	 * Total Quantity of Buy Stocks: 	90
+	 * Total Quantity of Sell Stocks: 	130
 	 * 
 	 * 
-	 * @return
+	 * Mean Buy Value:					461.70	/ 90	= 5.13
+	 * Mean Sell Value:					782		/ 130	= 6.0153
+	 * 
+	 * Profit:
+	 * 	- Value:							153,85
+	 *  - Percentage:						20.71%
+	 * 
+	 * 
+	 * Total Value:								1639.21
+	 * ------------------------------------------------
+	 * Total Quantity of Stocks:				 390
+	 * 
+	 * 
+	 * 
+	 * @return		List with all Stock Orders
 	 */
-	public static List<StockOrder> get1Vvar3_1Buy3SellStockOrders() {
+	public static List<StockOrder> getVvar3_1Buy3SellStockOrders() {
 		List<StockOrder> listStockOrdersToSaveAndFlush = new ArrayList<>();
 		
+		/* Quantity of Stocks:		90
+		 * Price of each Stock:		5.13
+		 * Total Order Value:		461.7
+		 */
 		listStockOrdersToSaveAndFlush.add(getBuyVvar3StockOrder_2019_07_02());
+		
+		/* Quantity of Stocks:		45
+		 * Price of each Stock:		5.5
+		 * Total Order Value:		247.5
+		 */
 		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_07_03_First());
+		
+		/* Quantity of Stocks:		30
+		 * Price of each Stock:		5.9
+		 * Total Order Value:		177
+		 */
 		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_07_03_Second());
+		
+		/* Quantity of Stocks:		55
+		 * Price of each Stock:		6.5
+		 * Total Order Value:		357.5
+		 */
 		listStockOrdersToSaveAndFlush.add(getSellVvar3StockOrder_2019_07_05());
 		
 		return listStockOrdersToSaveAndFlush;
@@ -48,6 +90,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		10
 	 * Price of each Stock:		40
+	 * Total Order Value:		400
 	 * 
 	 * @return
 	 */
@@ -64,23 +107,23 @@ public class StockOrderDatasetGenerator {
 	}
 	
 	/**
-	 * Type of Order					Buy						Buy			Buy			Buy			Buy			Buy			Buy			Buy			Sell		Sell		Buy			Sell		Sell		Sell
-	 * Quantity of Stocks:				90			+			10		+	1		+	10		+	9		+	10		+	5		+	5		+	10		+	10		+	90		+	45		+	30		+	55
-	 * Price of each Stock:				5.13					5.79		5.56		5.33		5.38		5.39		4.79		4.89		4.99		4.8			5.13		5.5			5.9			6.5
+	 * Type of Order					Buy					Buy			Buy			Buy			Buy			Buy			Buy			Buy			Sell		Sell		Buy			Sell		Sell		Sell
+	 * Quantity of Stocks:				90			+		10		+	1		+	10		+	9		+	10		+	5		+	5		+	10		+	10		+	90		+	45		+	30		+	55
+	 * Price of each Stock:				5.13				5.79		5.56		5.33		5.38		5.39		4.79		4.89		4.99		4.8			5.13		5.5			5.9			6.5
 	 * -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	 * Total Order Value:				461.7		+			57.9	+	5.56	+	53.3	+	48.42	+	53.90	+	23.95	+	24.45	+	49.90	+	48		+	461.7	+	247.50	+	177		+	357.50
+	 * Total Order Value:				461.7		+		57.9	+	5.56	+	53.3	+	48.42	+	53.90	+	23.95	+	24.45	+	49.90	+	48		+	461.7	+	247.50	+	177		+	357.50
 	 * 
-	 * Values of Buy Orders:			461.7			+		57.9	+	5.56	+	53.3	+	48.42	+	53.90	+	23.95	+	24.45				+				461.7
+	 * Values of Buy Orders:			461.7		+		57.9	+	5.56	+	53.3	+	48.42	+	53.90	+	23.95	+	24.45				+				461.7
 	 * Values of Sell Orders:																													+	49.90	+	48			+			247.50	+	177		+	357.50
 	 * 
 	 * Total Values of Buy Orders:		1190.88
-	 * Total Values of Sell Orders:		882.90
+	 * Total Values of Sell Orders:		933.7
 	 * 
-	 * Quantity of Buy	Stocks:			90			+			10		+	1		+	10		+	9		+	10		+	5		+	5					+				90
-	 * Quantity of Sell	Stocks:																		+												10		+	10			+			45		+	30		+	55
+	 * Quantity of Buy	Stocks:			90			+		10		+	1		+	10		+	9		+	10		+	5		+	5					+				90
+	 * Quantity of Sell	Stocks:																	+												10		+	10			+			45		+	30		+	55
 	 * 
 	 * Total Quantity of Buy Stocks: 	230
-	 * Total Quantity of Sell Stocks: 	150
+	 * Total Quantity of Sell Stocks: 	160
 	 * 
 	 * 
 	 * Mean Buy Value:					1190.88 / 230	= 5.1777
@@ -172,6 +215,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		90
 	 * Price of each Stock:		5.13
+	 * Total Order Value:		461.70
 	 * 
 	 * @return
 	 */
@@ -191,6 +235,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		1
 	 * Price of each Stock:		16.63
+	 * Total Order Value:		16.63
 	 * 
 	 * @return
 	 */
@@ -210,6 +255,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		10
 	 * Price of each Stock:		5.79
+	 * Total Order Value:		57.90
 	 * 
 	 * @return
 	 */
@@ -229,6 +275,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		1
 	 * Price of each Stock:		5.56
+	 * Total Order Value:		5.56
 	 * 
 	 * @return
 	 */
@@ -248,6 +295,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		10
 	 * Price of each Stock:		5.33
+	 * Total Order Value:		53.30
 	 * 
 	 * @return
 	 */
@@ -267,6 +315,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		9
 	 * Price of each Stock:		5.38
+	 * Total Order Value:		48,42
 	 * 
 	 * @return
 	 */
@@ -286,6 +335,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		10
 	 * Price of each Stock:		5.39
+	 * Total Order Value:		53.9
 	 * 
 	 * @return
 	 */
@@ -305,6 +355,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		5
 	 * Price of each Stock:		4.79
+	 * Total Order Value:		23.95
 	 * 
 	 * @return
 	 */
@@ -324,6 +375,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		5
 	 * Price of each Stock:		4.89
+	 * Total Order Value:		24.45
 	 * 
 	 * @return
 	 */
@@ -343,6 +395,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		10
 	 * Price of each Stock:		4.99
+	 * Total Order Value:		49.90
 	 * 
 	 * @return
 	 */
@@ -362,6 +415,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		10
 	 * Price of each Stock:		4.8
+	 * Total Order Value:		48.00
 	 * 
 	 * @return
 	 */
@@ -401,6 +455,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		10
 	 * Price of each Stock:		5.38
+	 * Total Order Value:		53.8
 	 * 
 	 * @return
 	 */
@@ -420,6 +475,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		45
 	 * Price of each Stock:		5.5
+	 * Total Order Value:		247.5
 	 * 
 	 * @return
 	 */
@@ -439,6 +495,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		30
 	 * Price of each Stock:		5.9
+	 * Total Order Value:		177
 	 * 
 	 * @return
 	 */
@@ -458,6 +515,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		55
 	 * Price of each Stock:		6.5
+	 * Total Order Value:		357.5
 	 * 
 	 * @return
 	 */
