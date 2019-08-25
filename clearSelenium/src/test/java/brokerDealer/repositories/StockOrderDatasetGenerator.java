@@ -102,21 +102,8 @@ public class StockOrderDatasetGenerator {
 	public static List<StockOrder> getAllVvar3StockOrders() {
 		List<StockOrder> listAllVvar3StockOrders = new ArrayList<>();
 		
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2018_10_18());
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_05());
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_08());
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_14());
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_15());
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_19());
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_21_First());
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_02_21_Second());
-		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_02_25());
-		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_02_26());
-		listAllVvar3StockOrders.add(getBuyVvar3StockOrder_2019_07_02());
-		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_02());
-		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_03_First());
-		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_03_Second());
-		listAllVvar3StockOrders.add(getSellVvar3StockOrder_2019_07_05());
+		listAllVvar3StockOrders.addAll(getBuyVvar3StockOrders());
+		listAllVvar3StockOrders.addAll(getSellVvar3StockOrders());
 		
 		return listAllVvar3StockOrders;
 	}
@@ -394,6 +381,7 @@ public class StockOrderDatasetGenerator {
 	/**
 	 * Quantity of Stocks:		90
 	 * Price of each Stock:		5.13
+	 * Total Order Value:		461.7
 	 * 
 	 * @return
 	 */
