@@ -73,13 +73,15 @@ public class StockCalculatorTest {
 		// Arrange
 		List<StockOrder> listVvar3StockOrders = getAllVvar3StockOrders();
 		
-		// Act
+		// Act							Mean Buy Value:		1190.88 / 230	= 5.1777
 		List<StockOrder> listBuyOrders = getBuyOrders(listVvar3StockOrders);
 		
 		// Assert
 		assertNotNull(listBuyOrders);
 		assertEquals(9, listBuyOrders.size());
-		assertEquals(BigDecimal.valueOf(-74268,2), calcProfit(listBuyOrders));
+		
+		//			Mean Buy Value:		1190.88 / 230	= 5.1777
+		assertEquals(BigDecimal.valueOf(-119088,2), calcProfit(listBuyOrders));
 	}
 	
 	@Test
