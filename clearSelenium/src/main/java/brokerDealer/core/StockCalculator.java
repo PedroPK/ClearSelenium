@@ -30,7 +30,7 @@ public class StockCalculator {
 	public static BigDecimal calcProfit(List<StockOrder> pListStockOrder ) {
 		BigDecimal response = BigDecimal.ZERO;
 		
-		if ( pListStockOrder != null && !pListStockOrder.isEmpty() ) {
+		if ( isListValid(pListStockOrder) ) {
 			for ( StockOrder stockOrder: pListStockOrder ) {
 				if ( stockOrder.getType() == OrderType.BUY ) {
 					response = response.subtract(
@@ -49,21 +49,48 @@ public class StockCalculator {
 		return response;
 	}
 	
-	public static BigDecimal calcBuyMeanPrice( List<StockOrder> pListStockOrder ) {
+	public static BigDecimal calcBuyAveragePrice( List<StockOrder> pListStockOrder ) {
 		BigDecimal response = BigDecimal.ZERO;
 		
-		if ( pListStockOrder != null && !pListStockOrder.isEmpty() ) {
+		if ( isListValid(pListStockOrder) ) {
 			
 			int totalQuantityStocks = 0;
 			
 			List<StockOrder> listBuyOrders = getBuyOrders(pListStockOrder);
 			
 			for ( StockOrder stockOrder: listBuyOrders ) {
-				totalQuantityStocks = totalQuantityStocks + stockOrder.getQuantity();
-				
-				response = response.add(
-					stockOrder.getOrderValue()
-				);
+				if ( stockOrder.getType().equals(OrderType.BUY) ) {
+					totalQuantityStocks = totalQuantityStocks + stockOrder.getQuantity();
+					
+					response = response.add(
+						stockOrder.getOrderValue()
+					);
+				}
+			}
+			
+			response = divide(response, totalQuantityStocks);
+		}
+		
+		return response;
+	}
+	
+	public static BigDecimal calcSellAveragePrice( List<StockOrder> pListStockOrder ) {
+		BigDecimal response = BigDecimal.ZERO;
+		
+		if ( isListValid(pListStockOrder) ) {
+			
+			int totalQuantityStocks = 0;
+			
+			List<StockOrder> listBuyOrders = getBuyOrders(pListStockOrder);
+			
+			for ( StockOrder stockOrder: listBuyOrders ) {
+				if ( stockOrder.getType().equals(OrderType.SELL) ) {
+					totalQuantityStocks = totalQuantityStocks + stockOrder.getQuantity();
+					
+					response = response.add(
+						stockOrder.getOrderValue()
+					);
+				}
 			}
 			
 			response = divide(response, totalQuantityStocks);
@@ -75,7 +102,7 @@ public class StockCalculator {
 	public static List<StockOrder> getBuyOrders( List<StockOrder> pListStockOrder ) {
 		List<StockOrder> listBuyOrders = new ArrayList<>();
 		
-		if ( pListStockOrder != null && !pListStockOrder.isEmpty() ) {
+		if ( isListValid(pListStockOrder) ) {
 			for ( StockOrder stockOrder: pListStockOrder ) {
 				if ( stockOrder.getType() == OrderType.BUY ) {
 					listBuyOrders.add(stockOrder);
@@ -86,10 +113,10 @@ public class StockCalculator {
 		return listBuyOrders;
 	}
 	
-	public static BigDecimal calcProfitPercentual( List<StockOrder> pListStockOrder ) {
+	public static BigDecimal calcProfitPercentage( List<StockOrder> pListStockOrder ) {
 		BigDecimal response = BigDecimal.ZERO;
 		
-		if ( pListStockOrder != null && !pListStockOrder.isEmpty() ) {
+		if ( isListValid(pListStockOrder) ) {
 			for ( StockOrder stockOrder: pListStockOrder ) {
 				
 				int quantity = stockOrder.getQuantity();
@@ -111,6 +138,10 @@ public class StockCalculator {
 		}
 		
 		return response;
+	}
+	
+	private static boolean isListValid(List<StockOrder> pListStockOrder) {
+		return pListStockOrder != null && !pListStockOrder.isEmpty();
 	}
 	
 }
