@@ -16,9 +16,9 @@ public class ClearLoginExecution {
 	@Test
 	public void login() {
 		clearLogin
-			.fillCPF("039.821.084-54")
+			.fillCPF("NNN.NNN.NNN-NN")
 			.fillPassword("XXXXXX")		// TODO Delete this value before Commit
-			.fillBirthday("13/02/1983")
+			.fillBirthday("DD/MM/YYYY")
 			.pressAccessMyAccountSubmitButton()
 			
 			.pressNewPitSpan()
