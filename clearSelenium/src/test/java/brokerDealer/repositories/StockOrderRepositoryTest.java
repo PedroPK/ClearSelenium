@@ -85,7 +85,7 @@ public class StockOrderRepositoryTest {
 		// Assert
 		assertNotNull(	findedOrder);
 		assertTrue(		findedOrder.isPresent());
-		assertFalse(	findedOrder.isEmpty());
+		//assertFalse(	findedOrder.isEmpty());
 		
 		// Logging
 		logger.info("Original Order: " + order.toString());
@@ -112,7 +112,7 @@ public class StockOrderRepositoryTest {
 		// Assert
 		assertNotNull(	findedOrder);
 		assertTrue(		findedOrder.isPresent());
-		assertFalse(	findedOrder.isEmpty());
+		//assertFalse(	findedOrder.isEmpty());
 		
 		// Logging
 		logger.info("Buy VVAR3: 	" + getBuyVvar3StockOrder_2019_07_02().toString());
