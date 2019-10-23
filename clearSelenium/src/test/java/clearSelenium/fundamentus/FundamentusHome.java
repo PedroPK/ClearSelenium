@@ -117,7 +117,16 @@ public class FundamentusHome {
 		return field;
 	}
 	
+	@Test
+	public void pressExibirButtonVoid() {
+		pressExibirButton();
+	}
+	
 	public FundamentusHome pressExibirButton() {
+		if ( aWebDriver == null ) {
+			accessFundamentusHome();
+		}
+		
 		if ( this.aExibirButton == null ) {
 			this.aExibirButton = getElementByXPath(EXIBIR_BUTTON_XPATH); 
 		}
