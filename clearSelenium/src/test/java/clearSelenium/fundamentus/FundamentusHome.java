@@ -23,6 +23,7 @@ public class FundamentusHome {
 	private static final String WEBDRIVER_CHROME_DRIVER		=	"webdriver.chrome.driver";
 	
 	private static final String PATH_CHROME_DRIVER			=	"C:\\Users\\pedro.carlos.santos\\git\\ClearSelenium\\clearSelenium\\src\\test\\resources\\chromedriver.exe";
+	private static final String CHROME_DRIVER_WINDOWS		=	"chromedriver.exe";
 	
 	private static final String EXIBIR_BUTTON_XPATH			=	"/html/body/div[1]/div[1]/form/fieldset/input[2]";
 	
@@ -31,9 +32,9 @@ public class FundamentusHome {
 	
 	private static WebDriver aWebDriver;
 	
-	public FundamentusHome() {
-		//instanciateChromeDriver();
-	}
+	/*
+	 * public FundamentusHome() { //instanciateChromeDriver(); }
+	 */
 	
 	/*
 	 * public FundamentusHome( WebDriver pWebDriver ) { aWebDriver = pWebDriver; }
@@ -60,9 +61,18 @@ public class FundamentusHome {
 		
 		System.out.println(pathString);
 		
+		// Get the Project Directory
+		String path = System.getProperty("user.dir");
+		
+		String relativePath = "\\src\\test\\resources\\";
+		
+		System.out.println(path);
+		
+		System.out.println(path + relativePath + CHROME_DRIVER_WINDOWS);
+		
 		System.setProperty(
 			WEBDRIVER_CHROME_DRIVER, 
-			PATH_CHROME_DRIVER);
+			path + relativePath + CHROME_DRIVER_WINDOWS);
 	}
 	
 	@Test
