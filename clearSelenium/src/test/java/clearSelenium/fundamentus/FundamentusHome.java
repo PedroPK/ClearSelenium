@@ -90,7 +90,7 @@ public class FundamentusHome {
 		pressExibirButton();
 		openTickerPage(1);
 		
-		String text = getDividendYield();
+		String text = getDividendYieldTextValue();
 	}
 	
 	@Ignore
@@ -99,56 +99,67 @@ public class FundamentusHome {
 		pressExibirButton();
 		openTickerPage(2);
 		
-		String dividendYieldTextValue = getDividendYield();
+		String dividendYieldTextValue = getDividendYieldTextValue();
 		
 		System.out.println(dividendYieldTextValue);
 	}
 
-	private String getDividendYield() {
+	private String getDividendYieldTextValue() {
 		WebElement dividendYieldWebElement = getElementByXPath(DIVIDEND_YIELD_XPATH);
 		
 		String dividendYieldTextValue = dividendYieldWebElement.getText();
 		return dividendYieldTextValue;
 	}
 	
-	@Test
+	@Test(timeout = 120000)
 	public void getDividendYieldsFrom3TickersInIteration() {
 		pressExibirButton();
 		
 		Map<String, BigDecimal> mapDividendYields = new HashMap<>();
-		for (int index = 1; index <= 3; index = index + 1) {
-			// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
-			String tickerLabel = getTickerLabel(index);
-			
-			// Open que Ticker page with its Details
-			openTickerPage(index);
-			
-			// Get the Dividend Yield. Ex: "1,0%"
-			String dividendYieldTextValue = getDividendYield();
-			
-			// Remove the Percentage Symbol
-			dividendYieldTextValue = dividendYieldTextValue.replace('%', ' ');
-			
-			// Remove Spaces in Start and End of the String
-			dividendYieldTextValue = dividendYieldTextValue.trim();
-			
-			// Replace Comma with Dot
-			dividendYieldTextValue = dividendYieldTextValue.replace(',', '.');
-			
-			// Convert to a BigDecimal
-			BigDecimal dividendYield = new BigDecimal(dividendYieldTextValue);
-			
-			System.out.println(dividendYield);
-			
-			
-			mapDividendYields.put(
-				tickerLabel, 
-				dividendYield);
-			
-			back();
+		for (int index = 1; index <= 500; index = index + 1) {
+			try {
+				// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
+				String tickerLabel = getTickerLabel(index);
+				
+				// Open the Ticker page with its Details
+				openTickerPage(index);
+				
+				// Get the Dividend Yield
+				BigDecimal dividendYield = getDividendYield();
+				
+				mapDividendYields.put(
+					tickerLabel, 
+					dividendYield);
+				
+				back();
+				
+				System.out.println( index + " " + tickerLabel + " " + dividendYield );
+				System.out.println(mapDividendYields);
+			} catch (Exception e) {
+				back();
+				continue;
+			}
 		}
 		
 		System.out.println(mapDividendYields);
+	}
+
+	private BigDecimal getDividendYield() {
+		// Get the Dividend Yield. Ex: "1,0%"
+		String dividendYieldTextValue = getDividendYieldTextValue();
+		
+		// Remove the Percentage Symbol
+		dividendYieldTextValue = dividendYieldTextValue.replace('%', ' ');
+		
+		// Remove Spaces in Start and End of the String
+		dividendYieldTextValue = dividendYieldTextValue.trim();
+		
+		// Replace Comma with Dot
+		dividendYieldTextValue = dividendYieldTextValue.replace(',', '.');
+		
+		// Convert to a BigDecimal
+		BigDecimal dividendYield = new BigDecimal(dividendYieldTextValue);
+		return dividendYield;
 	}
 
 	private String getTickerLabel(int pIndex) {
