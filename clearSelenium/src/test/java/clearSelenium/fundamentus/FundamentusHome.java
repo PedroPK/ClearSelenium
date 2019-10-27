@@ -16,9 +16,14 @@ public class FundamentusHome {
 	/**
 	 * URL's
 	 */
-	private static final String URL_FUNDAMENTUS				= "https://www.fundamentus.com.br/index.php";
+	private static final String URL_FUNDAMENTUS				=	"https://www.fundamentus.com.br/index.php";
 	
 	private static final String EXIBIR_BUTTON_XPATH			=	"/html/body/div[1]/div[1]/form/fieldset/input[2]";
+	
+	private static final String TICKER_LINK_INDEX			=	"INDEX";
+	private static final String TICKER_LINK_XPATH			=	"//*[@id=\"test1\"]/tbody/tr[" + TICKER_LINK_INDEX + "]/td[1]/a";
+	
+	private static final String DIVIDEND_YELD_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[9]/td[4]/span";
 	
 	@FindBy(xpath=EXIBIR_BUTTON_XPATH)
 	private WebElement aExibirButton;
@@ -53,8 +58,52 @@ public class FundamentusHome {
 		pressExibirButton();
 	}
 	
+	@Test
+	public void cliclFirstTickerLinks() {
+		pressExibirButton();
+		
+		int tickerIndex = 1;
+		
+		openTickerPage(tickerIndex);
+	}
+
+	private void openTickerPage(int pTickerIndex) {
+		WebElement firstTickerLink = getTickerLinkXPath(pTickerIndex);
+		
+		firstTickerLink.click();
+	}
+	
+	@Test
+	public void getDividendYeldFromFirstTicker() {
+		pressExibirButton();
+		openTickerPage(1);
+		
+		WebElement dividendYeld = getElementByXPath(DIVIDEND_YELD_XPATH);
+		
+		String text = dividendYeld.getText();
+	}
+	
+	@Test
+	public void getDividendYeldFromSecondTicker() {
+		pressExibirButton();
+		openTickerPage(2);
+		
+		WebElement dividendYeld = getElementByXPath(DIVIDEND_YELD_XPATH);
+		
+		String text = dividendYeld.getText();
+	}
+
+	private WebElement getTickerLinkXPath(int pTickerIndex) {
+		String tickerXPath = TICKER_LINK_XPATH;
+		
+		tickerXPath = tickerXPath.replace(TICKER_LINK_INDEX, pTickerIndex + "");
+		
+		WebElement firstTickerLink = getElementByXPath(tickerXPath);
+		return firstTickerLink;
+	}
+	
 	public FundamentusHome pressExibirButton() {
-			accessFundamentusHome();
+		accessFundamentusHome();
 		
 		if ( this.aExibirButton == null ) {
 			this.aExibirButton = getElementByXPath(EXIBIR_BUTTON_XPATH); 
