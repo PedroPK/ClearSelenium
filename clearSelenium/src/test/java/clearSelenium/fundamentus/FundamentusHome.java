@@ -30,7 +30,7 @@ public class FundamentusHome {
 	private static final String TICKER_LABEL_XPATH			=	"/html/body/div[1]/div[2]/div/div/table/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
 	private static final String TICKER_LINK_XPATH			=	"//*[@id=\"test1\"]/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
 	
-	private static final String DIVIDEND_YELD_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[9]/td[4]/span";
+	private static final String DIVIDEND_YIELD_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[9]/td[4]/span";
 	
 	@FindBy(xpath=EXIBIR_BUTTON_XPATH)
 	private WebElement aExibirButton;
@@ -85,50 +85,50 @@ public class FundamentusHome {
 	
 	@Ignore
 	@Test
-	public void getDividendYeldFromFirstTicker() {
+	public void getDividendYieldFromFirstTicker() {
 		pressExibirButton();
 		openTickerPage(1);
 		
-		String text = getDividendYeld();
+		String text = getDividendYield();
 	}
 	
 	@Ignore
 	@Test
-	public void getDividendYeldFromSecondTicker() {
+	public void getDividendYieldFromSecondTicker() {
 		pressExibirButton();
 		openTickerPage(2);
 		
-		String dividendYeldTextValue = getDividendYeld();
+		String dividendYieldTextValue = getDividendYield();
 		
-		System.out.println(dividendYeldTextValue);
+		System.out.println(dividendYieldTextValue);
 	}
 
-	private String getDividendYeld() {
-		WebElement dividendYeldWebElement = getElementByXPath(DIVIDEND_YELD_XPATH);
+	private String getDividendYield() {
+		WebElement dividendYieldWebElement = getElementByXPath(DIVIDEND_YIELD_XPATH);
 		
-		String dividendYeldTextValue = dividendYeldWebElement.getText();
-		return dividendYeldTextValue;
+		String dividendYieldTextValue = dividendYieldWebElement.getText();
+		return dividendYieldTextValue;
 	}
 	
 	@Test
-	public void getDividendYeldsFrom3TickersInIteration() {
+	public void getDividendYieldsFrom3TickersInIteration() {
 		pressExibirButton();
 		
-		Map<String, String> mapDividendYelds = new HashMap<>();
+		Map<String, String> mapDividendYields = new HashMap<>();
 		for (int index = 1; index <= 3; index = index + 1) {
 			String tickerLabel = getTickerLabel(index);
 			openTickerPage(index);
 			
-			String dividendYeldTextValue = getDividendYeld();
+			String dividendYieldTextValue = getDividendYield();
 			
-			mapDividendYelds.put(
+			mapDividendYields.put(
 				tickerLabel, 
-				dividendYeldTextValue);
+				dividendYieldTextValue);
 			
 			back();
 		}
 		
-		System.out.println(mapDividendYelds);
+		System.out.println(mapDividendYields);
 	}
 
 	private String getTickerLabel(int pIndex) {
