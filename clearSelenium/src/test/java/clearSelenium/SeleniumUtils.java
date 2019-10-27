@@ -116,6 +116,12 @@ public class SeleniumUtils {
 		return field;
 	}
 	
+	public static void back() {
+		if ( aWebDriver != null ) {
+			aWebDriver.navigate().back();
+		}
+	}
+	
 	public static void closeWebDriver() {
 		if ( aWebDriver != null ) {
 			aWebDriver.close();

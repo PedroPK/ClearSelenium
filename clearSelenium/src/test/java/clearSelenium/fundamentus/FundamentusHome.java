@@ -3,7 +3,10 @@ package clearSelenium.fundamentus;
 import static clearSelenium.SeleniumUtils.accessURL;
 import static clearSelenium.SeleniumUtils.closeWebDriver;
 import static clearSelenium.SeleniumUtils.getElementByXPath;
-import static clearSelenium.SeleniumUtils.instanciateChromeDriver;
+import static clearSelenium.SeleniumUtils.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -78,9 +81,7 @@ public class FundamentusHome {
 		pressExibirButton();
 		openTickerPage(1);
 		
-		WebElement dividendYeld = getElementByXPath(DIVIDEND_YELD_XPATH);
-		
-		String text = dividendYeld.getText();
+		String text = getDividendYeld();
 	}
 	
 	@Test
@@ -88,11 +89,34 @@ public class FundamentusHome {
 		pressExibirButton();
 		openTickerPage(2);
 		
-		WebElement dividendYeld = getElementByXPath(DIVIDEND_YELD_XPATH);
+		String dividendYeldTextValue = getDividendYeld();
 		
-		String text = dividendYeld.getText();
+		System.out.println(dividendYeldTextValue);
 	}
 
+	private String getDividendYeld() {
+		WebElement dividendYeldWebElement = getElementByXPath(DIVIDEND_YELD_XPATH);
+		
+		String dividendYeldTextValue = dividendYeldWebElement.getText();
+		return dividendYeldTextValue;
+	}
+	
+	@Test
+	public void getDividendYeldsFrom3TickersInIteration() {
+		pressExibirButton();
+		
+		List<String> listDividendYelds = new ArrayList<>();
+		for (int index = 1; index <= 3; index = index + 1) {
+			openTickerPage(index);
+			
+			String dividendYeldTextValue = getDividendYeld();
+			
+			listDividendYelds.add(dividendYeldTextValue);
+			
+			back();
+		}
+	}
+	
 	private WebElement getTickerLinkXPath(int pTickerIndex) {
 		String tickerXPath = TICKER_LINK_XPATH;
 		
