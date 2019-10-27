@@ -5,6 +5,7 @@ import static clearSelenium.SeleniumUtils.closeWebDriver;
 import static clearSelenium.SeleniumUtils.getElementByXPath;
 import static clearSelenium.SeleniumUtils.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -114,16 +115,35 @@ public class FundamentusHome {
 	public void getDividendYieldsFrom3TickersInIteration() {
 		pressExibirButton();
 		
-		Map<String, String> mapDividendYields = new HashMap<>();
+		Map<String, BigDecimal> mapDividendYields = new HashMap<>();
 		for (int index = 1; index <= 3; index = index + 1) {
+			// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
 			String tickerLabel = getTickerLabel(index);
+			
+			// Open que Ticker page with its Details
 			openTickerPage(index);
 			
+			// Get the Dividend Yield. Ex: "1,0%"
 			String dividendYieldTextValue = getDividendYield();
+			
+			// Remove the Percentage Symbol
+			dividendYieldTextValue = dividendYieldTextValue.replace('%', ' ');
+			
+			// Remove Spaces in Start and End of the String
+			dividendYieldTextValue = dividendYieldTextValue.trim();
+			
+			// Replace Comma with Dot
+			dividendYieldTextValue = dividendYieldTextValue.replace(',', '.');
+			
+			// Convert to a BigDecimal
+			BigDecimal dividendYield = new BigDecimal(dividendYieldTextValue);
+			
+			System.out.println(dividendYield);
+			
 			
 			mapDividendYields.put(
 				tickerLabel, 
-				dividendYieldTextValue);
+				dividendYield);
 			
 			back();
 		}
