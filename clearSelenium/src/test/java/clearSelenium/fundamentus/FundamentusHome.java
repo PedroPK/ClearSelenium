@@ -3,11 +3,13 @@ package clearSelenium.fundamentus;
 import static clearSelenium.SeleniumUtils.accessURL;
 import static clearSelenium.SeleniumUtils.closeWebDriver;
 import static clearSelenium.SeleniumUtils.getElementByXPath;
+import static org.junit.Assert.fail;
 import static clearSelenium.SeleniumUtils.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -123,7 +125,7 @@ public class FundamentusHome {
 		pressExibirButton();
 		
 		Map<String, BigDecimal> mapDividendYields = new HashMap<>();
-		for (int index = 1; index <= QUANTITY_TICKERS; index = index + 1) {
+		for (int index = 1; index <= 3; index = index + 1) {
 			try {
 				// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
 				String tickerLabel = getTickerLabel(index);
@@ -185,8 +187,20 @@ public class FundamentusHome {
 	 *  - If it works fine, create another Test Method to get the Dividend Yield
 	 *  
 	 */
-	@Test
-	public void accessAllTickersDetailsPage() {
+	@Test(timeout=120000)
+	public void access10TickersDetailsPage() {
+		getAllTickerLabels();
+		
+		if ( this.listTickerLabels != null && !this.listTickerLabels.isEmpty() ) {
+			Iterator<String>	iteratorTicker		=	this.listTickerLabels.iterator();
+			int i = 0;
+			while ( iteratorTicker.hasNext()		&&		i < 10 ) {
+				accessTickerDetails(iteratorTicker.next());
+				i = i + 1;
+			}
+		} else {
+			fail();
+		}
 		
 	}
 	
