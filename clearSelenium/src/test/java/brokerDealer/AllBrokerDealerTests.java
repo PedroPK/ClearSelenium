@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import brokerDealer.core.StockCalculatorTest;
 import brokerDealer.repositories.StockOrderRepositoryTest;
-import brokerDealer.util.math.UtilMathTest;
+import brokerDealer.util.UtilMathTest;
 
 @RunWith(Suite.class)
 @SuiteClasses(

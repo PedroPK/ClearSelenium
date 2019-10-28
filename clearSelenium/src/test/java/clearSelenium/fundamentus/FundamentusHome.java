@@ -3,6 +3,7 @@ package clearSelenium.fundamentus;
 import static clearSelenium.SeleniumUtils.accessURL;
 import static clearSelenium.SeleniumUtils.closeWebDriver;
 import static clearSelenium.SeleniumUtils.getElementByXPath;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import static clearSelenium.SeleniumUtils.*;
 
@@ -10,8 +11,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -20,6 +24,8 @@ import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import brokerDealer.util.CollectionsUtil;
 
 public class FundamentusHome {
 	
@@ -183,7 +189,7 @@ public class FundamentusHome {
 	}
 	
 	/**
-	 * TODO This method should 
+	 * This method should 
 	 *  - List all Ticker labels
 	 *  - For each one, access its Details page
 	 *  - If it works fine, create another Test Method to get the Dividend Yield
@@ -211,6 +217,8 @@ public class FundamentusHome {
 	}
 	
 	/**
+	 * TODO - Resume from here
+	 * 
 	 * This is the State of Art until now
 	 * 
 	 * This method does:
@@ -218,6 +226,7 @@ public class FundamentusHome {
 	 *  - For each Ticker, access its Details page.
 	 *  - Gets the Dividend Yield and Stores it in a Map
 	 */
+	@Ignore
 	@Test(timeout=180000)
 	public void access10TickersDetailsPageAndGetDividendYields() {
 		getAllTickerLabels();
@@ -243,9 +252,49 @@ public class FundamentusHome {
 		} else {
 			fail();
 		}
-		
 	}
 	
+	@Test
+	public void orderMapByValues() {
+		/* Arrange
+		 * 
+		 * {
+		 * 		ACES3=0.0, 
+		 * 		ABCB3=0.0, 
+		 * 		ABEV3=1.8, 
+		 * 		AEDU11=0.0, 
+		 * 		ABCB4=5.9, 
+		 * 		ACES4=0.0, 
+		 * 		ADHM3=0.0, 
+		 * 		ABYA3=0.0, 
+		 * 		AEDU3=0.0, 
+		 * 		AALR3=0.5}
+		 */
+		Map<String, BigDecimal> originalMap = new HashMap<String, BigDecimal>();
+		originalMap.put("ACES3",	BigDecimal.valueOf(0.0));
+		originalMap.put("ABCB3",	BigDecimal.valueOf(0.0));
+		originalMap.put("ABEV3",	BigDecimal.valueOf(1.8));
+		originalMap.put("AEDU11",	BigDecimal.valueOf(0.0));
+		originalMap.put("ABCB4",	BigDecimal.valueOf(5.9));
+		originalMap.put("ACES4",	BigDecimal.valueOf(0.0));
+		originalMap.put("AALR3",	BigDecimal.valueOf(0.5));
+		
+		// Act
+		Map<String, BigDecimal> sortedMap = CollectionsUtil.orderMapByValue(originalMap);
+		
+		// Expected Outcome
+		Map<String, BigDecimal> expectedOutcomeMap = new HashMap<String, BigDecimal>();
+		expectedOutcomeMap.put("ACES3",		BigDecimal.valueOf(0.0));
+		expectedOutcomeMap.put("ABCB3",		BigDecimal.valueOf(0.0));
+		expectedOutcomeMap.put("AEDU11",	BigDecimal.valueOf(0.0));
+		expectedOutcomeMap.put("ACES4",		BigDecimal.valueOf(0.0));
+		expectedOutcomeMap.put("AALR3",		BigDecimal.valueOf(0.5));
+		expectedOutcomeMap.put("ABEV3",		BigDecimal.valueOf(1.8));
+		expectedOutcomeMap.put("ABCB4",		BigDecimal.valueOf(5.9));
+		
+		assertEquals(expectedOutcomeMap, sortedMap);
+	}
+
 	private BigDecimal getDividendYield() {
 		// Get the Dividend Yield. Ex: "1,0%"
 		String dividendYieldTextValue = getDividendYieldTextValue();

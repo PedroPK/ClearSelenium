@@ -1,6 +1,6 @@
 package seleniumWebDriver.entities;
 
-import static brokerDealer.util.math.UtilMath.getBigDecimalFromInteger;
+import static brokerDealer.util.MathUtils.getBigDecimalFromInteger;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

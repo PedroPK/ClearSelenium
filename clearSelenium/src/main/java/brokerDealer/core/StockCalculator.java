@@ -1,6 +1,6 @@
 package brokerDealer.core;
 
-import static brokerDealer.util.math.UtilMath.*;
+import static brokerDealer.util.MathUtils.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

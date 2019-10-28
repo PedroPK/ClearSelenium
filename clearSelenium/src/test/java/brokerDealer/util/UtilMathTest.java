@@ -1,4 +1,4 @@
-package brokerDealer.util.math;
+package brokerDealer.util;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +15,7 @@ public class UtilMathTest {
 		int zero = 0;
 		
 		// Act
-		BigDecimal result = UtilMath.getBigDecimalFromInteger(zero);
+		BigDecimal result = MathUtils.getBigDecimalFromInteger(zero);
 		
 		// Assert
 		assertNotNull(result);
@@ -28,7 +28,7 @@ public class UtilMathTest {
 		int one = 1;
 		
 		// Act
-		BigDecimal result = UtilMath.getBigDecimalFromInteger(one);
+		BigDecimal result = MathUtils.getBigDecimalFromInteger(one);
 		
 		// Assert
 		assertNotNull(result);
@@ -41,7 +41,7 @@ public class UtilMathTest {
 		int ten = 10;
 		
 		// Act
-		BigDecimal result = UtilMath.getBigDecimalFromInteger(ten);
+		BigDecimal result = MathUtils.getBigDecimalFromInteger(ten);
 		
 		// Assert
 		assertNotNull(result);
@@ -54,7 +54,7 @@ public class UtilMathTest {
 		int minusOne = -1;
 		
 		// Act
-		BigDecimal result = UtilMath.getBigDecimalFromInteger(minusOne);
+		BigDecimal result = MathUtils.getBigDecimalFromInteger(minusOne);
 		
 		// Assert
 		assertNotNull(result);
@@ -67,7 +67,7 @@ public class UtilMathTest {
 		int minusTen = -10;
 		
 		// Act
-		BigDecimal result = UtilMath.getBigDecimalFromInteger(minusTen);
+		BigDecimal result = MathUtils.getBigDecimalFromInteger(minusTen);
 		
 		// Assert
 		assertNotNull(result);
@@ -81,7 +81,7 @@ public class UtilMathTest {
 		int			divisor		= 0;
 		
 		// Act
-		BigDecimal result = UtilMath.divide(dividend, divisor);
+		BigDecimal result = MathUtils.divide(dividend, divisor);
 		
 		
 		// Assert
@@ -96,7 +96,7 @@ public class UtilMathTest {
 		int			divisor		= 1;
 		
 		// Act
-		BigDecimal result = UtilMath.divide(dividend, divisor);
+		BigDecimal result = MathUtils.divide(dividend, divisor);
 		
 		
 		// Assert
@@ -111,7 +111,7 @@ public class UtilMathTest {
 		int			divisor		= 10;
 		
 		// Act
-		BigDecimal result = UtilMath.divide(dividend, divisor);
+		BigDecimal result = MathUtils.divide(dividend, divisor);
 		
 		
 		// Assert
@@ -126,7 +126,7 @@ public class UtilMathTest {
 		int			divisor		= -1;
 		
 		// Act
-		BigDecimal result = UtilMath.divide(dividend, divisor);
+		BigDecimal result = MathUtils.divide(dividend, divisor);
 		
 		
 		// Assert
@@ -141,7 +141,7 @@ public class UtilMathTest {
 		int			divisor		= 10;
 		
 		// Act
-		BigDecimal result = UtilMath.divide(dividend, divisor);
+		BigDecimal result = MathUtils.divide(dividend, divisor);
 		
 		
 		// Assert
@@ -156,7 +156,7 @@ public class UtilMathTest {
 		int			second = 0;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -170,7 +170,7 @@ public class UtilMathTest {
 		int			second = 0;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -184,7 +184,7 @@ public class UtilMathTest {
 		int			second = 0;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -198,7 +198,7 @@ public class UtilMathTest {
 		int			second = 1;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -212,7 +212,7 @@ public class UtilMathTest {
 		int			second = -1;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -226,7 +226,7 @@ public class UtilMathTest {
 		int			second = 1;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -240,7 +240,7 @@ public class UtilMathTest {
 		int			second = 1;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -254,7 +254,7 @@ public class UtilMathTest {
 		int			second = -1;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -268,7 +268,7 @@ public class UtilMathTest {
 		int			second = 10;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -282,7 +282,7 @@ public class UtilMathTest {
 		int			second = -10;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);
@@ -296,7 +296,7 @@ public class UtilMathTest {
 		int			second = 10;
 		
 		// Act
-		BigDecimal result = UtilMath.multiply(first, second);
+		BigDecimal result = MathUtils.multiply(first, second);
 		
 		// Assert
 		assertNotNull(result);

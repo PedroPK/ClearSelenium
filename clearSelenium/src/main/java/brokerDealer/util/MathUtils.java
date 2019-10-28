@@ -1,8 +1,8 @@
-package brokerDealer.util.math;
+package brokerDealer.util;
 
 import java.math.BigDecimal;
 
-public class UtilMath {
+public class MathUtils {
 	
 	public static BigDecimal getBigDecimalFromInteger(int quantity) {
 		return BigDecimal.valueOf(
