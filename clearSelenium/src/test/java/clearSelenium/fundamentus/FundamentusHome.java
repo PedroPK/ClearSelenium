@@ -177,7 +177,19 @@ public class FundamentusHome {
 		
 		accessTickerDetails(tickerLabel);
 	}
-
+	
+	/**
+	 * TODO This method should 
+	 *  - List all Ticker labels
+	 *  - For each one, access its Details page
+	 *  - If it works fine, create another Test Method to get the Dividend Yield
+	 *  
+	 */
+	@Test
+	public void accessAllTickersDetailsPage() {
+		
+	}
+	
 	private BigDecimal getDividendYield() {
 		// Get the Dividend Yield. Ex: "1,0%"
 		String dividendYieldTextValue = getDividendYieldTextValue();
