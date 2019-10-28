@@ -55,8 +55,6 @@ public class FundamentusHome {
 	 */
 	
 	public static void accessFundamentusHome() {
-		instanciateChromeDriver();
-		
 		//FundamentusHome fundamentusHome = new FundamentusHome();
 		accessURL(URL_FUNDAMENTUS);
 	}
@@ -172,6 +170,14 @@ public class FundamentusHome {
 			System.out.println(this.listTickerLabels.size());
 		}
 		System.out.println(this.listTickerLabels);
+	}
+	
+	@Test
+	public void accessTickerDetailsPage() {
+		pressExibirButton();
+		
+		String tickerDetailsURL = URL_DETALHES_PAPEL + "PETR4";
+		
 	}
 
 	private BigDecimal getDividendYield() {

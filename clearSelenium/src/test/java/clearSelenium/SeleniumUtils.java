@@ -1,5 +1,7 @@
 package clearSelenium;
 
+import static clearSelenium.SeleniumUtils.instanciateChromeDriver;
+
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -77,6 +79,8 @@ public class SeleniumUtils {
 	}
 	
 	public static void accessURL(String pURL) {
+		instanciateChromeDriver();
+		
 		getWebDriver().get(pURL);
 	}
 	
