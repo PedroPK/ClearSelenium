@@ -210,6 +210,14 @@ public class FundamentusHome {
 		
 	}
 	
+	/**
+	 * This is the State of Art until now
+	 * 
+	 * This method does:
+	 *  - List all Stock Tickers from Fundamentus main page
+	 *  - For each Ticker, access its Details page.
+	 *  - Gets the Dividend Yield and Stores it in a Map
+	 */
 	@Test(timeout=180000)
 	public void access10TickersDetailsPageAndGetDividendYields() {
 		getAllTickerLabels();
