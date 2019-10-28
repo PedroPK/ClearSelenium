@@ -69,9 +69,9 @@ public class SeleniumUtils {
 	}
 	
 	public static WebDriver instanciateChromeDriver() {
-		SeleniumUtils.setSystemPropertyChromeWebDriverOriginal();
-		
 		if ( aWebDriver == null ) {
+			SeleniumUtils.setSystemPropertyChromeWebDriverOriginal();
+			
 			aWebDriver = new ChromeDriver();
 		}
 		
