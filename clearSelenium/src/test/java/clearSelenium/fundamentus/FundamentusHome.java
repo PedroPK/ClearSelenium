@@ -24,7 +24,7 @@ public class FundamentusHome {
 	 * URL's
 	 */
 	private static final String URL_FUNDAMENTUS				=	"https://www.fundamentus.com.br/index.php";
-	private static final String URL_DETALHES_PAPEL			=	"https://www.fundamentus.com.br/detalhes.php?papel=TOTS3";
+	private static final String URL_DETALHES_PAPEL			=	"https://www.fundamentus.com.br/detalhes.php?papel=";
 	
 	private static final int	QUANTITY_TICKERS			= 900;
 	
@@ -46,17 +46,14 @@ public class FundamentusHome {
 	 */
 	List<String>	listTickerLabels	=	new ArrayList<>();
 	
-	/*
-	 * public FundamentusHome() { //instanciateChromeDriver(); }
-	 */
-	
-	/*
-	 * public FundamentusHome( WebDriver pWebDriver ) { aWebDriver = pWebDriver; }
-	 */
-	
 	public static void accessFundamentusHome() {
 		//FundamentusHome fundamentusHome = new FundamentusHome();
 		accessURL(URL_FUNDAMENTUS);
+	}
+	
+	public static void accessTickerDetails(String pTickerLabel) {
+		//FundamentusHome fundamentusHome = new FundamentusHome();
+		accessURL(URL_DETALHES_PAPEL + pTickerLabel);
 	}
 	
 	@BeforeClass
@@ -154,7 +151,8 @@ public class FundamentusHome {
 		System.out.println(mapDividendYields);
 	}
 	
-	@Test
+	@Ignore
+	@Test(timeout = 120000)
 	public void getAllTickerLabels() {
 		pressExibirButton();
 		
@@ -172,12 +170,12 @@ public class FundamentusHome {
 		System.out.println(this.listTickerLabels);
 	}
 	
-	@Test
-	public void accessTickerDetailsPage() {
-		pressExibirButton();
+	@Ignore
+	@Test(timeout = 60000)
+	public void testAccessTickerDetailsPage() {
+		String tickerLabel = "PETR4";
 		
-		String tickerDetailsURL = URL_DETALHES_PAPEL + "PETR4";
-		
+		accessTickerDetails(tickerLabel);
 	}
 
 	private BigDecimal getDividendYield() {
