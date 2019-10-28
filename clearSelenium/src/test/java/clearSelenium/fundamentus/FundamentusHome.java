@@ -17,6 +17,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -46,7 +47,9 @@ public class FundamentusHome {
 	 * With then, we will be able to use the REST URL to Select/Find each Ticker Details:
 	 *  - https://www.fundamentus.com.br/detalhes.php?papel=TICKER_LABEL
 	 */
-	List<String>	listTickerLabels	=	new ArrayList<>();
+	List<String>						listTickerLabels	=	new ArrayList<>();
+		//	Ticker	Dividend Yield
+	Map<	String, BigDecimal> 		mapDividendYields	=	new HashMap<>();
 	
 	public static void accessFundamentusHome() {
 		//FundamentusHome fundamentusHome = new FundamentusHome();
@@ -124,7 +127,6 @@ public class FundamentusHome {
 	public void getDividendYieldsFrom3TickersInIteration() {
 		pressExibirButton();
 		
-		Map<String, BigDecimal> mapDividendYields = new HashMap<>();
 		for (int index = 1; index <= 3; index = index + 1) {
 			try {
 				// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
@@ -187,7 +189,8 @@ public class FundamentusHome {
 	 *  - If it works fine, create another Test Method to get the Dividend Yield
 	 *  
 	 */
-	@Test(timeout=120000)
+	@Ignore
+	@Test(timeout=180000)
 	public void access10TickersDetailsPage() {
 		getAllTickerLabels();
 		
@@ -195,8 +198,39 @@ public class FundamentusHome {
 			Iterator<String>	iteratorTicker		=	this.listTickerLabels.iterator();
 			int i = 0;
 			while ( iteratorTicker.hasNext()		&&		i < 10 ) {
-				accessTickerDetails(iteratorTicker.next());
+				String ticker = iteratorTicker.next();
+				
+				accessTickerDetails(ticker);
+				
 				i = i + 1;
+			}
+		} else {
+			fail();
+		}
+		
+	}
+	
+	@Test(timeout=180000)
+	public void access10TickersDetailsPageAndGetDividendYields() {
+		getAllTickerLabels();
+		
+		if ( this.listTickerLabels != null && !this.listTickerLabels.isEmpty() ) {
+			Iterator<String>	iteratorTicker		=	this.listTickerLabels.iterator();
+			int i = 0;
+			while ( iteratorTicker.hasNext()		&&		i < 10 ) {
+				String ticker = iteratorTicker.next();
+				
+				accessTickerDetails(ticker);
+				
+				try {
+					BigDecimal dividendYield	=	getDividendYield();
+					this.mapDividendYields.put(ticker, dividendYield);
+				} catch (NoSuchElementException nsee ) {
+					continue;
+				}
+				
+				i = i + 1;
+				System.out.println(this.mapDividendYields);
 			}
 		} else {
 			fail();
