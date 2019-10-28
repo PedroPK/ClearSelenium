@@ -39,6 +39,13 @@ public class FundamentusHome {
 	@FindBy(xpath=EXIBIR_BUTTON_XPATH)
 	private WebElement aExibirButton;
 	
+	/**
+	 * List that will store all the Ticker labels.
+	 * With then, we will be able to use the REST URL to Select/Find each Ticker Details:
+	 *  - https://www.fundamentus.com.br/detalhes.php?papel=TICKER_LABEL
+	 */
+	List<String>	listTickerLabels	=	new ArrayList<>();
+	
 	/*
 	 * public FundamentusHome() { //instanciateChromeDriver(); }
 	 */
@@ -153,19 +160,18 @@ public class FundamentusHome {
 	public void getAllTickerLabels() {
 		pressExibirButton();
 		
-		List<String>	listTickerLabels	=	new ArrayList<>();
 		for (int index = 1; index <= QUANTITY_TICKERS; index = index + 1) {
 			try {
 				// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
 				String tickerLabel = getTickerLabel(index);
 				
-				listTickerLabels.add(tickerLabel);
+				this.listTickerLabels.add(tickerLabel);
 			} catch (Exception e) {
 				continue;
 			}
-			System.out.println(listTickerLabels.size());
+			System.out.println(this.listTickerLabels.size());
 		}
-		System.out.println(listTickerLabels);
+		System.out.println(this.listTickerLabels);
 	}
 
 	private BigDecimal getDividendYield() {
