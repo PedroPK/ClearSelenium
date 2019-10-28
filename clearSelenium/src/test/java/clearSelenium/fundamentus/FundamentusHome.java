@@ -24,6 +24,9 @@ public class FundamentusHome {
 	 * URL's
 	 */
 	private static final String URL_FUNDAMENTUS				=	"https://www.fundamentus.com.br/index.php";
+	private static final String URL_DETALHES_PAPEL			=	"https://www.fundamentus.com.br/detalhes.php?papel=TOTS3";
+	
+	private static final int	QUANTITY_TICKERS			= 900;
 	
 	private static final String EXIBIR_BUTTON_XPATH			=	"/html/body/div[1]/div[1]/form/fieldset/input[2]";
 	
@@ -118,7 +121,7 @@ public class FundamentusHome {
 		pressExibirButton();
 		
 		Map<String, BigDecimal> mapDividendYields = new HashMap<>();
-		for (int index = 1; index <= 500; index = index + 1) {
+		for (int index = 1; index <= QUANTITY_TICKERS; index = index + 1) {
 			try {
 				// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
 				String tickerLabel = getTickerLabel(index);
@@ -151,7 +154,7 @@ public class FundamentusHome {
 		pressExibirButton();
 		
 		List<String>	listTickerLabels	=	new ArrayList<>();
-		for (int index = 1; index <= 500; index = index + 1) {
+		for (int index = 1; index <= QUANTITY_TICKERS; index = index + 1) {
 			try {
 				// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
 				String tickerLabel = getTickerLabel(index);
