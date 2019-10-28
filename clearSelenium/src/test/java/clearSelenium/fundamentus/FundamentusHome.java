@@ -91,6 +91,7 @@ public class FundamentusHome {
 		openTickerPage(1);
 		
 		String text = getDividendYieldTextValue();
+		System.out.println(text);
 	}
 	
 	@Ignore
@@ -111,6 +112,7 @@ public class FundamentusHome {
 		return dividendYieldTextValue;
 	}
 	
+	@Ignore
 	@Test(timeout = 120000)
 	public void getDividendYieldsFrom3TickersInIteration() {
 		pressExibirButton();
@@ -142,6 +144,25 @@ public class FundamentusHome {
 		}
 		
 		System.out.println(mapDividendYields);
+	}
+	
+	@Test
+	public void getAllTickerLabels() {
+		pressExibirButton();
+		
+		List<String>	listTickerLabels	=	new ArrayList<>();
+		for (int index = 1; index <= 500; index = index + 1) {
+			try {
+				// Get the Ticker Label. Ex: PETR3, PETR4, VALE3, etc
+				String tickerLabel = getTickerLabel(index);
+				
+				listTickerLabels.add(tickerLabel);
+			} catch (Exception e) {
+				continue;
+			}
+			System.out.println(listTickerLabels.size());
+		}
+		System.out.println(listTickerLabels);
 	}
 
 	private BigDecimal getDividendYield() {
