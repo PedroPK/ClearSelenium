@@ -1,8 +1,9 @@
 package clearSelenium;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import static brokerDealer.util.FilesFoldersUtil.getFolderSeparator;
+import static brokerDealer.util.FilesFoldersUtil.getOperationalSystemName;
+import static brokerDealer.util.FilesFoldersUtil.getPathDirectory;
+import static brokerDealer.util.FilesFoldersUtil.getRelativePathToSrcTestResourceFolder;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,21 +34,14 @@ public class SeleniumUtils {
 	}
 	
 	public static void setSystemPropertyChromeWebDriverOriginal() {
-		String pathString = getWebDriverPath();
-		
-		System.out.println(pathString);
-		
 		// Get the Project Directory
-		String path = System.getProperty("user.dir");
+		String path = getPathDirectory();
 		
-		String folderSeparator = System.getProperty("file.separator");
+		String folderSeparator = getFolderSeparator();
 		
-		String relativePath = folderSeparator + "src" + folderSeparator + "test" + folderSeparator + "resources" + folderSeparator;
+		String relativePath = getRelativePathToSrcTestResourceFolder(folderSeparator);
 		
-		System.out.println(path);
-		
-		String os = System.getProperty("os.name");
-		System.out.println(os);
+		String os = getOperationalSystemName();
 		
 		String chromeDriver = CHROME_DRIVER_WINDOWS;
 		if ( os.equals(OS_MAC_OS_X) ) {
@@ -59,12 +53,6 @@ public class SeleniumUtils {
 		System.setProperty(
 			WEBDRIVER_CHROME_DRIVER, 
 			path + relativePath + chromeDriver);
-	}
-	
-	private static String getWebDriverPath() {
-		Path path = Paths.get("." + File.separator + "libs" + File.separator + "chromedriver");
-		String pathString = path.toString();
-		return pathString;
 	}
 	
 	public static ChromeOptions getHeadlessChromeOptions() {
