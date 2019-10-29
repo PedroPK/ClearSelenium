@@ -113,6 +113,7 @@ public class FundamentusHome {
 		System.out.println(text);
 	}
 	
+	@Ignore
 	@Test
 	public void getDividendYieldFromFirstTickerHeadless() {
 		pressExibirButton(true);
@@ -275,7 +276,6 @@ public class FundamentusHome {
 	 *  - For each Ticker, access its Details page.
 	 *  - Gets the Dividend Yield and Stores it in a Map
 	 */
-	@Ignore
 	@Test(timeout=3600000)
 	public void accessAllTickersDetailsPageAndGetDividendYields() {
 		getAllTickerLabels();
@@ -296,13 +296,13 @@ public class FundamentusHome {
 					continue;
 				}
 				i = i + 1;
-				System.out.println(i + " " + CollectionsUtil.orderMapByValue(this.mapDividendYields));
+				System.out.println(i + " " + CollectionsUtil.sortMapByValueInvertedOrder(this.mapDividendYields));
 			}
 		} else {
 			fail();
 		}
 		
-		System.out.println("Final Hashmap: " + this.mapDividendYields.size() + " " + CollectionsUtil.orderMapByValue(this.mapDividendYields) );
+		System.out.println("Final Hashmap: " + this.mapDividendYields.size() + " " + CollectionsUtil.sortMapByValueInvertedOrder(this.mapDividendYields) );
 	}
 	
 	private BigDecimal getDividendYield() {
