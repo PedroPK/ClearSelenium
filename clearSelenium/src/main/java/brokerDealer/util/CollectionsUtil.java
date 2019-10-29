@@ -1,6 +1,8 @@
 package brokerDealer.util;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -22,6 +24,19 @@ public class CollectionsUtil {
 					)
 				);
 		return sortedMap;
+	}
+	
+	public static Map<String, BigDecimal> sortMapByValueInvertedOrder(Map<String, BigDecimal> pOriginalMap) {
+		Map<String, BigDecimal> sortedInvertedOrderMap = new HashMap<String, BigDecimal>();
+		
+		pOriginalMap.entrySet()
+			.stream()
+			.sorted(
+				Map.Entry.comparingByValue(Comparator.reverseOrder())
+			)
+			.forEachOrdered(x -> sortedInvertedOrderMap.put(x.getKey(), x.getValue()));
+		
+		return sortedInvertedOrderMap;
 	}
 	
 }
