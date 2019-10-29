@@ -16,6 +16,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class FilesFoldersUtil {
 	
+	public static final String TEST_XLSX_FILENAME = "test.xlsx";
+	
 	public static String getRelativePathToSrcTestResourceFolder() {
 		String relativePath = 
 			getFolderSeparator() + "src" + 
@@ -73,43 +75,8 @@ public class FilesFoldersUtil {
 		return inputStream;
 	}
 	
-	public static void createXlsxFileInputStream( Optional<String> pFileName ) throws FileNotFoundException, IOException {
-		Workbook spreadsheet = createWorkbookSpreadSheet(pFileName);
-		
-		Sheet sheetTab = spreadsheet.createSheet( "Dividend Yields" );
-		
-		Row row = sheetTab.getRow(0);
-		
-		Cell cell = row.getCell(0);
-		
-		cell.setCellValue("TICKER4");
-		
-		cell = row.getCell(1);
-		cell.setCellValue(0.1);
-	}
 	
-	public static Workbook createWorkbookSpreadSheet(Optional<String> pFileName) throws IOException {
-		Workbook spreadsheet;
-		if ( pFileName.get().toLowerCase().contains(".xlsx") ) {
-			spreadsheet	=
-				//WorkbookFactory.create(
-				new XSSFWorkbook(
-					//	createInputStream(	pFileName.get()		)
-				);
-		} else {
-			if ( pFileName.get().toLowerCase().contains(".xls") ) {
-				spreadsheet	=
-					//WorkbookFactory.create(
-					new HSSFWorkbook(
-						//	createInputStream(	pFileName.get()		)
-					);
-			}
-			else {
-				throw new IllegalArgumentException("The File Extention passed was not compatible with a Excel Spreadsheet.");
-			}
-		}
-		
-		return spreadsheet;
-	}
+	
+	
 	
 }
