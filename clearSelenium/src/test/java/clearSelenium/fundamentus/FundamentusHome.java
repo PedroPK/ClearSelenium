@@ -56,6 +56,15 @@ public class FundamentusHome {
 		//	Ticker	Dividend Yield
 	Map<	String, BigDecimal> 		mapDividendYields	=	new HashMap<>();
 	
+	@BeforeClass
+	public static void initializeChromeDriver() {
+		/*
+		 * True		= 	Headless
+		 * False	= 	Full GUI Chrome
+		 */
+		instanciateChromeDriver(true);
+	}
+	
 	public static void accessFundamentusHome() {
 		accessFundamentusHome(false);
 	}
@@ -68,11 +77,6 @@ public class FundamentusHome {
 	public static void accessTickerDetails(String pTickerLabel) {
 		//FundamentusHome fundamentusHome = new FundamentusHome();
 		accessURL(URL_DETALHES_PAPEL + pTickerLabel);
-	}
-	
-	@BeforeClass
-	public static void initializeChromeDriver() {
-		instanciateChromeDriver(true);
 	}
 	
 	@Ignore
@@ -238,7 +242,6 @@ public class FundamentusHome {
 	 *  - For each Ticker, access its Details page.
 	 *  - Gets the Dividend Yield and Stores it in a Map
 	 */
-	@Ignore
 	@Test(timeout=180000)
 	public void access10TickersDetailsPageAndGetDividendYields() {
 		getAllTickerLabels();
@@ -276,6 +279,7 @@ public class FundamentusHome {
 	 *  - For each Ticker, access its Details page.
 	 *  - Gets the Dividend Yield and Stores it in a Map
 	 */
+	@Ignore
 	@Test(timeout=3600000)
 	public void accessAllTickersDetailsPageAndGetDividendYields() {
 		getAllTickerLabels();
