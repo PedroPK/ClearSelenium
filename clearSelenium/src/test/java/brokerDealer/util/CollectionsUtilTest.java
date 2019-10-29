@@ -1,9 +1,10 @@
 package brokerDealer.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.junit.Test;
@@ -35,8 +36,12 @@ public class CollectionsUtilTest {
 		originalMap.put("ACES4",	BigDecimal.valueOf(0.0));
 		originalMap.put("AALR3",	BigDecimal.valueOf(0.5));
 		
+		System.out.println("testOrderMapByValue: originalMap = " + originalMap);
+		
 		// Act
 		Map<String, BigDecimal> sortedMap = CollectionsUtil.orderMapByValue(originalMap);
+		
+		System.out.println("testOrderMapByValue: sortedMap = " + sortedMap);
 		
 		// Expected Outcome
 		Map<String, BigDecimal> expectedOutcomeMap = new HashMap<String, BigDecimal>();
@@ -47,6 +52,8 @@ public class CollectionsUtilTest {
 		expectedOutcomeMap.put("AALR3",		BigDecimal.valueOf(0.5));
 		expectedOutcomeMap.put("ABEV3",		BigDecimal.valueOf(1.8));
 		expectedOutcomeMap.put("ABCB4",		BigDecimal.valueOf(5.9));
+		
+		System.out.println("testOrderMapByValue: expectedOutcomeMap = " + expectedOutcomeMap);
 		
 		assertEquals(expectedOutcomeMap, sortedMap);
 	}
@@ -76,8 +83,10 @@ public class CollectionsUtilTest {
 		originalMap.put("ACES4",	BigDecimal.valueOf(0.0));
 		originalMap.put("AALR3",	BigDecimal.valueOf(0.5));
 		
+		System.out.println("testSortMapByValueInvertedOrder: originalMap = " + originalMap);
+		
 		// Act
-		Map<String, BigDecimal> sortedMap = CollectionsUtil.orderMapByValue(originalMap);
+		Map<String, BigDecimal> sortedMap = CollectionsUtil.sortMapByValueInvertedOrder(originalMap);
 		
 		// Expected Outcome
 		Map<String, BigDecimal> expectedOutcomeMap = new HashMap<String, BigDecimal>();
@@ -88,6 +97,16 @@ public class CollectionsUtilTest {
 		expectedOutcomeMap.put("ABCB3",		BigDecimal.valueOf(0.0));
 		expectedOutcomeMap.put("AEDU11",	BigDecimal.valueOf(0.0));
 		expectedOutcomeMap.put("ACES4",		BigDecimal.valueOf(0.0));
+		
+		System.out.println("testSortMapByValueInvertedOrder: sortedMap = " + sortedMap);
+		
+		System.out.println("testSortMapByValueInvertedOrder: expectedOutcomeMap = " + expectedOutcomeMap);
+		
+		Iterator<String> iteratorSortedKeys		=	sortedMap.keySet().iterator();
+		assertEquals(	BigDecimal.valueOf(5.9),		sortedMap.get(iteratorSortedKeys.next()));
+		assertEquals(	BigDecimal.valueOf(1.8),		sortedMap.get(iteratorSortedKeys.next()));
+		assertEquals(	BigDecimal.valueOf(0.5),		sortedMap.get(iteratorSortedKeys.next()));
+		assertEquals(	BigDecimal.valueOf(0.0),		sortedMap.get(iteratorSortedKeys.next()));
 		
 		assertEquals(expectedOutcomeMap, sortedMap);
 	}
