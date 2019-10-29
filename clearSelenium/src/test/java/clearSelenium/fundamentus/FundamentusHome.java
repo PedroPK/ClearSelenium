@@ -1,21 +1,20 @@
 package clearSelenium.fundamentus;
 
 import static clearSelenium.SeleniumUtils.accessURL;
+import static clearSelenium.SeleniumUtils.back;
 import static clearSelenium.SeleniumUtils.closeWebDriver;
 import static clearSelenium.SeleniumUtils.getElementByXPath;
-import static org.junit.Assert.assertEquals;
+import static clearSelenium.SeleniumUtils.instanciateChromeDriver;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
-import static clearSelenium.SeleniumUtils.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -58,8 +57,12 @@ public class FundamentusHome {
 	Map<	String, BigDecimal> 		mapDividendYields	=	new HashMap<>();
 	
 	public static void accessFundamentusHome() {
+		accessFundamentusHome(false);
+	}
+	
+	public static void accessFundamentusHome(boolean pHeadless) {
 		//FundamentusHome fundamentusHome = new FundamentusHome();
-		accessURL(URL_FUNDAMENTUS);
+		accessURL(URL_FUNDAMENTUS, pHeadless);
 	}
 	
 	public static void accessTickerDetails(String pTickerLabel) {
@@ -69,7 +72,7 @@ public class FundamentusHome {
 	
 	@BeforeClass
 	public static void initializeChromeDriver() {
-		instanciateChromeDriver();
+		instanciateChromeDriver(true);
 	}
 	
 	@Ignore
@@ -110,6 +113,18 @@ public class FundamentusHome {
 		System.out.println(text);
 	}
 	
+	@Test
+	public void getDividendYieldFromFirstTickerHeadless() {
+		pressExibirButton(true);
+		openTickerPage(1);
+		
+		String text = getDividendYieldTextValue();
+		System.out.println(text);
+		
+		assertNotNull(text);
+		assertFalse(text.isEmpty());
+	}
+	
 	@Ignore
 	@Test
 	public void getDividendYieldFromSecondTicker() {
@@ -129,7 +144,7 @@ public class FundamentusHome {
 	}
 	
 	@Ignore
-	@Test(timeout = 120000)
+	@Test
 	public void getDividendYieldsFrom3TickersInIteration() {
 		pressExibirButton();
 		
@@ -217,10 +232,6 @@ public class FundamentusHome {
 	}
 	
 	/**
-	 * TODO - Resume from here
-	 * 
-	 * This is the State of Art until now
-	 * 
 	 * This method does:
 	 *  - List all Stock Tickers from Fundamentus main page
 	 *  - For each Ticker, access its Details page.
@@ -254,47 +265,46 @@ public class FundamentusHome {
 		}
 	}
 	
-	@Test
-	public void orderMapByValues() {
-		/* Arrange
-		 * 
-		 * {
-		 * 		ACES3=0.0, 
-		 * 		ABCB3=0.0, 
-		 * 		ABEV3=1.8, 
-		 * 		AEDU11=0.0, 
-		 * 		ABCB4=5.9, 
-		 * 		ACES4=0.0, 
-		 * 		ADHM3=0.0, 
-		 * 		ABYA3=0.0, 
-		 * 		AEDU3=0.0, 
-		 * 		AALR3=0.5}
-		 */
-		Map<String, BigDecimal> originalMap = new HashMap<String, BigDecimal>();
-		originalMap.put("ACES3",	BigDecimal.valueOf(0.0));
-		originalMap.put("ABCB3",	BigDecimal.valueOf(0.0));
-		originalMap.put("ABEV3",	BigDecimal.valueOf(1.8));
-		originalMap.put("AEDU11",	BigDecimal.valueOf(0.0));
-		originalMap.put("ABCB4",	BigDecimal.valueOf(5.9));
-		originalMap.put("ACES4",	BigDecimal.valueOf(0.0));
-		originalMap.put("AALR3",	BigDecimal.valueOf(0.5));
+	/**
+	 * TODO - Resume from here
+	 * 
+	 * This is the State of Art until now
+	 * 
+	 * This method does:
+	 *  - List all Stock Tickers from Fundamentus main page
+	 *  - For each Ticker, access its Details page.
+	 *  - Gets the Dividend Yield and Stores it in a Map
+	 */
+	@Ignore
+	@Test(timeout=3600000)
+	public void accessAllTickersDetailsPageAndGetDividendYields() {
+		getAllTickerLabels();
 		
-		// Act
-		Map<String, BigDecimal> sortedMap = CollectionsUtil.orderMapByValue(originalMap);
+		if ( this.listTickerLabels != null && !this.listTickerLabels.isEmpty() ) {
+			Iterator<String>	iteratorTicker		=	this.listTickerLabels.iterator();
+			
+			int i = 0;
+			while ( iteratorTicker.hasNext() ) {
+				String ticker = iteratorTicker.next();
+				
+				accessTickerDetails(ticker);
+				
+				try {
+					BigDecimal dividendYield	=	getDividendYield();
+					this.mapDividendYields.put(ticker, dividendYield);
+				} catch (NoSuchElementException nsee ) {
+					continue;
+				}
+				i = i + 1;
+				System.out.println(i + " " + CollectionsUtil.orderMapByValue(this.mapDividendYields));
+			}
+		} else {
+			fail();
+		}
 		
-		// Expected Outcome
-		Map<String, BigDecimal> expectedOutcomeMap = new HashMap<String, BigDecimal>();
-		expectedOutcomeMap.put("ACES3",		BigDecimal.valueOf(0.0));
-		expectedOutcomeMap.put("ABCB3",		BigDecimal.valueOf(0.0));
-		expectedOutcomeMap.put("AEDU11",	BigDecimal.valueOf(0.0));
-		expectedOutcomeMap.put("ACES4",		BigDecimal.valueOf(0.0));
-		expectedOutcomeMap.put("AALR3",		BigDecimal.valueOf(0.5));
-		expectedOutcomeMap.put("ABEV3",		BigDecimal.valueOf(1.8));
-		expectedOutcomeMap.put("ABCB4",		BigDecimal.valueOf(5.9));
-		
-		assertEquals(expectedOutcomeMap, sortedMap);
+		System.out.println("Final Hashmap: " + this.mapDividendYields.size() + " " + CollectionsUtil.orderMapByValue(this.mapDividendYields) );
 	}
-
+	
 	private BigDecimal getDividendYield() {
 		// Get the Dividend Yield. Ex: "1,0%"
 		String dividendYieldTextValue = getDividendYieldTextValue();
@@ -338,7 +348,11 @@ public class FundamentusHome {
 	}
 	
 	public FundamentusHome pressExibirButton() {
-		accessFundamentusHome();
+		return pressExibirButton(false);
+	}
+	
+	public FundamentusHome pressExibirButton(boolean pHeadless) {
+		accessFundamentusHome(pHeadless);
 		
 		if ( this.aExibirButton == null ) {
 			this.aExibirButton = getElementByXPath(EXIBIR_BUTTON_XPATH); 

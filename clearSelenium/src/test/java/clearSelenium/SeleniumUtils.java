@@ -93,7 +93,11 @@ public class SeleniumUtils {
 	}
 	
 	public static void accessURL(String pURL) {
-		instanciateChromeDriver();
+		accessURL(pURL, false);
+	}
+	
+	public static void accessURL(String pURL, boolean pHeadless) {
+		instanciateChromeDriver(pHeadless);
 		
 		getWebDriver().get(pURL);
 	}
