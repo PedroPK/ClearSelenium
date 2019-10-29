@@ -1,9 +1,6 @@
 package clearSelenium;
 
-import static brokerDealer.util.FilesFoldersUtil.getFolderSeparator;
-import static brokerDealer.util.FilesFoldersUtil.getOperationalSystemName;
-import static brokerDealer.util.FilesFoldersUtil.getPathDirectory;
-import static brokerDealer.util.FilesFoldersUtil.getRelativePathToSrcTestResourceFolder;
+import static brokerDealer.util.FilesFoldersUtil.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -35,11 +32,7 @@ public class SeleniumUtils {
 	
 	public static void setSystemPropertyChromeWebDriverOriginal() {
 		// Get the Project Directory
-		String path = getPathDirectory();
-		
-		String folderSeparator = getFolderSeparator();
-		
-		String relativePath = getRelativePathToSrcTestResourceFolder(folderSeparator);
+		String fullPath = getFullPathToSrcTestResourceFolder();
 		
 		String os = getOperationalSystemName();
 		
@@ -48,11 +41,9 @@ public class SeleniumUtils {
 			chromeDriver = CHROME_DRIVER_MAC;
 		}
 		
-		System.out.println(path + relativePath + chromeDriver);
-		
 		System.setProperty(
 			WEBDRIVER_CHROME_DRIVER, 
-			path + relativePath + chromeDriver);
+			fullPath + chromeDriver);
 	}
 	
 	public static ChromeOptions getHeadlessChromeOptions() {
