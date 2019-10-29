@@ -1,7 +1,5 @@
 package clearSelenium;
 
-import static clearSelenium.SeleniumUtils.instanciateChromeDriver;
-
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumUtils {
 	
@@ -68,11 +67,26 @@ public class SeleniumUtils {
 		return pathString;
 	}
 	
+	public static ChromeOptions getHeadlessChromeOptions() {
+		ChromeOptions options	=	new ChromeOptions();
+		options.addArguments("--headless");
+		
+		return options;
+	}
+	
 	public static WebDriver instanciateChromeDriver() {
+		return instanciateChromeDriver(false);
+	}
+	
+	public static WebDriver instanciateChromeDriver(boolean pHeadless) {
 		if ( aWebDriver == null ) {
 			SeleniumUtils.setSystemPropertyChromeWebDriverOriginal();
 			
-			aWebDriver = new ChromeDriver();
+			if (pHeadless) {
+				aWebDriver = new ChromeDriver(getHeadlessChromeOptions());
+			} else {
+				aWebDriver = new ChromeDriver();
+			}
 		}
 		
 		return aWebDriver;
