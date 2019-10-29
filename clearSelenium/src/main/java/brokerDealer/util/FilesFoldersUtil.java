@@ -1,8 +1,5 @@
 package brokerDealer.util;
 
-import static brokerDealer.util.FilesFoldersUtil.getPathDirectory;
-import static brokerDealer.util.FilesFoldersUtil.getRelativePathToSrcTestResourceFolder;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -77,23 +74,7 @@ public class FilesFoldersUtil {
 	}
 	
 	public static void createXlsxFileInputStream( Optional<String> pFileName ) throws FileNotFoundException, IOException {
-		Workbook spreadsheet;
-		if ( pFileName.get().toLowerCase().contains(".xlsx") ) {
-			spreadsheet	=
-				new XSSFWorkbook(
-						createInputStream(	pFileName.get()		)
-				);
-		} else {
-			if ( pFileName.get().toLowerCase().contains(".xls") ) {
-				spreadsheet	=	
-					new HSSFWorkbook(
-							createInputStream(	pFileName.get()		)
-					);
-			}
-			else {
-				throw new IllegalArgumentException("The File Extention passed was not compatible with a Excel Spreadsheet.");
-			}
-		}
+		Workbook spreadsheet = createWorkbookSpreadSheet(pFileName);
 		
 		Sheet sheetTab = spreadsheet.createSheet( "Dividend Yields" );
 		
@@ -105,6 +86,30 @@ public class FilesFoldersUtil {
 		
 		cell = row.getCell(1);
 		cell.setCellValue(0.1);
+	}
+	
+	public static Workbook createWorkbookSpreadSheet(Optional<String> pFileName) throws IOException {
+		Workbook spreadsheet;
+		if ( pFileName.get().toLowerCase().contains(".xlsx") ) {
+			spreadsheet	=
+				//WorkbookFactory.create(
+				new XSSFWorkbook(
+					//	createInputStream(	pFileName.get()		)
+				);
+		} else {
+			if ( pFileName.get().toLowerCase().contains(".xls") ) {
+				spreadsheet	=
+					//WorkbookFactory.create(
+					new HSSFWorkbook(
+						//	createInputStream(	pFileName.get()		)
+					);
+			}
+			else {
+				throw new IllegalArgumentException("The File Extention passed was not compatible with a Excel Spreadsheet.");
+			}
+		}
+		
+		return spreadsheet;
 	}
 	
 }
