@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
@@ -116,5 +117,20 @@ public class SpreadSheetWriter {
 		
 		return token;
 	}
+	
+	public static Map<String, BigDecimal> getMapFromTickerValuePairs(String pFullData) {
+		Map<String, BigDecimal> map = new HashMap<String, BigDecimal>();
+		
+		String[] tickerValueTokens = splitTickerValuePairs(pFullData);
+		
+		for (String actualTickerValue : tickerValueTokens) {
+			String[] tickerValue = actualTickerValue.split("=");
+			
+			map.put(tickerValue[0], new BigDecimal(tickerValue[1]));
+		}
+		
+		return map;
+	}
+	
 	
 }
