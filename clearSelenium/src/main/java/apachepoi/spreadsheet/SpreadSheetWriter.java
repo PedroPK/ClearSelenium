@@ -28,7 +28,16 @@ public class SpreadSheetWriter {
 		
 		writeToFile(spreadsheet);
 	}
-
+	
+	public static void writeIntoSpreadSheet( String pTickerDividends ) throws FileNotFoundException, IOException {
+		Workbook spreadsheet = 
+			createXlsxSpreadSheet(Optional.of(FilesFoldersUtil.TEST_XLSX_FILENAME));
+		
+		fillSpreadsheet(spreadsheet, getMapFromTickerValuePairs(pTickerDividends));
+		
+		writeToFile(spreadsheet);
+	}
+	
 	private static void writeToFile(Workbook pSpreadsheet) throws FileNotFoundException, IOException {
 		FileOutputStream fileOutputStream = 
 				new FileOutputStream(FilesFoldersUtil.createFile(FilesFoldersUtil.TEST_XLSX_FILENAME));
@@ -83,7 +92,10 @@ public class SpreadSheetWriter {
 			
 			Iterator<String> iteratorKeys	=	pMapTickerDividends.keySet().iterator();
 			
-			for ( int rowIndex = 0; iteratorKeys.hasNext(); rowIndex = rowIndex + 1 ) {
+			// Header
+			addHeader(sheetTab);
+			
+			for ( int rowIndex = 1; iteratorKeys.hasNext(); rowIndex = rowIndex + 1 ) {
 				Row row = sheetTab.getRow(rowIndex);
 				
 				String ticker	=	iteratorKeys.next();
@@ -97,6 +109,18 @@ public class SpreadSheetWriter {
 			
 			// TODO		- 	Resume here
 		}
+	}
+
+	private static void addHeader(Sheet pSheetTab) {
+		Row row = pSheetTab.getRow(0);
+		
+		// Ticker Header
+		Cell cell = row.createCell(0);
+		cell.setCellValue("Ticker");
+		
+		// Dividend Header
+		cell = row.createCell(1);
+		cell.setCellValue("Dividend Yield");
 	}
 	
 	/**
