@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 
@@ -66,32 +67,54 @@ public class SpreadSheetWriter {
 		return spreadsheet;
 	}
 
-	private static void fillSpreadsheet(Workbook pSpreadsheet, Map<String, BigDecimal> pTickerDividends) {
+	public static void fillSpreadsheet(Workbook pSpreadsheet, Map<String, BigDecimal> pMapTickerDividends) {
 		Sheet sheetTab = pSpreadsheet.createSheet( "Dividend Yields" );
 		
 		if ( 
-				pTickerDividends != null &&
-				!pTickerDividends.isEmpty()
+				pMapTickerDividends != null &&
+				!pMapTickerDividends.isEmpty()
 		) {
-			int qtRows = pTickerDividends.size() + 1;
+			int qtRows = pMapTickerDividends.size() + 1;
 			
 			for ( int i = 0; i < qtRows; i = i + 1 ) {
 				sheetTab.createRow(i);
 			}
 			
+			Iterator<String> iteratorKeys	=	pMapTickerDividends.keySet().iterator();
+			
+			for ( int rowIndex = 0; iteratorKeys.hasNext(); rowIndex = rowIndex + 1 ) {
+				Row row = sheetTab.getRow(rowIndex);
+				
+				String ticker	=	iteratorKeys.next();
+				
+				Cell cell = row.createCell(0);
+				cell.setCellValue(ticker);
+				
+				cell = row.createCell(1);
+				cell.setCellValue(pMapTickerDividends.get(ticker).doubleValue());
+			}
+			
 			// TODO		- 	Resume here
-			
-			Row row = sheetTab.getRow(0);
-			
-			Cell cell = row.createCell(0);
-			
-			cell.setCellValue("TICKER4");
-			
-			cell = row.createCell(1);
-			cell.setCellValue(0.1);
 		}
+	}
+	
+	/**
+	 * 
+	 */
+	public static String[] splitTickerValuePairs(String pFullData) {
+		String tickerValuePairs = getTickerValuePairs(pFullData);
 		
+		String[] tokens = tickerValuePairs.split(", ");
 		
+		return tokens;
+	}
+
+	public static String getTickerValuePairs(String pFullData) {
+		int curlyBracketIndex =  pFullData.indexOf('{');
+		
+		String token = pFullData.substring(curlyBracketIndex + 1, pFullData.length() - 1);
+		
+		return token;
 	}
 	
 }
