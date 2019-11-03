@@ -147,7 +147,7 @@ public class FundamentusHome {
 		pressExibirButton();
 		openTickerPage(1);
 		
-		String text = getDividendYieldTextValue();
+		String text = FundamentalistIndicators.getDividendYieldTextValue();
 		System.out.println(text);
 	}
 	
@@ -157,7 +157,7 @@ public class FundamentusHome {
 		pressExibirButton(true);
 		openTickerPage(1);
 		
-		String text = getDividendYieldTextValue();
+		String text = FundamentalistIndicators.getDividendYieldTextValue();
 		System.out.println(text);
 		
 		assertNotNull(text);
@@ -170,18 +170,11 @@ public class FundamentusHome {
 		pressExibirButton();
 		openTickerPage(2);
 		
-		String dividendYieldTextValue = getDividendYieldTextValue();
+		String dividendYieldTextValue = FundamentalistIndicators.getDividendYieldTextValue();
 		
 		System.out.println(dividendYieldTextValue);
 	}
 
-	private String getDividendYieldTextValue() {
-		WebElement dividendYieldWebElement = getElementByXPath(FundamentalistIndicators.DIVIDEND_YIELD_XPATH);
-		
-		String dividendYieldTextValue = dividendYieldWebElement.getText();
-		return dividendYieldTextValue;
-	}
-	
 	@Ignore
 	@Test
 	public void getDividendYieldsFrom3TickersInIteration() {
@@ -345,7 +338,7 @@ public class FundamentusHome {
 	
 	private BigDecimal getDividendYield() {
 		// Get the Dividend Yield. Ex: "1,0%"
-		String dividendYieldTextValue = getDividendYieldTextValue();
+		String dividendYieldTextValue = FundamentalistIndicators.getDividendYieldTextValue();
 		
 		// Remove the Percentage Symbol
 		dividendYieldTextValue = dividendYieldTextValue.replace('%', ' ');

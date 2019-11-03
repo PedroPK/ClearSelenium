@@ -1,5 +1,11 @@
 package clearSelenium.fundamentus;
 
+import static clearSelenium.SeleniumUtils.getElementByXPath;
+
+import java.math.BigDecimal;
+
+import org.openqa.selenium.WebElement;
+
 public class FundamentalistIndicators {
 	
 	
@@ -168,5 +174,25 @@ public class FundamentalistIndicators {
 	 */
 	public static final String DEBT_TO_EQUITY_RATIO_XPATH					=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[11]/td[6]/span";
 	
+	private BigDecimal aPriceOverProfit;
+	private BigDecimal aPriveOverBookValue;
+	private BigDecimal aPriceOverEBIT;
 	
+	private BigDecimal aPriceSalesRatio;
+	private BigDecimal aPriceOverStocks;
+	private BigDecimal aPriceOverAsset;
+	
+	private BigDecimal aPriveOverWorkingCapital;
+	private BigDecimal aPriveOverNetCurrentAsset;
+	private BigDecimal aDividendYield;
+	private BigDecimal aEenterpriseValueOverEBIT;
+	private BigDecimal aAssetTurnover;
+	private BigDecimal aIncomeGrowthLast5Years;
+	
+	public static String getDividendYieldTextValue() {
+		WebElement dividendYieldWebElement = getElementByXPath(FundamentalistIndicators.DIVIDEND_YIELD_XPATH);
+		
+		String dividendYieldTextValue = dividendYieldWebElement.getText();
+		return dividendYieldTextValue;
+	}
 }
