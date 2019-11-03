@@ -31,18 +31,52 @@ public class FundamentusHome {
 	/**
 	 * URL's
 	 */
-	private static final String URL_FUNDAMENTUS				=	"https://www.fundamentus.com.br/index.php";
-	private static final String URL_DETALHES_PAPEL			=	"https://www.fundamentus.com.br/detalhes.php?papel=";
+	private static final String URL_FUNDAMENTUS							=	"https://www.fundamentus.com.br/index.php";
+	private static final String URL_DETALHES_PAPEL						=	"https://www.fundamentus.com.br/detalhes.php?papel=";
 	
-	private static final int	QUANTITY_TICKERS			= 900;
+	private static final int	QUANTITY_TICKERS						= 900;
 	
-	private static final String EXIBIR_BUTTON_XPATH			=	"/html/body/div[1]/div[1]/form/fieldset/input[2]";
+	private static final String EXIBIR_BUTTON_XPATH						=	"/html/body/div[1]/div[1]/form/fieldset/input[2]";
 	
-	private static final String TICKER_INDEX				=	"INDEX";
-	private static final String TICKER_LABEL_XPATH			=	"/html/body/div[1]/div[2]/div/div/table/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
-	private static final String TICKER_LINK_XPATH			=	"//*[@id=\"test1\"]/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
+	private static final String TICKER_INDEX							=	"INDEX";
+	private static final String TICKER_LABEL_XPATH						=	"/html/body/div[1]/div[2]/div/div/table/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
+	private static final String TICKER_LINK_XPATH						=	"//*[@id=\"test1\"]/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
 	
-	private static final String DIVIDEND_YIELD_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[9]/td[4]/span";
+	/**
+	 * Preço da última Cotação da Ação
+	 */
+	private static final String PRICE_XPATH								=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[1]/td[4]/span";
+	
+	/**
+	 * Preço Mínimo nas Últimas 52 Semanas
+	 */
+	private static final String MINIMUM_PRICE_52_WEEKS_XPATH			=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[3]/td[4]/span";
+	
+	/**
+	 * Preço Máximo nas Últimas 52 Semanas
+	 */
+	private static final String MAX_PRICE_52_WEEKS_XPATH				=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[4]/td[4]/span";
+	
+	/**
+	 * Valor de Mercado
+	 */
+	private static final String MARKET_VALUE_XPATH						=	"/html/body/div[1]/div[2]/table[2]/tbody/tr[1]/td[2]/span";
+	
+	/**
+	 * Valor Patrimonial
+	 */
+	private static final String ENTERPRISE_VALUE_XPATH					=	"/html/body/div[1]/div[2]/table[2]/tbody/tr[2]/td[2]/span";
+	
+	/**
+	 * Data de divulgação do Último Balanço
+	 */
+	private static final String LAST_BALANCE_DATE_XPATH					=	"/html/body/div[1]/div[2]/table[2]/tbody/tr[1]/td[4]/span";
+	
+	/**
+	 * Quantidade de Ações
+	 */
+	private static final String QUANTITY_STOCKS_XPATH					=	"/html/body/div[1]/div[2]/table[2]/tbody/tr[2]/td[4]/span";
+	
 	
 	@FindBy(xpath=EXIBIR_BUTTON_XPATH)
 	private WebElement aExibirButton;
@@ -142,7 +176,7 @@ public class FundamentusHome {
 	}
 
 	private String getDividendYieldTextValue() {
-		WebElement dividendYieldWebElement = getElementByXPath(DIVIDEND_YIELD_XPATH);
+		WebElement dividendYieldWebElement = getElementByXPath(FundamentalistIndicators.DIVIDEND_YIELD_XPATH);
 		
 		String dividendYieldTextValue = dividendYieldWebElement.getText();
 		return dividendYieldTextValue;
