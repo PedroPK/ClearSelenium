@@ -82,11 +82,28 @@ public class FundamentusHome {
 	 * - Access this URL
 	 * - Show the Stock details page
 	 * 
-	 * @param pTickerLabel
+	 * @param pTickerLabel		The Stock Ticker (ex: PETR4, VALE3, etc)
 	 */
 	public static void accessTickerDetails(String pTickerLabel) {
 		//FundamentusHome fundamentusHome = new FundamentusHome();
 		accessURL(URL_DETALHES_PAPEL + pTickerLabel);
+	}
+	
+	/**
+	 * This Method will  take advantage of REST capabilities
+	 * 
+	 * - It will assemble a URL with the Ticket on it.
+	 * - Access this URL
+	 * - Show the Stock details page
+	 * 
+	 * @param pTickerLabel				The Stock Ticker (ex: PETR4, VALE3, etc)
+	 * @param pUseHeadlessWebDriver		Indicates if a Headless Browser/WebDriver should be used
+	 * 									- TRUE		- Will use a Headless	Browser/WebDriver 
+	 * 									- FALSE		- Will use a GUI		Browser/WebDriver 
+	 */
+	public static void accessTickerDetails(String pTickerLabel, boolean pUseHeadlessWebDriver) {
+		//FundamentusHome fundamentusHome = new FundamentusHome();
+		accessURL(URL_DETALHES_PAPEL + pTickerLabel, pUseHeadlessWebDriver);
 	}
 	
 	@Ignore
