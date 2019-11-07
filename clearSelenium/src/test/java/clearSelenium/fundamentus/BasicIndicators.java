@@ -17,7 +17,7 @@ public class BasicIndicators {
 	public static final		String		TICKER							=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[1]/td[2]/span";
 	private					BigDecimal	aTicker;
 	
-	public static String geTicker() {
+	public static String getTicker() {
 		WebElement dividendYieldWebElement = getElementByXPath(TICKER);
 		return dividendYieldWebElement.getText();
 	}
@@ -28,7 +28,7 @@ public class BasicIndicators {
 	public static final		String		TYPE							=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[2]/td[2]/span";
 	private					BigDecimal	aType;
 	
-	public static String geType() {
+	public static String getType() {
 		WebElement dividendYieldWebElement = getElementByXPath(TYPE);
 		return dividendYieldWebElement.getText();
 	}
@@ -39,7 +39,7 @@ public class BasicIndicators {
 	public static final		String		COMPANY_NAME					=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[3]/td[2]/span";
 	private					BigDecimal	aCompanyName;
 	
-	public static String geCompany() {
+	public static String getCompany() {
 		WebElement dividendYieldWebElement = getElementByXPath(COMPANY_NAME);
 		return dividendYieldWebElement.getText();
 	}
@@ -50,7 +50,7 @@ public class BasicIndicators {
 	public static final		String		SECTOR							=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[4]/td[2]/span/a";
 	private					BigDecimal	aSector;
 	
-	public static String geSector() {
+	public static String getSector() {
 		WebElement dividendYieldWebElement = getElementByXPath(SECTOR);
 		return dividendYieldWebElement.getText();
 	}
@@ -61,7 +61,7 @@ public class BasicIndicators {
 	public static final		String		SUB_SECTOR						=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[5]/td[2]/span/a";
 	private					BigDecimal	aSubSector;
 	
-	public static String geSubSector() {
+	public static String getSubSector() {
 		WebElement dividendYieldWebElement = getElementByXPath(SUB_SECTOR);
 		return dividendYieldWebElement.getText();
 	}
@@ -72,7 +72,7 @@ public class BasicIndicators {
 	public static final		String		PRICE							=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[1]/td[4]/span";
 	private					BigDecimal	aPrice;
 	
-	public static String gePrice() {
+	public static String getPrice() {
 		WebElement dividendYieldWebElement = getElementByXPath(PRICE);
 		return dividendYieldWebElement.getText();
 	}
@@ -83,7 +83,7 @@ public class BasicIndicators {
 	public static final		String		DATE_PRICE						=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[2]/td[4]/span";
 	private					BigDecimal	aDatePrice;
 	
-	public static String geDatePrice() {
+	public static String getDatePrice() {
 		WebElement dividendYieldWebElement = getElementByXPath(DATE_PRICE);
 		return dividendYieldWebElement.getText();
 	}
@@ -94,7 +94,7 @@ public class BasicIndicators {
 	public static final		String		MINIMUM_PRICE_LAST_52_WEEKS		=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[3]/td[4]/span";
 	private					BigDecimal	aMinimumPriceLast32Weeks;
 	
-	public static String geMinimumPriceLast52Weeks() {
+	public static String getMinimumPriceLast52Weeks() {
 		WebElement dividendYieldWebElement = getElementByXPath(MINIMUM_PRICE_LAST_52_WEEKS);
 		return dividendYieldWebElement.getText();
 	}
@@ -105,7 +105,7 @@ public class BasicIndicators {
 	public static final		String		MAXIMUM_PRICE_LAST_52_WEEKS		=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[4]/td[4]/span";
 	private					BigDecimal	aMaximumPriceLast32Weeks;
 	
-	public static String geMaximumPriceLast52Weeks() {
+	public static String getMaximumPriceLast52Weeks() {
 		WebElement dividendYieldWebElement = getElementByXPath(MAXIMUM_PRICE_LAST_52_WEEKS);
 		return dividendYieldWebElement.getText();
 	}
@@ -117,7 +117,7 @@ public class BasicIndicators {
 	private					BigDecimal	aAverageVolumeLast32Weeks;
 	
 
-	public static String geMAverageVolumeLast52Weeks() {
+	public static String getAverageVolumeLast52Weeks() {
 		WebElement dividendYieldWebElement = getElementByXPath(AVERAGE_VOLUME_LAST_2_MONTHS);
 		return dividendYieldWebElement.getText();
 	}
