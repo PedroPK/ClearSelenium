@@ -64,11 +64,6 @@ public class BasicIndicatorsTest {
 	
 	@Test
 	public void testGetDatePricePETR4() {
-		// Arrange
-		//String petr4 = "PETR4";
-		
-		//accessTickerDetails(petr4, true);
-		
 		String sector = getDatePrice();
 		
 		assertEquals("06/11/2019", sector);

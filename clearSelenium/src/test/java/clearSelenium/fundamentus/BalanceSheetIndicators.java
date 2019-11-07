@@ -17,7 +17,7 @@ public class BalanceSheetIndicators {
 	public static final		String		ASSET_XPATH					=	"/html/body/div[1]/div[2]/table[4]/tbody/tr[2]/td[2]/span";
 	private					BigDecimal	aAsset;
 	
-	public static String geAsset() {
+	public static String getAsset() {
 		WebElement dividendYieldWebElement = getElementByXPath(ASSET_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -28,7 +28,7 @@ public class BalanceSheetIndicators {
 	public static final		String		AVAILABLE_CASH_XPATH			=	"/html/body/div[1]/div[2]/table[4]/tbody/tr[3]/td[2]/span";
 	private					BigDecimal	aCash;
 	
-	public static String geAvailableCash() {
+	public static String getAvailableCash() {
 		WebElement dividendYieldWebElement = getElementByXPath(AVAILABLE_CASH_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -39,7 +39,7 @@ public class BalanceSheetIndicators {
 	public static final		String		CURRENT_ASSET_XPATH			=	"/html/body/div[1]/div[2]/table[4]/tbody/tr[4]/td[2]/span";
 	private					BigDecimal	aCurrentAsset;
 	
-	public static String geCurrentAsset() {
+	public static String getCurrentAsset() {
 		WebElement dividendYieldWebElement = getElementByXPath(CURRENT_ASSET_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -50,7 +50,7 @@ public class BalanceSheetIndicators {
 	public static final		String		GROSS_DEBT_XPATH				=	"/html/body/div[1]/div[2]/table[4]/tbody/tr[2]/td[4]/span";
 	private					BigDecimal	aGrossDebt;
 	
-	public static String geGrossDebt() {
+	public static String getGrossDebt() {
 		WebElement dividendYieldWebElement = getElementByXPath(GROSS_DEBT_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -61,7 +61,7 @@ public class BalanceSheetIndicators {
 	public static final		String		NET_DEBT_XPATH				=	"/html/body/div[1]/div[2]/table[4]/tbody/tr[3]/td[4]/span";
 	private					BigDecimal	aNetDebt;
 	
-	public static String geNetDebt() {
+	public static String getNetDebt() {
 		WebElement dividendYieldWebElement = getElementByXPath(NET_DEBT_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -72,7 +72,7 @@ public class BalanceSheetIndicators {
 	public static final		String		EQUITY_XPATH					=	"/html/body/div[1]/div[2]/table[4]/tbody/tr[4]/td[4]/span";
 	private					BigDecimal	aEquity;
 	
-	public static String geEquity() {
+	public static String getEquity() {
 		WebElement dividendYieldWebElement = getElementByXPath(EQUITY_XPATH);
 		return dividendYieldWebElement.getText();
 	}
