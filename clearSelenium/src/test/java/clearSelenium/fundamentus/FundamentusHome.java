@@ -31,51 +31,18 @@ public class FundamentusHome {
 	/**
 	 * URL's
 	 */
-	private static final String URL_FUNDAMENTUS							=	"https://www.fundamentus.com.br/index.php";
-	private static final String URL_DETALHES_PAPEL						=	"https://www.fundamentus.com.br/detalhes.php?papel=";
+	private static final String URL_FUNDAMENTUS					=	"https://www.fundamentus.com.br/index.php";
+	private static final String URL_DETALHES_PAPEL				=	"https://www.fundamentus.com.br/detalhes.php?papel=";
 	
-	private static final int	QUANTITY_TICKERS						= 900;
+	private static final int	QUANTITY_TICKERS				= 900;
 	
-	private static final String EXIBIR_BUTTON_XPATH						=	"/html/body/div[1]/div[1]/form/fieldset/input[2]";
+	private static final String EXIBIR_BUTTON_XPATH				=	"/html/body/div[1]/div[1]/form/fieldset/input[2]";
 	
-	private static final String TICKER_INDEX							=	"INDEX";
-	private static final String TICKER_LABEL_XPATH						=	"/html/body/div[1]/div[2]/div/div/table/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
-	private static final String TICKER_LINK_XPATH						=	"//*[@id=\"test1\"]/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
+	private static final String TICKER_INDEX					=	"INDEX";
+	private static final String TICKER_LABEL_XPATH				=	"/html/body/div[1]/div[2]/div/div/table/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
+	private static final String TICKER_LINK_XPATH				=	"//*[@id=\"test1\"]/tbody/tr[" + TICKER_INDEX + "]/td[1]/a";
 	
-	/**
-	 * Preço da última Cotação da Ação
-	 */
-	private static final String PRICE_XPATH								=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[1]/td[4]/span";
-	
-	/**
-	 * Preço Mínimo nas Últimas 52 Semanas
-	 */
-	private static final String MINIMUM_PRICE_52_WEEKS_XPATH			=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[3]/td[4]/span";
-	
-	/**
-	 * Preço Máximo nas Últimas 52 Semanas
-	 */
-	private static final String MAX_PRICE_52_WEEKS_XPATH				=	"/html/body/div[1]/div[2]/table[1]/tbody/tr[4]/td[4]/span";
-	
-	/**
-	 * Valor de Mercado
-	 */
-	private static final String MARKET_VALUE_XPATH						=	"/html/body/div[1]/div[2]/table[2]/tbody/tr[1]/td[2]/span";
-	
-	/**
-	 * Valor Patrimonial
-	 */
-	private static final String ENTERPRISE_VALUE_XPATH					=	"/html/body/div[1]/div[2]/table[2]/tbody/tr[2]/td[2]/span";
-	
-	/**
-	 * Data de divulgação do Último Balanço
-	 */
-	private static final String LAST_BALANCE_DATE_XPATH					=	"/html/body/div[1]/div[2]/table[2]/tbody/tr[1]/td[4]/span";
-	
-	/**
-	 * Quantidade de Ações
-	 */
-	private static final String QUANTITY_STOCKS_XPATH					=	"/html/body/div[1]/div[2]/table[2]/tbody/tr[2]/td[4]/span";
+	private static final String TICKER_QUERY_INPUT_XPATH		=	"/html/body/div[1]/div[1]/form/fieldset/input[1]";
 	
 	
 	@FindBy(xpath=EXIBIR_BUTTON_XPATH)
@@ -96,7 +63,7 @@ public class FundamentusHome {
 		 * True		= 	Headless
 		 * False	= 	Full GUI Chrome
 		 */
-		instanciateChromeDriver(true);
+		instanciateChromeDriver(false);
 	}
 	
 	public static void accessFundamentusHome() {
@@ -119,16 +86,23 @@ public class FundamentusHome {
 		accessFundamentusHome();
 	}
 	
-	@Ignore
 	@Test
-	public void pressExibirButtonVoid() {
+	public void testSearchPETR4() {
+		accessFundamentusHome(false);
+		getElementByXPath(TICKER_QUERY_INPUT_XPATH).sendKeys("PETR4");
 		pressExibirButton();
 	}
 	
 	@Ignore
 	@Test
+	public void pressExibirButtonVoid() {
+		accessFundamentosHomeAndPressExibirButton();
+	}
+	
+	@Ignore
+	@Test
 	public void cliclFirstTickerLinks() {
-		pressExibirButton();
+		accessFundamentosHomeAndPressExibirButton();
 		
 		int tickerIndex = 1;
 		
@@ -144,7 +118,7 @@ public class FundamentusHome {
 	@Ignore
 	@Test
 	public void getDividendYieldFromFirstTicker() {
-		pressExibirButton();
+		accessFundamentosHomeAndPressExibirButton();
 		openTickerPage(1);
 		
 		String text = FundamentalistIndicators.getDividendYieldTextValue();
@@ -154,7 +128,7 @@ public class FundamentusHome {
 	@Ignore
 	@Test
 	public void getDividendYieldFromFirstTickerHeadless() {
-		pressExibirButton(true);
+		accessFundamentosHomeAndPressExibirButton();
 		openTickerPage(1);
 		
 		String text = FundamentalistIndicators.getDividendYieldTextValue();
@@ -167,7 +141,7 @@ public class FundamentusHome {
 	@Ignore
 	@Test
 	public void getDividendYieldFromSecondTicker() {
-		pressExibirButton();
+		accessFundamentosHomeAndPressExibirButton();
 		openTickerPage(2);
 		
 		String dividendYieldTextValue = FundamentalistIndicators.getDividendYieldTextValue();
@@ -178,7 +152,7 @@ public class FundamentusHome {
 	@Ignore
 	@Test
 	public void getDividendYieldsFrom3TickersInIteration() {
-		pressExibirButton();
+		accessFundamentosHomeAndPressExibirButton();
 		
 		for (int index = 1; index <= 3; index = index + 1) {
 			try {
@@ -211,7 +185,7 @@ public class FundamentusHome {
 	@Ignore
 	@Test(timeout = 120000)
 	public void getAllTickerLabels() {
-		pressExibirButton();
+		accessFundamentosHomeAndPressExibirButton();
 		
 		for (int index = 1; index <= QUANTITY_TICKERS; index = index + 1) {
 			try {
@@ -269,6 +243,7 @@ public class FundamentusHome {
 	 *  - For each Ticker, access its Details page.
 	 *  - Gets the Dividend Yield and Stores it in a Map
 	 */
+	@Ignore
 	@Test(timeout=180000)
 	public void access10TickersDetailsPageAndGetDividendYields() {
 		getAllTickerLabels();
@@ -378,11 +353,22 @@ public class FundamentusHome {
 		return firstTickerLink;
 	}
 	
-	public FundamentusHome pressExibirButton() {
-		return pressExibirButton(false);
+	public FundamentusHome accessFundamentosHomeAndPressExibirButton() {
+		return accessFundamentosHomeAndPressExibirButton(false);
 	}
 	
-	public FundamentusHome pressExibirButton(boolean pHeadless) {
+	public FundamentusHome pressExibirButton() {
+		if ( this.aExibirButton == null ) {
+			this.aExibirButton = getElementByXPath(EXIBIR_BUTTON_XPATH); 
+		}
+		
+		// Click in the Element
+		this.aExibirButton.click();
+		
+		return this;
+	}
+	
+	public FundamentusHome accessFundamentosHomeAndPressExibirButton(boolean pHeadless) {
 		accessFundamentusHome(pHeadless);
 		
 		if ( this.aExibirButton == null ) {
