@@ -75,6 +75,15 @@ public class FundamentusHome {
 		accessURL(URL_FUNDAMENTUS, pHeadless);
 	}
 	
+	/**
+	 * This Method will  take advantage of REST capabilities
+	 * 
+	 * - It will assemble a URL with the Ticket on it.
+	 * - Access this URL
+	 * - Show the Stock details page
+	 * 
+	 * @param pTickerLabel
+	 */
 	public static void accessTickerDetails(String pTickerLabel) {
 		//FundamentusHome fundamentusHome = new FundamentusHome();
 		accessURL(URL_DETALHES_PAPEL + pTickerLabel);
@@ -88,8 +97,24 @@ public class FundamentusHome {
 	
 	@Test
 	public void testSearchPETR4() {
+		// Arrange
+		String petr4Ticker = "PETR4";
+		
+		accessTickerDetails(petr4Ticker);
+	}
+	
+	/**
+	 * This Method will simulate a user. It will:
+	 *  - Open the Fundamentos homepage
+	 *  - Focus on the Input for Stock Ticker
+	 *  - Fill this Input
+	 *  - Press the Exibir button
+	 *  - Show the Stock details page 
+	 * @param pTicker
+	 */
+	private void openTickerPage(String pTicker) {
 		accessFundamentusHome(false);
-		getElementByXPath(TICKER_QUERY_INPUT_XPATH).sendKeys("PETR4");
+		getElementByXPath(TICKER_QUERY_INPUT_XPATH).sendKeys(pTicker);
 		pressExibirButton();
 	}
 	
