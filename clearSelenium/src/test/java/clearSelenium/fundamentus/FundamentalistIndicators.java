@@ -25,7 +25,7 @@ public class FundamentalistIndicators {
 	public static final		String			PRICE_OVER_PROFIT_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[2]/td[4]/span";
 	private					BigDecimal		aPriceOverProfit;
 	
-	public static String gePriceOverProfit() {
+	public static String getPriceOverProfit() {
 		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_PROFIT_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -39,7 +39,7 @@ public class FundamentalistIndicators {
 	public static final		String			PRICE_OVER_BOOK_VALUE_XPATH		=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[3]/td[4]/span";
 	private					BigDecimal		aPriveOverBookValue;
 	
-	public static String gePriceOverBookValue() {
+	public static String getPriceOverBookValue() {
 		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_BOOK_VALUE_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -53,7 +53,7 @@ public class FundamentalistIndicators {
 	public static final		String			PRICE_OVER_EBIT_XPATH				=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[4]/td[4]/span";
 	private					BigDecimal		aPriceOverEBIT;
 	
-	public static String gePriceOverEbit() {
+	public static String getPriceOverEbit() {
 		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_EBIT_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -64,7 +64,7 @@ public class FundamentalistIndicators {
 	public static final		String			PRICE_SALES_RATIO_XPATH					=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[5]/td[4]/span";
 	private					BigDecimal		aPriceSalesRatio;
 	
-	public static String gePriceSalesRatio() {
+	public static String getPriceSalesRatio() {
 		WebElement dividendYieldWebElement = getElementByXPath(PRICE_SALES_RATIO_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -77,7 +77,7 @@ public class FundamentalistIndicators {
 	public static final		String			PRICE_OVER_ASSETS_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[6]/td[4]/span";
 	private					BigDecimal		aPriceOverAsset;
 	
-	public static String gePriceOverAssets() {
+	public static String getPriceOverAssets() {
 		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_ASSETS_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -90,7 +90,7 @@ public class FundamentalistIndicators {
 	public static final		String			PRICE_OVER_WORKING_CAPITAL_XPATH	=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[7]/td[4]/span";
 	private					BigDecimal		aPriveOverWorkingCapital;
 	
-	public static String gePriceOverWorkingCapital() {
+	public static String getPriceOverWorkingCapital() {
 		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_WORKING_CAPITAL_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -105,7 +105,7 @@ public class FundamentalistIndicators {
 	public static final		String			PRICE_OVER_NET_CURRENT_ASSET_XPATH	=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[8]/td[4]/span";
 	private					BigDecimal		aPriveOverNetCurrentAsset;
 	
-	public static String gePriceOverNetCurretAsset() {
+	public static String getPriceOverNetCurretAsset() {
 		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_NET_CURRENT_ASSET_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -130,7 +130,7 @@ public class FundamentalistIndicators {
 	public static final		String			ENTERPRISE_VALUE_OVER_EBIT_XPATH		=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[10]/td[4]/span";
 	private					BigDecimal		aEnterpriseValueOverEBIT;
 	
-	public static String geEnterpriseValueOverEbit() {
+	public static String getEnterpriseValueOverEbit() {
 		WebElement dividendYieldWebElement = getElementByXPath(ENTERPRISE_VALUE_OVER_EBIT_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -144,7 +144,7 @@ public class FundamentalistIndicators {
 	public static final		String			ASSET_TURNOVER_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[11]/td[4]/span";
 	private					BigDecimal		aAssetTurnover;
 	
-	public static String geAssetTurnover() {
+	public static String getAssetTurnover() {
 		WebElement dividendYieldWebElement = getElementByXPath(ASSET_TURNOVER_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -155,7 +155,7 @@ public class FundamentalistIndicators {
 	public static final		String			INCOME_GROWTH_LAST_5_YEARS_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[12]/td[4]/span";
 	private					BigDecimal		aIncomeGrowthLast5Years;
 	
-	public static String geIncomeGrowthLast5Years() {
+	public static String getIncomeGrowthLast5Years() {
 		WebElement dividendYieldWebElement = getElementByXPath(INCOME_GROWTH_LAST_5_YEARS_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -182,7 +182,7 @@ public class FundamentalistIndicators {
 	public static final		String			BOOK_VALUE_OVER_STOCKS_XPATH				=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[3]/td[6]/span";
 	private					BigDecimal		aBookValueOverStocks;
 	
-	public static String geBookValueOverStocks() {
+	public static String getBookValueOverStocks() {
 		WebElement dividendYieldWebElement = getElementByXPath(BOOK_VALUE_OVER_STOCKS_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -195,7 +195,7 @@ public class FundamentalistIndicators {
 	public static final		String			GROSS_MARGIN_XPATH							=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[4]/td[6]/span";
 	private					BigDecimal		aGrossMargin;
 	
-	public static String geGrossMargin() {
+	public static String getGrossMargin() {
 		WebElement dividendYieldWebElement = getElementByXPath(GROSS_MARGIN_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -212,7 +212,7 @@ public class FundamentalistIndicators {
 	public static final		String			EBIT_MARGIN_XPATH							=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[5]/td[6]/span";
 	private					BigDecimal		aEbitMargin;
 	
-	public static String geEbitMargin() {
+	public static String getEbitMargin() {
 		WebElement dividendYieldWebElement = getElementByXPath(EBIT_MARGIN_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -228,9 +228,22 @@ public class FundamentalistIndicators {
 	public static final		String			NET_MARGIN_XPATH							=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[6]/td[6]/span";
 	private					BigDecimal		aNetMargin;
 	
-	public static String geNetMargin() {
+	public static String getNetMargin() {
 		WebElement dividendYieldWebElement = getElementByXPath(NET_MARGIN_XPATH);
 		return dividendYieldWebElement.getText();
+	}
+	
+	/**
+	 * EBIT / Ativo
+	 * 
+	 * EBIT dividido por Ativos totais
+	 */
+	public static final		String			EBIT_OVER_ASSET_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[7]/td[6]/span";
+	private					BigDecimal		aEbitOverAsset;
+	
+	public static String getEvitOverAsset() {
+		WebElement ebitOverAsset_WebElement		=	getElementByXPath(EBIT_OVER_ASSET_XPATH);
+		return	ebitOverAsset_WebElement.getText();
 	}
 	
 	/**
@@ -241,7 +254,7 @@ public class FundamentalistIndicators {
 	public static final		String			RETURN_OVER_INVESTED_CAPITAL_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[8]/td[6]/span";
 	private					BigDecimal		aReturnOrverInvestedCapital;
 	
-	public static String geReturnOverInvestedCapital() {
+	public static String getReturnOverInvestedCapital() {
 		WebElement dividendYieldWebElement = getElementByXPath(RETURN_OVER_INVESTED_CAPITAL_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -254,7 +267,7 @@ public class FundamentalistIndicators {
 	public static final		String			RETURN_ON_EQUITY_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[9]/td[6]/span";
 	private					BigDecimal		aReturnOnEquity;
 	
-	public static String geReturnOverEquity() {
+	public static String getReturnOverEquity() {
 		WebElement dividendYieldWebElement = getElementByXPath(RETURN_ON_EQUITY_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -269,7 +282,7 @@ public class FundamentalistIndicators {
 	public static final		String			CURRENT_LIQUIDITY_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[10]/td[6]/span";
 	private					BigDecimal		aCurrentLiquidity;
 	
-	public static String geCurrentLiquidity() {
+	public static String getCurrentLiquidity() {
 		WebElement dividendYieldWebElement = getElementByXPath(CURRENT_LIQUIDITY_XPATH);
 		return dividendYieldWebElement.getText();
 	}
@@ -281,11 +294,11 @@ public class FundamentalistIndicators {
 	 * 
 	 * Debt to Equity Ratio
 	 */
-	public static final		String			DEBT_TO_EQUITY_XPATH					=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[11]/td[6]/span";
-	private					BigDecimal		aDebtToEquityRatio;
+	public static final		String			GROSS_DEBT_OVER_EQUITY_XPATH					=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[11]/td[6]/span";
+	private					BigDecimal		aGrossDebtOverEquityRatio;
 	
-	public static String geDebtToEquity() {
-		WebElement dividendYieldWebElement = getElementByXPath(DEBT_TO_EQUITY_XPATH);
+	public static String getGrossDebtOverEquity() {
+		WebElement dividendYieldWebElement = getElementByXPath(GROSS_DEBT_OVER_EQUITY_XPATH);
 		return dividendYieldWebElement.getText();
 	}
 	
