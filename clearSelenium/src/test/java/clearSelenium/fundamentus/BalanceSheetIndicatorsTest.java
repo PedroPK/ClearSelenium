@@ -1,10 +1,11 @@
 package clearSelenium.fundamentus;
 
-import static clearSelenium.SeleniumUtils.closeWebDriver;
+import static clearSelenium.SeleniumUtils.*;
 import static clearSelenium.fundamentus.BalanceSheetIndicators.*;
-import static clearSelenium.fundamentus.FundamentusHome.accessTickerDetails;
-
+import static clearSelenium.fundamentus.FundamentusHome.*;
 import static org.junit.Assert.*;
+
+import java.math.BigDecimal;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -25,6 +26,16 @@ public class BalanceSheetIndicatorsTest {
 		String asset = getAsset();
 		
 		assertEquals("924.465.000.000", asset);
+	}
+	
+	@Test
+	public void testGetAssetBigDecimal() {
+		BalanceSheetIndicators balanceSheetIndicators = new BalanceSheetIndicators();
+		
+		BigDecimal asset = balanceSheetIndicators.getAssetBigDecimal();
+		
+		assertNotNull(asset);
+		assertEquals("924465000000", asset.toString());
 	}
 
 	@Test

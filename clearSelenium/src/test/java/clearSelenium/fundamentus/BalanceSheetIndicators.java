@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 import org.openqa.selenium.WebElement;
 
+import brokerDealer.util.MathUtils;
 import lombok.Data;
 
 @Data
@@ -20,6 +21,16 @@ public class BalanceSheetIndicators {
 	public static String getAsset() {
 		WebElement dividendYieldWebElement = getElementByXPath(ASSET_XPATH);
 		return dividendYieldWebElement.getText();
+	}
+	
+	public BigDecimal getAssetBigDecimal() {
+		String asset = getAsset();
+		
+		String assetWithoutDots = MathUtils.removeDots(asset);
+		
+		this.aAsset = new BigDecimal(assetWithoutDots);
+		
+		return this.aAsset;
 	}
 	
 	/**
