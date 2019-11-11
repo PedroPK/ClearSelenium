@@ -1,10 +1,12 @@
 package brokerDealer.util;
 
-import static org.junit.Assert.*;
+import static brokerDealer.util.MathUtils.removeDots;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class UtilMathTest {
@@ -302,5 +304,43 @@ public class UtilMathTest {
 		assertNotNull(result);
 		assertEquals(BigDecimal.valueOf(100).negate(), result);
 	}
-
+	
+	@Test
+	public void testRemoveDotsFromNull() {
+		// Arrange
+		String numberWithDots = null;
+		
+		//Act
+		String numberWithoutDots = removeDots(numberWithDots);
+		
+		// Assert
+		assertFalse(numberWithoutDots.contains("."));
+	}
+	
+	@Test
+	public void testRemoveDotsFromEmptyString() {
+		// Arrange
+		String numberWithDots = "";
+		
+		//Act
+		String numberWithoutDots = removeDots(numberWithDots);
+		
+		// Assert
+		assertFalse(numberWithoutDots.contains("."));
+	}
+	
+	@Test
+	public void testRemoveDots() {
+		// Arrange
+		String numberWithDots = "6.108.130.000";
+		
+		//Act
+		String numberWithoutDots = removeDots(numberWithDots);
+		
+		// Assert
+		assertFalse(numberWithoutDots.contains("."));
+		
+		assertEquals("6108130000", numberWithoutDots);
+	}
+	
 }

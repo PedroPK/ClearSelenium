@@ -32,4 +32,13 @@ public class MathUtils {
 		return result;
 	}
 	
+	public static String removeDots( String pStringWithDots ) {
+		if ( pStringWithDots != null ) {
+			return pStringWithDots.replace(".", "");
+		} else {
+			return "";
+		}
+		
+	}
+	
 }
