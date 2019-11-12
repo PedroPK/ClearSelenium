@@ -41,4 +41,25 @@ public class MathUtils {
 		
 	}
 	
+	public static String replaceCommasForDots( String pStringWithCommas ) {
+		if ( pStringWithCommas != null ) {
+			return pStringWithCommas.replace(",", ".");
+		} else {
+			return "";
+		}
+	}
+	
+	public static String convertBrazilianCurrencyToBigDecimalCompatible( String pStringCurrencyBrazilianReais ) {
+		if ( pStringCurrencyBrazilianReais != null ) {
+			return 
+				replaceCommasForDots( 
+					removeDots(
+						pStringCurrencyBrazilianReais
+					) 
+				);
+		} else {
+			return "";
+		}
+	}
+	
 }

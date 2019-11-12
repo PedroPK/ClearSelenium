@@ -1,15 +1,16 @@
 package brokerDealer.util;
 
-import static brokerDealer.util.MathUtils.removeDots;
+import static brokerDealer.util.MathUtils.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 
 import org.junit.Test;
 
-public class UtilMathTest {
+public class MathUtilTest {
 	
 	@Test
 	public void testGetBigDecimalFromInteger_Zero() {
@@ -341,6 +342,81 @@ public class UtilMathTest {
 		assertFalse(numberWithoutDots.contains("."));
 		
 		assertEquals("6108130000", numberWithoutDots);
+	}
+	
+	@Test
+	public void testReplaceCommasForDots_100_comma_00() {
+		// Arrange
+		String numberWithDots = "100,00";
+		
+		//Act
+		String numberWithoutDots = replaceCommasForDots(numberWithDots);
+		
+		// Assert
+		assertFalse(numberWithoutDots.contains(","));
+		assertTrue(numberWithoutDots.contains("."));
+		
+		assertEquals("100.00", numberWithoutDots);
+	}
+	
+	@Test
+	public void testReplaceCommasForDots_1000_comma_00() {
+		// Arrange
+		String numberWithDots = "1000,00";
+		
+		//Act
+		String numberWithoutDots = replaceCommasForDots(numberWithDots);
+		
+		// Assert
+		assertFalse(numberWithoutDots.contains(","));
+		assertTrue(numberWithoutDots.contains("."));
+		
+		assertEquals("1000.00", numberWithoutDots);
+	}
+	
+	@Test
+	public void testReplaceCommasForDots_1_dot_000_comma_00() {
+		// Arrange
+		String numberWithDots = "1.000,00";
+		
+		//Act
+		String numberWithoutDots = replaceCommasForDots(numberWithDots);
+		
+		// Assert
+		assertFalse(numberWithoutDots.contains(","));
+		assertTrue(numberWithoutDots.contains("."));
+		
+		assertEquals("1.000.00", numberWithoutDots);
+	}
+	
+	@Test
+	public void testConvertBrazilianCurrencyToBigDecimalCompatible_1_dot_000_comma_00() {
+		// Arrange
+		String numberInBrazilianCurrency = "1.000,00";
+		
+		//Act
+		String numberBigDecimalCompatible = convertBrazilianCurrencyToBigDecimalCompatible(numberInBrazilianCurrency);
+		
+		// Assert
+		assertFalse(numberBigDecimalCompatible.contains(","));
+		assertTrue(numberBigDecimalCompatible.contains("."));
+		
+		assertEquals("1000.00", numberBigDecimalCompatible);
+	}
+	
+	@Test
+	public void testConvertBrazilianCurrencyToBigDecimalCompatible_1_00_comma_00() {
+		// Arrange
+		String numberInBrazilianCurrency = "100,00";
+		
+		//Act
+		String numberBigDecimalCompatible = convertBrazilianCurrencyToBigDecimalCompatible(numberInBrazilianCurrency);
+		
+		// Assert
+		assertFalse(numberBigDecimalCompatible.contains(","));
+		assertTrue(numberBigDecimalCompatible.contains("."));
+		
+		assertEquals("100.00", numberBigDecimalCompatible);
 	}
 	
 }
