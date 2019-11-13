@@ -11,18 +11,18 @@ public class FilesFoldersUtil {
 	
 	public static String getRelativePathToSrcTestResourceFolder() {
 		String relativePath = 
-			getFolderSeparator() + "src" + 
-			getFolderSeparator() + "test" + 
-			getFolderSeparator() + "resources" + 
+			getFolderSeparator()	+ "src" + 
+			getFolderSeparator()	+ "test" + 
+			getFolderSeparator()	+ "resources" + 
 			getFolderSeparator();
 		return relativePath;
 	}
 	
 	public static String getRelativePathToSrcMainResourceFolder() {
 		String relativePath = 
-			getFolderSeparator() + "src" + 
-			getFolderSeparator()+ "main" + 
-			getFolderSeparator() + "resources" + 
+			getFolderSeparator()	+ "src" + 
+			getFolderSeparator()	+ "main" + 
+			getFolderSeparator()	+ "resources" + 
 			getFolderSeparator();
 		return relativePath;
 	}

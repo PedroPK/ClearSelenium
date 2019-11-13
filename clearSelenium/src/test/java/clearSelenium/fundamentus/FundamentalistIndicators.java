@@ -30,6 +30,8 @@ public class FundamentalistIndicators {
 		return dividendYieldWebElement.getText();
 	}
 	
+	
+	
 	/**
 	 * Preço sobre Valor Patrimonial
 	 * 
@@ -301,5 +303,7 @@ public class FundamentalistIndicators {
 		WebElement dividendYieldWebElement = getElementByXPath(GROSS_DEBT_OVER_EQUITY_XPATH);
 		return dividendYieldWebElement.getText();
 	}
+	
+	
 	
 }
