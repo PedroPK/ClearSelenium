@@ -9,6 +9,10 @@ public class FilesFoldersUtil {
 	
 	public static final String TEST_XLSX_FILENAME = "test.xlsx";
 	
+	public static String getConfigPropertiesFilePath() {
+		return "config.properties";
+	}
+	
 	public static String getRelativePathToSrcTestResourceFolder() {
 		String relativePath = 
 			getFolderSeparator()	+ "src" + 
