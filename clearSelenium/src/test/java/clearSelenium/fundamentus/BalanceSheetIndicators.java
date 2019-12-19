@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import org.openqa.selenium.WebElement;
 
-import brokerDealer.util.MathUtils;
+import static brokerDealer.util.MathUtils.*;
 import lombok.Data;
 
 @Data
@@ -26,7 +26,7 @@ public class BalanceSheetIndicators {
 	public BigDecimal getAssetBigDecimal() {
 		String asset = getAsset();
 		
-		String assetWithoutDots = MathUtils.removeDots(asset);
+		String assetWithoutDots = convertBrazilianCurrencyToBigDecimalCompatible(asset);
 		
 		this.aAsset = new BigDecimal(assetWithoutDots);
 		
@@ -37,11 +37,21 @@ public class BalanceSheetIndicators {
 	 * Disponibilidades			-			Dinheiro Disponível
 	 */
 	public static final		String		AVAILABLE_CASH_XPATH			=	"/html/body/div[1]/div[2]/table[4]/tbody/tr[3]/td[2]/span";
-	private					BigDecimal	aCash;
+	private					BigDecimal	aAvailableCash;
 	
 	public static String getAvailableCash() {
 		WebElement dividendYieldWebElement = getElementByXPath(AVAILABLE_CASH_XPATH);
 		return dividendYieldWebElement.getText();
+	}
+	
+	public BigDecimal getAvailableCashBigDecimal() {
+		String availableCash = getAvailableCash();
+		
+		String availableCashBigDecimalCompatible = convertBrazilianCurrencyToBigDecimalCompatible(availableCash);
+		
+		this.aAvailableCash = new BigDecimal(availableCashBigDecimalCompatible);
+		
+		return this.aAvailableCash;
 	}
 	
 	/**
