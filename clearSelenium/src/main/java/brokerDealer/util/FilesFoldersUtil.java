@@ -7,6 +7,13 @@ import java.io.InputStream;
 
 public class FilesFoldersUtil {
 	
+	private static final String TEST = "test";
+	private static final String RESOURCES = "resources";
+	private static final String MAIN = "main";
+	private static final String SRC = "src";
+	private static final String FILE_SEPARATOR = "file.separator";
+	private static final String OS_NAME = "os.name";
+	private static final String USER_DIR = "user.dir";
 	public static final String TEST_XLSX_FILENAME = "test.xlsx";
 	
 	public static String getConfigPropertiesFilePath() {
@@ -15,34 +22,34 @@ public class FilesFoldersUtil {
 	
 	public static String getRelativePathToSrcTestResourceFolder() {
 		String relativePath = 
-			getFolderSeparator()	+ "src" + 
-			getFolderSeparator()	+ "test" + 
-			getFolderSeparator()	+ "resources" + 
+			getFolderSeparator()	+ SRC + 
+			getFolderSeparator()	+ TEST + 
+			getFolderSeparator()	+ RESOURCES + 
 			getFolderSeparator();
 		return relativePath;
 	}
 	
 	public static String getRelativePathToSrcMainResourceFolder() {
 		String relativePath = 
-			getFolderSeparator()	+ "src" + 
-			getFolderSeparator()	+ "main" + 
-			getFolderSeparator()	+ "resources" + 
+			getFolderSeparator()	+ SRC + 
+			getFolderSeparator()	+ MAIN + 
+			getFolderSeparator()	+ RESOURCES + 
 			getFolderSeparator();
 		return relativePath;
 	}
 	
 	public static String getFolderSeparator() {
-		String folderSeparator = System.getProperty("file.separator");
+		String folderSeparator = System.getProperty(FILE_SEPARATOR);
 		return folderSeparator;
 	}
 	
 	public static String getPathDirectory() {
-		String path = System.getProperty("user.dir");
+		String path = System.getProperty(USER_DIR);
 		return path;
 	}
 	
 	public static String getOperationalSystemName() {
-		return System.getProperty("os.name");
+		return System.getProperty(OS_NAME);
 	}
 	
 	public static String getFullPathToSrcTestResourceFolder() {
@@ -69,9 +76,5 @@ public class FilesFoldersUtil {
 		
 		return inputStream;
 	}
-	
-	
-	
-	
 	
 }
