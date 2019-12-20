@@ -1,5 +1,6 @@
 package brokerDealer.util;
 
+import static brokerDealer.util.FilesFoldersUtil.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -12,8 +13,6 @@ import java.io.InputStream;
 
 import org.junit.Ignore;
 import org.junit.Test;
-
-import static brokerDealer.util.FilesFoldersUtil.*;
 
 
 public class FilesFoldersUtilTest {
@@ -73,6 +72,24 @@ public class FilesFoldersUtilTest {
 			getFolderSeparator()		+		CONFIG_PROPERTIES;
 			
 		assertTrue(response.endsWith(correctResponse));
+	}
+	
+	@Test
+	public void testGetConfigPropertiesFile_NotNull() {
+		// Arrange + Act
+		File response = getConfigPropertiesFile();
+		
+		// Assert
+		assertNotNull(response);
+	}
+	
+	@Test
+	public void testGetConfigPropertiesFile_Path() {
+		// Arrange + Act
+		String response = getConfigPropertiesFile().getPath();
+		
+		// Assert
+		assertEquals(getConfigPropertiesFilePath(), response);
 	}
 	
 	@Ignore

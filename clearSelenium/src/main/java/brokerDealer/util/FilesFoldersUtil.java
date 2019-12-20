@@ -17,6 +17,14 @@ public class FilesFoldersUtil {
 	private static final String USER_DIR = "user.dir";
 	public static final String TEST_XLSX_FILENAME = "test.xlsx";
 	
+	public static FileInputStream getFileInputStream() {
+		return null;
+	}
+	
+	public static File getConfigPropertiesFile() {
+		return new File(getConfigPropertiesFilePath());
+	}
+	
 	public static String getConfigPropertiesFilePath() {
 		return getRelativePathToSrcMainResourceFolder() + CONFIG_PROPERTIES;
 	}
