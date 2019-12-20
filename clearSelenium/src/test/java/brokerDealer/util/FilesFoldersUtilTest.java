@@ -57,7 +57,7 @@ public class FilesFoldersUtilTest {
 		String response = getConfigPropertiesFilePath();
 		
 		// Assert
-		assertTrue(response.endsWith("config.properties"));
+		assertTrue(response.endsWith(CONFIG_PROPERTIES));
 	}
 	
 	@Test
@@ -66,7 +66,13 @@ public class FilesFoldersUtilTest {
 		String response = getConfigPropertiesFilePath();
 		
 		// Assert
-		assertTrue(response.endsWith("/src/main/resources/config.properties"));
+		String correctResponse = 
+			getFolderSeparator()		+		SRC						+
+			getFolderSeparator()		+		MAIN					+
+			getFolderSeparator()		+		RESOURCES				+
+			getFolderSeparator()		+		CONFIG_PROPERTIES;
+			
+		assertTrue(response.endsWith(correctResponse));
 	}
 	
 	@Ignore
