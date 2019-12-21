@@ -67,7 +67,7 @@ public class BalanceSheetIndicatorsTest {
 	}
 
 	@Test
-	public void testGetquityPETR4() {
+	public void testGetEquityPETR4() {
 		String equity = getEquity();
 		
 		assertEquals("306.252.000.000", equity);

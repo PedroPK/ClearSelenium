@@ -8,13 +8,27 @@ import java.io.InputStream;
 public class FilesFoldersUtil {
 	
 	private static final String TEST				= "test";
-	private static final String RESOURCES			= "resources";
-	private static final String MAIN				= "main";
-	private static final String SRC					= "src";
+	public	static final String RESOURCES			= "resources";
+	public	static final String MAIN				= "main";
+	public	static final String SRC					= "src";
 	private static final String FILE_SEPARATOR		= "file.separator";
 	private static final String OS_NAME				= "os.name";
 	private static final String USER_DIR			= "user.dir";
 	public	static final String TEST_XLSX_FILENAME	= "test.xlsx";
+	public static final String CONFIG_PROPERTIES = "config.properties";
+	
+	
+	public static FileInputStream getFileInputStream() {
+		return null;
+	}
+	
+	public static File getConfigPropertiesFile() {
+		return new File(getConfigPropertiesFilePath());
+	}
+	
+	public static String getConfigPropertiesFilePath() {
+		return getRelativePathToSrcMainResourceFolder() + CONFIG_PROPERTIES;
+	}
 	
 	public static String getRelativePathToSrcTestResourceFolder() {
 		String relativePath = 
