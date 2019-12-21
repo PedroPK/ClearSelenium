@@ -1,7 +1,10 @@
 package brokerDealer.util;
 
+import static brokerDealer.util.FilesFoldersUtil.getFullPathToSrcMainResourceFolder;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -18,8 +21,16 @@ public class FilesFoldersUtil {
 	public static final String CONFIG_PROPERTIES = "config.properties";
 	
 	
-	public static FileInputStream getFileInputStream() {
-		return null;
+	public static FileInputStream getConfigPropertiesFileInputStream() {
+		FileInputStream response = null;
+		try {
+			response = new FileInputStream(getConfigPropertiesFilePath());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return response;
 	}
 	
 	public static File getConfigPropertiesFile() {
@@ -27,7 +38,7 @@ public class FilesFoldersUtil {
 	}
 	
 	public static String getConfigPropertiesFilePath() {
-		return getRelativePathToSrcMainResourceFolder() + CONFIG_PROPERTIES;
+		return getFullPathToSrcMainResourceFolder() + CONFIG_PROPERTIES;
 	}
 	
 	public static String getRelativePathToSrcTestResourceFolder() {
@@ -64,6 +75,11 @@ public class FilesFoldersUtil {
 	
 	public static String getFullPathToSrcTestResourceFolder() {
 		String fullPath = getPathDirectory() + getRelativePathToSrcTestResourceFolder();
+		return fullPath;
+	}
+	
+	public static String getFullPathToSrcMainResourceFolder() {
+		String fullPath = getPathDirectory() + getRelativePathToSrcMainResourceFolder();
 		return fullPath;
 	}
 	

@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -90,6 +91,33 @@ public class FilesFoldersUtilTest {
 		
 		// Assert
 		assertEquals(getConfigPropertiesFilePath(), response);
+	}
+	
+	@Test
+	public void testGetConfigPropertiesFileInputStream() {
+		// Arrange + Act
+		FileInputStream response = getConfigPropertiesFileInputStream();
+		
+		// Assert
+		assertNotNull(response);
+	}
+	
+	@Test
+	public void testGetPathDirectory_NotNull() {
+		// Arrange + Act
+		String response = getPathDirectory();
+		
+		// Assert
+		assertNotNull(response);
+	}
+	
+	@Test
+	public void testGetFullPathToSrcMainResourceFolder() {
+		// Arrange + Act
+		String response = getFullPathToSrcMainResourceFolder();
+		
+		// Assert
+		assertNotNull(response);
 	}
 	
 	@Ignore
