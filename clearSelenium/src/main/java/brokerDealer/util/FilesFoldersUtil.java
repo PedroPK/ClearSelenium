@@ -7,14 +7,14 @@ import java.io.InputStream;
 
 public class FilesFoldersUtil {
 	
-	private static final String TEST = "test";
-	private static final String RESOURCES = "resources";
-	private static final String MAIN = "main";
-	private static final String SRC = "src";
-	private static final String FILE_SEPARATOR = "file.separator";
-	private static final String OS_NAME = "os.name";
-	private static final String USER_DIR = "user.dir";
-	public static final String TEST_XLSX_FILENAME = "test.xlsx";
+	private static final String TEST				= "test";
+	private static final String RESOURCES			= "resources";
+	private static final String MAIN				= "main";
+	private static final String SRC					= "src";
+	private static final String FILE_SEPARATOR		= "file.separator";
+	private static final String OS_NAME				= "os.name";
+	private static final String USER_DIR			= "user.dir";
+	public	static final String TEST_XLSX_FILENAME	= "test.xlsx";
 	
 	public static String getRelativePathToSrcTestResourceFolder() {
 		String relativePath = 
