@@ -1,12 +1,12 @@
 package brokerDealer.util;
 
-import static brokerDealer.util.FilesFoldersUtil.getFullPathToSrcMainResourceFolder;
-
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 public class FilesFoldersUtil {
 	
@@ -20,6 +20,24 @@ public class FilesFoldersUtil {
 	public	static final String TEST_XLSX_FILENAME	= "test.xlsx";
 	public static final String CONFIG_PROPERTIES = "config.properties";
 	
+	
+	public static String readLineConfigProperties() {
+		Scanner scanner = new Scanner(getConfigPropertiesFileInputStream());
+		
+		String line = null;
+		
+		if ( scanner.hasNextLine() ) {
+			line = scanner.nextLine();
+		}
+		
+		scanner.close();
+		
+		return line;
+	}
+	
+	public static BufferedReader getConfigPropertiesBufferedReader() {
+		return null;
+	}
 	
 	public static FileInputStream getConfigPropertiesFileInputStream() {
 		FileInputStream response = null;

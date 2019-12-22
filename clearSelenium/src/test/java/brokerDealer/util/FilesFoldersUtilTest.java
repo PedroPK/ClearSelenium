@@ -120,6 +120,52 @@ public class FilesFoldersUtilTest {
 		assertNotNull(response);
 	}
 	
+	@Test
+	public void testReadLineConfigProperties_NotNull() {
+		// Arrange + Act
+		String line = readLineConfigProperties();
+		
+		// Assert
+		assertNotNull(line);
+	}
+	
+	@Test
+	public void testReadLineConfigProperties_NotEmpty() {
+		// Arrange + Act
+		String line = readLineConfigProperties();
+		
+		// Assert
+		assertFalse(line.isEmpty());
+	}
+	
+	@Test
+	public void testReadLineConfigProperties_NotBlank() {
+		// Arrange + Act
+		String line = readLineConfigProperties();
+		
+		// Assert
+		assertFalse(line.isBlank());
+	}
+	
+	@Test
+	public void testReadLineConfigProperties_FirstLine() {
+		// Arrange + Act
+		String line = readLineConfigProperties();
+		
+		// Assert
+		assertEquals("FirstLine=1st", line);
+	}
+	
+	@Test
+	public void testReadLineConfigProperties_SecondLine() {
+		// Arrange + Act
+		String fistLine = readLineConfigProperties();
+		String secondLine = readLineConfigProperties();
+		
+		// Assert
+		assertEquals("SecondLine=2nd", secondLine);
+	}
+	
 	@Ignore
 	@Test
 	public void testCreateXlsxFileInputStream() {
