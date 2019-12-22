@@ -122,8 +122,11 @@ public class FilesFoldersUtilTest {
 	
 	@Test
 	public void testReadLineConfigProperties_NotNull() {
-		// Arrange + Act
-		String line = readLineConfigProperties();
+		// Arrange
+		FilesFoldersUtil filesUtil = new FilesFoldersUtil();
+		
+		// Act
+		String line = filesUtil.readLineConfigProperties();
 		
 		// Assert
 		assertNotNull(line);
@@ -131,8 +134,11 @@ public class FilesFoldersUtilTest {
 	
 	@Test
 	public void testReadLineConfigProperties_NotEmpty() {
-		// Arrange + Act
-		String line = readLineConfigProperties();
+		// Arrange
+		FilesFoldersUtil filesUtil = new FilesFoldersUtil();
+		
+		// Act
+		String line = filesUtil.readLineConfigProperties();
 		
 		// Assert
 		assertFalse(line.isEmpty());
@@ -140,8 +146,11 @@ public class FilesFoldersUtilTest {
 	
 	@Test
 	public void testReadLineConfigProperties_NotBlank() {
-		// Arrange + Act
-		String line = readLineConfigProperties();
+		// Arrange
+		FilesFoldersUtil filesUtil = new FilesFoldersUtil();
+		
+		// Act
+		String line = filesUtil.readLineConfigProperties();
 		
 		// Assert
 		assertFalse(line.isBlank());
@@ -149,8 +158,11 @@ public class FilesFoldersUtilTest {
 	
 	@Test
 	public void testReadLineConfigProperties_FirstLine() {
-		// Arrange + Act
-		String line = readLineConfigProperties();
+		// Arrange
+		FilesFoldersUtil filesUtil = new FilesFoldersUtil();
+		
+		// Act
+		String line = filesUtil.readLineConfigProperties();
 		
 		// Assert
 		assertEquals("FirstLine=1st", line);
@@ -158,9 +170,12 @@ public class FilesFoldersUtilTest {
 	
 	@Test
 	public void testReadLineConfigProperties_SecondLine() {
-		// Arrange + Act
-		String fistLine = readLineConfigProperties();
-		String secondLine = readLineConfigProperties();
+		// Arrange
+		FilesFoldersUtil filesUtil = new FilesFoldersUtil();
+		
+		// Act
+		String fistLine		= filesUtil.readLineConfigProperties();		System.out.println(fistLine);
+		String secondLine	= filesUtil.readLineConfigProperties();
 		
 		// Assert
 		assertEquals("SecondLine=2nd", secondLine);
