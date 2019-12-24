@@ -22,7 +22,6 @@ public class FilesFoldersUtil {
 	
 	private 				Scanner		aScanner;
 	
-	
 	public String readLineConfigProperties() {
 		if ( aScanner == null ) {
 			aScanner	= new Scanner(getConfigPropertiesFileInputStream());
