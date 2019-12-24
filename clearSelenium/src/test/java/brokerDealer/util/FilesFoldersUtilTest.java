@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -194,6 +195,32 @@ public class FilesFoldersUtilTest {
 		
 		// Assert
 		assertEquals("ThirdLine=3th", thirdLine);
+	}
+	
+	@Test
+	public void testLoadProperties_NotNull() {
+		// Arrange
+		FilesFoldersUtil filesUtil = new FilesFoldersUtil();
+		
+		// Act
+		Properties properties = filesUtil.loadProperties();
+		
+		
+		// Assert
+		assertNotNull(properties);
+	}
+	
+	@Test
+	public void testLoadProperties_NotEmpty() {
+		// Arrange
+		FilesFoldersUtil filesUtil = new FilesFoldersUtil();
+		
+		// Act
+		Properties properties = filesUtil.loadProperties();
+		
+		
+		// Assert
+		assertFalse(properties.isEmpty());
 	}
 	
 	@Ignore

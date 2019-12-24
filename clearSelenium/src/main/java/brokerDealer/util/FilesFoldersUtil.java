@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class FilesFoldersUtil {
@@ -20,7 +21,23 @@ public class FilesFoldersUtil {
 	public	static final	String TEST_XLSX_FILENAME	= "test.xlsx";
 	public	static final	String CONFIG_PROPERTIES	= "config.properties";
 	
-	private 				Scanner		aScanner;
+	private					Scanner		aScanner;
+	private					Properties	aProperties;
+	
+	public Properties loadProperties() {
+		if ( this.aProperties == null ) {
+			this.aProperties = new Properties();
+		}
+		
+		try {
+			this.aProperties.load(getConfigPropertiesFileInputStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return this.aProperties;
+	}
 	
 	public String readLineConfigProperties() {
 		if ( aScanner == null ) {
