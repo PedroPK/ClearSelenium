@@ -213,10 +213,8 @@ public class FilesFoldersUtilTest {
 	@Test
 	public void testLoadProperties_NotEmpty() {
 		// Arrange
-		FilesFoldersUtil filesUtil = new FilesFoldersUtil();
-		
 		// Act
-		Properties properties = filesUtil.loadProperties();
+		Properties properties = FilesFoldersUtil.loadProperties();
 		
 		
 		// Assert

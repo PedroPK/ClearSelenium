@@ -22,21 +22,21 @@ public class FilesFoldersUtil {
 	public	static final	String CONFIG_PROPERTIES	= "config.properties";
 	
 	private					Scanner		aScanner;
-	private					Properties	aProperties;
+	private	static			Properties	aProperties;
 	
-	public Properties loadProperties() {
-		if ( this.aProperties == null ) {
-			this.aProperties = new Properties();
+	public static Properties loadProperties() {
+		if ( aProperties == null ) {
+			aProperties = new Properties();
 		}
 		
 		try {
-			this.aProperties.load(getConfigPropertiesFileInputStream());
+			aProperties.load(getConfigPropertiesFileInputStream());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return this.aProperties;
+		return aProperties;
 	}
 	
 	public String readLineConfigProperties() {
