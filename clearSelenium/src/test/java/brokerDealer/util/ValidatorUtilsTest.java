@@ -74,9 +74,4 @@ public class ValidatorUtilsTest {
 		assertTrue(result);
 	}
 
-	@Test
-	public void testIsValidCPFBoolean() {
-		fail("Not yet implemented");
-	}
-
 }
