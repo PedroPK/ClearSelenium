@@ -73,5 +73,29 @@ public class ValidatorUtilsTest {
 		// Assert
 		assertTrue(result);
 	}
+	
+	@Test
+	public void testIsValidCPF_unvalidUnformated() {
+		// Arrange
+		String validCPF = "12190441057";
+		
+		// Act
+		boolean result = this.aValidator.isValidCPF(validCPF);
+		
+		// Assert
+		assertTrue(result);
+	}
+	
+	@Test
+	public void testIsValidCPF_unvalidFormated() {
+		// Arrange
+		String validCPF = "121.904.410-57";
+		
+		// Act
+		boolean result = this.aValidator.isValidCPF(validCPF);
+		
+		// Assert
+		assertTrue(result);
+	}
 
 }
