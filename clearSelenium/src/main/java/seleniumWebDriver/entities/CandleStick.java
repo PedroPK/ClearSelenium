@@ -19,4 +19,28 @@ public class CandleStick {
 	private final LocalDateTime		aBeginningLocalDateTime;
 	private final LocalDateTime		aEndingLocalDateTime;
 	
+	public BigDecimal getaOpeningValue() {
+		return aOpeningValue;
+	}
+	public BigDecimal getaClosingValue() {
+		return aClosingValue;
+	}
+	public BigDecimal getaMinimumValue() {
+		return aMinimumValue;
+	}
+	public BigDecimal getaMaximumValue() {
+		return aMaximumValue;
+	}
+	public BigDecimal getaVolumeNegotiation() {
+		return aVolumeNegotiation;
+	}
+	public LocalDateTime getaBeginningLocalDateTime() {
+		return aBeginningLocalDateTime;
+	}
+	public LocalDateTime getaEndingLocalDateTime() {
+		return aEndingLocalDateTime;
+	}
+	
+	
+	
 }

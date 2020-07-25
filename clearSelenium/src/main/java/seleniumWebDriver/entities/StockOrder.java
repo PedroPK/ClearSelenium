@@ -15,7 +15,7 @@ import lombok.Data;
 import seleniumWebDriver.entities.enums.OrderType;
 
 @Entity
-@Data
+//@Data
 public class StockOrder {
 	
 	@Id
@@ -111,5 +111,43 @@ public class StockOrder {
 	public boolean isSellOrder() {
 		return this.getType() == OrderType.SELL;
 	}
+
+	public OrderType getType() {
+		return type;
+	}
+
+	public void setType(OrderType type) {
+		this.type = type;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
+
+	public String getTicker() {
+		return ticker;
+	}
+
+	public void setTicker(String ticker) {
+		this.ticker = ticker;
+	}
+	
+	
 	
 }
