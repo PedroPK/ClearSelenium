@@ -1,23 +1,39 @@
 package brokerDealer.util;
 
-public class PropertiesUtils implements PropertiesUtilsInterface {
+import java.io.File;
+import java.util.Properties;
 
+public class	PropertiesUtils implements PropertiesUtilsInterface {
+	
+	private		Properties		aProperties;
+	
+	public PropertiesUtils() {
+		this.aProperties	=	FilesFoldersUtil.loadProperties();
+	}
+	
 	@Override
 	public String getCPF() {
-		// TODO Auto-generated method stub
-		return null;
+		return (String) this.aProperties.get("cpf");
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
+		return (String) this.aProperties.get("password");
 	}
 
 	@Override
 	public String getBirthdate() {
-		// TODO Auto-generated method stub
-		return null;
+		return (String) this.aProperties.get("birthDay");
 	}
 
+	@Override
+	public boolean isPropertiesLoaded() {
+		boolean		response	=	false;
+		if ( this.aProperties	!= null		&&		!this.aProperties.isEmpty() ) {
+					response	=	true;
+		}
+		
+		return response;
+	}
+	
 }

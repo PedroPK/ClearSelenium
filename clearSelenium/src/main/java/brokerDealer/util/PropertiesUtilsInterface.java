@@ -8,4 +8,6 @@ public interface PropertiesUtilsInterface {
 	
 	public String getBirthdate();
 	
+	public boolean isPropertiesLoaded();
+	
 }
