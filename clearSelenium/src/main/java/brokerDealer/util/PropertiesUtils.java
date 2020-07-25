@@ -1,7 +1,8 @@
 package brokerDealer.util;
 
-import java.io.File;
 import java.util.Properties;
+
+import br.com.caelum.stella.format.CPFFormatter;
 
 public class	PropertiesUtils implements PropertiesUtilsInterface {
 	
@@ -14,6 +15,15 @@ public class	PropertiesUtils implements PropertiesUtilsInterface {
 	@Override
 	public String getCPF() {
 		return (String) this.aProperties.get("cpf");
+	}
+	
+	public String getFormatedCPF() {
+		String			unformatedCPF	=	(String) this.aProperties.get("cpf");
+		
+		CPFFormatter	cpfFormatter	=	new		CPFFormatter();
+		String			formatedCPF		=	cpfFormatter.format(unformatedCPF);
+		
+		return			formatedCPF; 
 	}
 
 	@Override

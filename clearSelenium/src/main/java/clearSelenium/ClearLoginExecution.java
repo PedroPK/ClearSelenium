@@ -5,10 +5,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import brokerDealer.util.FilesFoldersUtil;
+import brokerDealer.util.PropertiesUtils;
 
 public class ClearLoginExecution {
 	
-	private static ClearLogin clearLogin;
+	private static	ClearLogin			clearLogin;
+	private			PropertiesUtils		aPropertiesUtils;
 	
 	@BeforeClass
 	public static void initializeClearLogin() {
@@ -17,10 +19,12 @@ public class ClearLoginExecution {
 	
 	@Test
 	public void login() {
-		FilesFoldersUtil.loadProperties();
+		this.aPropertiesUtils	=	new		PropertiesUtils();
+		
+		String	cpf		=	this.aPropertiesUtils.getCPF();
 		
 		clearLogin
-			.fillCPF("NNN.NNN.NNN-NN")
+			.fillCPF(cpf)
 			.fillPassword("XXXXXX")		// TODO Delete this value before Commit
 			.fillBirthday("DD/MM/YYYY")
 			.pressAccessMyAccountSubmitButton()
@@ -32,12 +36,6 @@ public class ClearLoginExecution {
 			
 			.clickSpanByTickerContent("KROT3F")
 		;	
-	}
-	
-	public static String getCPF() {
-		String response = "123.456.789-10";
-		
-		return response;
 	}
 	
 	@AfterClass
