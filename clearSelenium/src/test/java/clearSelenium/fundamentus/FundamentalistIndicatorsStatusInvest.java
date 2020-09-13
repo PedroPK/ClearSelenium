@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import lombok.Data;
 
 @Data
-public abstract class FundamentalistIndicators {
+public class FundamentalistIndicatorsStatusInvest {
 	
 	/************************************************************************/
 	 // First Column
@@ -22,13 +22,13 @@ public abstract class FundamentalistIndicators {
 	 * O P/L é o número de anos que se levaria para reaver o capital aplicado na compra de uma ação, 
 	 * através do recebimento do lucro gerado pela empresa, considerando que esses lucros permaneçam constantes.
 	 */
+	public static final		String			PRICE_OVER_PROFIT_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[2]/td[4]/span";
 	private					BigDecimal		aPriceOverProfit;
 	
-	public String getPriceOverProfit() {
-		WebElement dividendYieldWebElement = getElementByXPath( getPriceOverProfit_XPath() );
+	public static String getPriceOverProfit() {
+		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_PROFIT_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getPriceOverProfit_XPath();
 	
 	
 	
@@ -38,13 +38,13 @@ public abstract class FundamentalistIndicators {
 	 * Preço da ação dividido pelo Valor Patrimonial por ação. 
 	 * Informa quanto o mercado está disposto a pagar sobre o Patrimônio Líquido da empresa
 	 */
+	public static final		String			PRICE_OVER_BOOK_VALUE_XPATH		=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[3]/td[4]/span";
 	private					BigDecimal		aPriveOverBookValue;
 	
-	protected String getPriceOverBookValue() {
-		WebElement dividendYieldWebElement = getElementByXPath( getPriceOverBookValue_XPath() );
+	public static String getPriceOverBookValue() {
+		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_BOOK_VALUE_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getPriceOverBookValue_XPath();
 	
 	/**
 	 * Preço sobre EBIT
@@ -52,50 +52,50 @@ public abstract class FundamentalistIndicators {
 	 * Preço da ação dividido pelo EBIT por ação. EBIT é o Lucro antes dos Impostos e Despesas Financeiras. 
 	 * É uma boa aproximação do lucro operacional da empresa.
 	 */
+	public static final		String			PRICE_OVER_EBIT_XPATH				=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[4]/td[4]/span";
 	private					BigDecimal		aPriceOverEBIT;
 	
-	protected String getPriceOverEbit() {
-		WebElement dividendYieldWebElement = getElementByXPath( getPriceOverEBIT_XPath() );
+	public static String getPriceOverEbit() {
+		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_EBIT_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getPriceOverEBIT_XPath();
 	
 	/**
 	 * Price Sales Ratio: Preço da ação dividido pela Receita Líquida por ação
 	 */
+	public static final		String			PRICE_SALES_RATIO_XPATH					=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[5]/td[4]/span";
 	private					BigDecimal		aPriceSalesRatio;
 	
-	protected String getPriceSalesRatio() {
-		WebElement dividendYieldWebElement = getElementByXPath( getPriceSalesRatio_XPath() );
+	public static String getPriceSalesRatio() {
+		WebElement dividendYieldWebElement = getElementByXPath(PRICE_SALES_RATIO_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getPriceSalesRatio_XPath();
 	
 	/**
 	 * Preço sobre Ativos
 	 * 
 	 * Preço da ação dividido pelos Ativos totais por ação.
 	 */
+	public static final		String			PRICE_OVER_ASSETS_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[6]/td[4]/span";
 	private					BigDecimal		aPriceOverAsset;
 	
-	protected String getPriceOverAssets() {
-		WebElement dividendYieldWebElement = getElementByXPath( getPriceOverAssets_XPath() );
+	public static String getPriceOverAssets() {
+		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_ASSETS_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getPriceOverAssets_XPath();
 	
 	/**
 	 * Preço sobre Capital de Giro
 	 * 
 	 * Preço da ação dividido pelo capital de giro por ação. Capital de giro é o Ativo Circulante menos Passivo Circulante
 	 */
+	public static final		String			PRICE_OVER_WORKING_CAPITAL_XPATH	=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[7]/td[4]/span";
 	private					BigDecimal		aPriveOverWorkingCapital;
 	
-	protected String getPriceOverWorkingCapital() {
-		WebElement dividendYieldWebElement = getElementByXPath( getPriceOverWorkingCapital_XPath() );
+	public static String getPriceOverWorkingCapital() {
+		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_WORKING_CAPITAL_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getPriceOverWorkingCapital_XPath();
 	
 	/**
 	 * Preço sobre o Ativo Circulante Líquido
@@ -104,39 +104,38 @@ public abstract class FundamentalistIndicators {
 	 * Ativo Circ. Líq. é obtido subtraindo os ativos circulantes pelas dívidas de curto e longo prazo, ou seja, 
 	 * após o pagamento de todas as dívidas, quanto sobraria dos ativos mais líquidos da empresa (caixa, estoque, etc)
 	 */
+	public static final		String			PRICE_OVER_NET_CURRENT_ASSET_XPATH	=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[8]/td[4]/span";
 	private					BigDecimal		aPriveOverNetCurrentAsset;
 	
-	protected String getPriceOverNetCurretAsset() {
-		WebElement dividendYieldWebElement = getElementByXPath( getPriceOverNetCurrentAsset_XPath() );
+	public static String getPriceOverNetCurretAsset() {
+		WebElement dividendYieldWebElement = getElementByXPath(PRICE_OVER_NET_CURRENT_ASSET_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getPriceOverNetCurrentAsset_XPath();
-	
 	/**
 	 * Dividend Yield
 	 * 
 	 * Dividendo pago por ação dividido pelo preço da ação. É o rendimento gerado para o dono da ação pelo pagamento de dividendos.
 	 */
+	public static final		String			DIVIDEND_YIELD_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[9]/td[4]/span";
 	private					BigDecimal		aDividendYield;
 	
-	protected String getDividendYieldTextValue() {
-		WebElement dividendYieldWebElement = getElementByXPath( getDividentYield_XPath() );
+	public static String getDividendYieldTextValue() {
+		WebElement dividendYieldWebElement = getElementByXPath(DIVIDEND_YIELD_XPATH);
 		
 		String dividendYieldTextValue = dividendYieldWebElement.getText();
 		return dividendYieldTextValue;
 	}
-	protected abstract String getDividentYield_XPath();
 	
 	/**
 	 * Valor da Firma (Enterprise Value dividido pelo EBIT.
 	 */
+	public static final		String			ENTERPRISE_VALUE_OVER_EBIT_XPATH		=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[10]/td[4]/span";
 	private					BigDecimal		aEnterpriseValueOverEBIT;
 	
-	protected String getEnterpriseValueOverEbit() {
-		WebElement dividendYieldWebElement = getElementByXPath( getEnterpriseValueOverEBIT_XPath() );
+	public static String getEnterpriseValueOverEbit() {
+		WebElement dividendYieldWebElement = getElementByXPath(ENTERPRISE_VALUE_OVER_EBIT_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getEnterpriseValueOverEBIT_XPath();
 	
 	/**
 	 * Giro do Ativo
@@ -144,24 +143,24 @@ public abstract class FundamentalistIndicators {
 	 * Receita Líquida dividido por Ativos Totais. 
 	 * Indica a eficiência com a qual a empresa usa seus ativos para gerar vendas
 	 */
+	public static final		String			ASSET_TURNOVER_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[11]/td[4]/span";
 	private					BigDecimal		aAssetTurnover;
 	
-	protected String getAssetTurnover() {
-		WebElement dividendYieldWebElement = getElementByXPath( getAssetTurnover_XPath() );
+	public static String getAssetTurnover() {
+		WebElement dividendYieldWebElement = getElementByXPath(ASSET_TURNOVER_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getAssetTurnover_XPath();
 	
 	/**
 	 * Crescimento da Receita Líquida nos últimos 5 anos
 	 */
+	public static final		String			INCOME_GROWTH_LAST_5_YEARS_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[12]/td[4]/span";
 	private					BigDecimal		aIncomeGrowthLast5Years;
 	
-	protected String getIncomeGrowthLast5Years() {
-		WebElement dividendYieldWebElement = getElementByXPath( getIncomeGrowthLast5Years_XPath() );
+	public static String getIncomeGrowthLast5Years() {
+		WebElement dividendYieldWebElement = getElementByXPath(INCOME_GROWTH_LAST_5_YEARS_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getIncomeGrowthLast5Years_XPath();
 	
 	/************************************************************************/
 	 // Second Column
@@ -171,37 +170,37 @@ public abstract class FundamentalistIndicators {
 	/**
 	 * Lucro por Ação
 	 */
+	public static final		String			PROFIT_PER_ACTION_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[2]/td[6]/span";
 	private					BigDecimal		aProfitPerAction;
 	
-	protected String getProfitPerAction() {
-		WebElement dividendYieldWebElement = getElementByXPath( getProfitPerAction_XPath() );
+	public static String getProfitPerAction() {
+		WebElement dividendYieldWebElement = getElementByXPath(PROFIT_PER_ACTION_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getProfitPerAction_XPath();
 	
 	/**
 	 * Valor Patrimonial por Ação: Valor do Patrimônio Líquido dividido pelo número total de ações.
 	 */
+	public static final		String			BOOK_VALUE_OVER_STOCKS_XPATH				=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[3]/td[6]/span";
 	private					BigDecimal		aBookValueOverStocks;
 	
-	protected String getBookValueOverStocks() {
-		WebElement dividendYieldWebElement = getElementByXPath( getBookValueOverStocks_XPath() );
+	public static String getBookValueOverStocks() {
+		WebElement dividendYieldWebElement = getElementByXPath(BOOK_VALUE_OVER_STOCKS_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getBookValueOverStocks_XPath();
 	
 	/**
 	 * Margem Bruta
 	 * 
 	 * Lucro Bruto dividido pela Receita Líquida: Indica a porcentagem de cada R$1 de venda que sobrou após o custo dos produtos/serviços vendidos
 	 */
+	public static final		String			GROSS_MARGIN_XPATH							=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[4]/td[6]/span";
 	private					BigDecimal		aGrossMargin;
 	
-	protected String getGrossMargin() {
-		WebElement dividendYieldWebElement = getElementByXPath( getGrossMargin_XPath() );
+	public static String getGrossMargin() {
+		WebElement dividendYieldWebElement = getElementByXPath(GROSS_MARGIN_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getGrossMargin_XPath();
 	
 	/**
 	 * Margem EBIT
@@ -212,13 +211,14 @@ public abstract class FundamentalistIndicators {
 	 * 
 	 * Operational Margin		-		Operation income margin		-		Operating Profit Margin		-		Return of Sales (ROS)
 	 */
+	public static final		String			EBIT_MARGIN_XPATH							=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[5]/td[6]/span";
 	private					BigDecimal		aEbitMargin;
 	
-	protected String getEbitMargin() {
-		WebElement dividendYieldWebElement = getElementByXPath( getEbitMargin_XPath() );
+	public static String getEbitMargin() {
+		WebElement dividendYieldWebElement = getElementByXPath(EBIT_MARGIN_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getEbitMargin_XPath();
+	
 	
 	/**
 	 * Margem Líquida
@@ -227,52 +227,52 @@ public abstract class FundamentalistIndicators {
 	 * 
 	 * Profit Margin		-		Net Margin		-		Net Profit Margin		-		Net Profit Ratio
 	 */
+	public static final		String			NET_MARGIN_XPATH							=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[6]/td[6]/span";
 	private					BigDecimal		aNetMargin;
 	
-	protected String getNetMargin() {
-		WebElement dividendYieldWebElement = getElementByXPath( getNetMargin_XPath() );
+	public static String getNetMargin() {
+		WebElement dividendYieldWebElement = getElementByXPath(NET_MARGIN_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getNetMargin_XPath();
 	
 	/**
 	 * EBIT / Ativo
 	 * 
 	 * EBIT dividido por Ativos totais
 	 */
+	public static final		String			EBIT_OVER_ASSET_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[7]/td[6]/span";
 	private					BigDecimal		aEbitOverAsset;
 	
-	protected String getEbitOverAsset() {
-		WebElement ebitOverAsset_WebElement		=	getElementByXPath( getEbitOverAsset_XPath() );
+	public static String getEvitOverAsset() {
+		WebElement ebitOverAsset_WebElement		=	getElementByXPath(EBIT_OVER_ASSET_XPATH);
 		return	ebitOverAsset_WebElement.getText();
 	}
-	protected abstract String getEbitOverAsset_XPath();
 	
 	/**
 	 * Return over Invested Capital
 	 * 
 	 * Retorno sobre o Capital Investido: Calculado dividindo-se o EBIT por (Ativos - Fornecedores - Caixa). Informa o retorno que a empresa consegue sobre o capital total aplicado.
 	 */
+	public static final		String			RETURN_OVER_INVESTED_CAPITAL_XPATH			=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[8]/td[6]/span";
 	private					BigDecimal		aReturnOrverInvestedCapital;
 	
-	protected String getReturnOverInvestedCapital() {
-		WebElement dividendYieldWebElement = getElementByXPath( getReturnOverInvestedCapital_XPath() );
+	public static String getReturnOverInvestedCapital() {
+		WebElement dividendYieldWebElement = getElementByXPath(RETURN_OVER_INVESTED_CAPITAL_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getReturnOverInvestedCapital_XPath();
 	
 	/**
 	 * ROE - Return on Equity
 	 * 
 	 * Retorno sobre o Patrimônio Líquido: Lucro líquido dividido pelo Patrimônio Líquido
 	 */
+	public static final		String			RETURN_ON_EQUITY_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[9]/td[6]/span";
 	private					BigDecimal		aReturnOnEquity;
 	
-	protected String getReturnOverEquity() {
-		WebElement dividendYieldWebElement = getElementByXPath( getReturnOverEquity_XPath() );
+	public static String getReturnOverEquity() {
+		WebElement dividendYieldWebElement = getElementByXPath(RETURN_ON_EQUITY_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getReturnOverEquity_XPath();
 	
 	/**
 	 * Liquidez Corrente
@@ -281,13 +281,13 @@ public abstract class FundamentalistIndicators {
 	 * 
 	 *  Current Liquity		-		Current Ratio		-		Liquidity Ratio
 	 */
+	public static final		String			CURRENT_LIQUIDITY_XPATH						=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[10]/td[6]/span";
 	private					BigDecimal		aCurrentLiquidity;
 	
-	protected String getCurrentLiquidity() {
-		WebElement dividendYieldWebElement = getElementByXPath( getCurrentLiquidity_XPath() );
+	public static String getCurrentLiquidity() {
+		WebElement dividendYieldWebElement = getElementByXPath(CURRENT_LIQUIDITY_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getCurrentLiquidity_XPath();
 	
 	/**
 	 * Dívida Bruta sobre Patrimônio Líquido
@@ -296,12 +296,14 @@ public abstract class FundamentalistIndicators {
 	 * 
 	 * Debt to Equity Ratio
 	 */
+	public static final		String			GROSS_DEBT_OVER_EQUITY_XPATH					=	"/html/body/div[1]/div[2]/table[3]/tbody/tr[11]/td[6]/span";
 	private					BigDecimal		aGrossDebtOverEquityRatio;
 	
-	protected String getGrossDebtOverEquity() {
-		WebElement dividendYieldWebElement = getElementByXPath( getGrossDebtOverEquity_XPath() );
+	public static String getGrossDebtOverEquity() {
+		WebElement dividendYieldWebElement = getElementByXPath(GROSS_DEBT_OVER_EQUITY_XPATH);
 		return dividendYieldWebElement.getText();
 	}
-	protected abstract String getGrossDebtOverEquity_XPath();
+	
+	
 	
 }

@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -48,6 +49,8 @@ public class FundamentusHome {
 	@FindBy(xpath=EXIBIR_BUTTON_XPATH)
 	private WebElement aExibirButton;
 	
+	private FundamentalistIndicatorsFundamentus aFundamentalistIndicatorsFundamentus;
+	
 	/**
 	 * List that will store all the Ticker labels.
 	 * With then, we will be able to use the REST URL to Select/Find each Ticker Details:
@@ -64,6 +67,11 @@ public class FundamentusHome {
 		 * False	= 	Full GUI Chrome
 		 */
 		instanciateChromeDriver(false);
+	}
+	
+	@Before
+	public void setUpFundamentalistIndicators() {
+		this.aFundamentalistIndicatorsFundamentus = new FundamentalistIndicatorsFundamentus();
 	}
 	
 	public static void accessFundamentusHome() {
@@ -163,7 +171,7 @@ public class FundamentusHome {
 		accessFundamentosHomeAndPressExibirButton();
 		openTickerPage(1);
 		
-		String text = FundamentalistIndicators.getDividendYieldTextValue();
+		String text = this.aFundamentalistIndicatorsFundamentus.getDividendYieldTextValue();
 		System.out.println(text);
 	}
 	
@@ -173,7 +181,7 @@ public class FundamentusHome {
 		accessFundamentosHomeAndPressExibirButton();
 		openTickerPage(1);
 		
-		String text = FundamentalistIndicators.getDividendYieldTextValue();
+		String text = this.aFundamentalistIndicatorsFundamentus.getDividendYieldTextValue();
 		System.out.println(text);
 		
 		assertNotNull(text);
@@ -186,7 +194,7 @@ public class FundamentusHome {
 		accessFundamentosHomeAndPressExibirButton();
 		openTickerPage(2);
 		
-		String dividendYieldTextValue = FundamentalistIndicators.getDividendYieldTextValue();
+		String dividendYieldTextValue = this.aFundamentalistIndicatorsFundamentus.getDividendYieldTextValue();
 		
 		System.out.println(dividendYieldTextValue);
 	}
@@ -355,7 +363,7 @@ public class FundamentusHome {
 	
 	private BigDecimal getDividendYield() {
 		// Get the Dividend Yield. Ex: "1,0%"
-		String dividendYieldTextValue = FundamentalistIndicators.getDividendYieldTextValue();
+		String dividendYieldTextValue = this.aFundamentalistIndicatorsFundamentus.getDividendYieldTextValue();
 		
 		// Remove the Percentage Symbol
 		dividendYieldTextValue = dividendYieldTextValue.replace('%', ' ');
