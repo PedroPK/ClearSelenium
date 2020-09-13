@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class SeleniumUtils {
 	
 	private static final String CHROME_DRIVER_WINDOWS		=	"chromedriver.exe";
-	private static final String CHROME_DRIVER_MAC			=	"chromedriver";
+	private static final String CHROME_DRIVER_MAC			=	"chromedriver_mac_v85";
 	
 	private static final String WEBDRIVER_CHROME_DRIVER		=	"webdriver.chrome.driver";
 	
