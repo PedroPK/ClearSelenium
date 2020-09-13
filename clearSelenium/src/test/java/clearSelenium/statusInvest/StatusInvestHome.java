@@ -7,6 +7,7 @@ import static clearSelenium.SeleniumUtils.getElementByXPath;
 import static clearSelenium.SeleniumUtils.instanciateChromeDriver;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
@@ -46,6 +47,8 @@ public class StatusInvestHome {
 	
 	private static final String TICKER_QUERY_INPUT_XPATH		=	"/html/body/div[1]/div[1]/form/fieldset/input[1]";
 	
+	private static final String	XPATH_ACTUAL_PRICE	= "/html/body/main/div[2]/div/div[1]/div/div[1]/div/div[1]/strong";
+	
 	
 	@FindBy(xpath=EXIBIR_BUTTON_XPATH)
 	private WebElement aExibirButton;
@@ -68,8 +71,7 @@ public class StatusInvestHome {
 		instanciateChromeDriver(false);
 	}
 	
-	@Test
-	public void accessFundamentusHome() {
+	public static void accessFundamentusHome() {
 		accessStatusInvestHome(false);
 	}
 	
@@ -121,6 +123,20 @@ public class StatusInvestHome {
 		String petr4Ticker = "PETR4";
 		
 		accessTickerDetails(petr4Ticker);
+	}
+	
+	@Test
+	public void testOpenPetr4_GetActualPrice_NotNull_and_LenghtBiggerOrEqualThan5() {
+		// Arrange
+		String petr4Ticker = "PETR4";
+		
+		// Act
+		accessTickerDetails(petr4Ticker);
+		String actualPrice	=	getElementByXPath(XPATH_ACTUAL_PRICE).getText();
+		
+		// Assert
+		assertNotNull(actualPrice);
+		assertTrue(actualPrice.length() >= 5 );
 	}
 	
 	/**
