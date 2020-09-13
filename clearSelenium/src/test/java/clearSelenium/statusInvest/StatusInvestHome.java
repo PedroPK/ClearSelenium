@@ -115,7 +115,6 @@ public class StatusInvestHome {
 		accessFundamentusHome();
 	}
 	
-	@Ignore
 	@Test
 	public void testSearchPETR4() {
 		// Arrange
