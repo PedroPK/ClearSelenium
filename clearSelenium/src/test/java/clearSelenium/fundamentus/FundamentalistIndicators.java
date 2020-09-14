@@ -16,7 +16,7 @@ public abstract class FundamentalistIndicators {
 	/************************************************************************/
 	
 	/**
-	 * Preço sobre Lucro
+	 * Preço sobre Lucro (P/L)
 	 * 
 	 * Preço da ação dividido pelo lucro por ação. 
 	 * O P/L é o número de anos que se levaria para reaver o capital aplicado na compra de uma ação, 
@@ -33,7 +33,7 @@ public abstract class FundamentalistIndicators {
 	
 	
 	/**
-	 * Preço sobre Valor Patrimonial
+	 * Preço sobre Valor Patrimonial (P/VP)
 	 * 
 	 * Preço da ação dividido pelo Valor Patrimonial por ação. 
 	 * Informa quanto o mercado está disposto a pagar sobre o Patrimônio Líquido da empresa
