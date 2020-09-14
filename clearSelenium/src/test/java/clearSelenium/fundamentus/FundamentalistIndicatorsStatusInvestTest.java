@@ -21,7 +21,7 @@ public class FundamentalistIndicatorsStatusInvestTest {
 		String petr4 = "PETR4";
 		
 		// Act
-		StatusInvestHome.accessTickerDetails(petr4, false);
+		StatusInvestHome.accessTickerDetails(petr4, true);
 	}
 	
 	@AfterClass
@@ -64,156 +64,162 @@ public class FundamentalistIndicatorsStatusInvestTest {
 		assertEquals(	"Preço sobre EBIT deveria ter 6 Caracteres",	 6,		priceOverEbit.length()	);
 		assertTrue( 	priceOverEbit.contains(","));
 		
-		assertEquals("-35,69", priceOverEbit);
+		//assertEquals("-35,69", priceOverEbit);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetPriceSalesRatio() {
 		String priceSalesRatio = this.aFundamentalistIndicatorsStatusInvest.getPriceSalesRatio();
 		
-		assertNotNull( priceSalesRatio );
-		assertTrue( priceSalesRatio.length() == 4);
+		assertNotNull(	priceSalesRatio );
+		assertEquals(	"Preço sobre Receita Líquida por Ação deveria ter 4 Caracteres",	 4,		priceSalesRatio.length()	);
+		assertTrue( 	priceSalesRatio.contains(","));
 		
-		//assertEquals("1,21", priceSalesRatio);
+		//assertEquals("1,00", priceSalesRatio);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetPriceOverAssets() {
 		String priceOverAsset = this.aFundamentalistIndicatorsStatusInvest.getPriceOverAssets();
 		
-		assertNotNull( priceOverAsset );
-		assertTrue( priceOverAsset.length() == 4);
+		assertNotNull(	priceOverAsset );
+		assertEquals(	"Preço sobre Ativos deveria ter 4 Caracteres",	 4,		priceOverAsset.length()	);
+		assertTrue( 	priceOverAsset.contains(","));
 		
-		//assertEquals("0,42", priceOverAsset);
+		//assertEquals("0,28", priceOverAsset);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetPriceOverWorkingCapital() {
 		String priceOverWorkingCapital = this.aFundamentalistIndicatorsStatusInvest.getPriceOverWorkingCapital();
 		
-		assertNotNull( priceOverWorkingCapital );
-		assertTrue( priceOverWorkingCapital.contains(","));
+		assertNotNull( 	priceOverWorkingCapital );
+		assertEquals(	"Preço sobre Capital de Giro deveria ter 4 Caracteres",	 4,		priceOverWorkingCapital.length()	);
+		assertTrue( 	priceOverWorkingCapital.contains(","));
 		
-		//assertEquals("28,09", priceOverWorkingCapital);
+		//assertEquals("4,93", priceOverWorkingCapital);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetPriceOverNetCurretAsset() {
 		String priceOverNetCurrentAsset = this.aFundamentalistIndicatorsStatusInvest.getPriceOverNetCurretAsset();
 		
-		assertNotNull( priceOverNetCurrentAsset );
-		assertTrue( priceOverNetCurrentAsset.length() == 5);
+		assertNotNull( 	priceOverNetCurrentAsset );
+		assertEquals(	"Preço sobre Ativo Circulante Líquido deveria ter 5 Caracteres",	 5,		priceOverNetCurrentAsset.length()	);
+		assertTrue( 	priceOverNetCurrentAsset.contains(","));
 		
-		//assertEquals("-0,84", priceOverNetCurrentAsset);
+		//assertEquals("-0,35", priceOverNetCurrentAsset);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetDividendYieldTextValue() {
 		String dividendYieldTextValue = this.aFundamentalistIndicatorsStatusInvest.getDividendYieldTextValue();
 		
-		assertNotNull(dividendYieldTextValue);
-		assertTrue(dividendYieldTextValue.length() == 4);
+		assertNotNull(	dividendYieldTextValue);
+		assertEquals(	"Dividend Yield deveria ter 4 Caracteres",	 4,		dividendYieldTextValue.length()	);
+		assertTrue( 	dividendYieldTextValue.contains(","));
 		
-		//assertEquals("3,7%", dividendYieldTextValue);
+		//assertEquals("2,85", dividendYieldTextValue);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetEnterpriseValueOverEbit() {
 		String enterpriseValueOverEbit = this.aFundamentalistIndicatorsStatusInvest.getEnterpriseValueOverEbit();
 		
-		assertNotNull( enterpriseValueOverEbit );
-		assertTrue( enterpriseValueOverEbit.length() == 4);
+		assertNotNull( 	enterpriseValueOverEbit );
+		assertEquals(	"Enterprise Value sobre Ebit deveria ter 6 Caracteres",	 6,		enterpriseValueOverEbit.length()	);
+		assertTrue( 	enterpriseValueOverEbit.contains(","));
 		
-		//assertEquals("4,62", enterpriseValueOverEbit);
+		//assertEquals("-84,65", enterpriseValueOverEbit);
 	}
 	
-	@Ignore
 	@Test
 	public void testGeAssetTurnover() {
 		String assetTurnover = this.aFundamentalistIndicatorsStatusInvest.getAssetTurnover();
 		
-		assertNotNull( assetTurnover );
-		assertTrue( assetTurnover.length() == 4);
+		assertNotNull(	assetTurnover );
+		assertEquals(	"Giro de Ativos deveria ter 4 Caracteres",	 4,		assetTurnover.length()	);
+		assertTrue( 	assetTurnover.contains(","));
 		
-		//assertEquals("0,35", assetTurnover);
+		//assertEquals("0,28", assetTurnover);
 	}
 	
-	@Ignore
 	@Test
 	public void testGeIncomeGrowthLast5Years() {
 		String incomeGrowthLast5Years = this.aFundamentalistIndicatorsStatusInvest.getIncomeGrowthLast5Years();
 		
-		assertNotNull( incomeGrowthLast5Years );
-		assertTrue( incomeGrowthLast5Years.contains(",") );
-		assertTrue( incomeGrowthLast5Years.contains("%") );
+		assertNotNull(	incomeGrowthLast5Years );
+		assertEquals(	"Crescimento da Receita Líquida deveria ter 6 Caracteres",	 6,		incomeGrowthLast5Years.length()	);
+		assertTrue(		incomeGrowthLast5Years.contains(",") );
+		assertTrue(		incomeGrowthLast5Years.contains("%") );
 		
-		//assertEquals("1,2%", incomeGrowthLast5Years);
+		//assertEquals("-2,17%", incomeGrowthLast5Years);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetProfitPerAction() {
 		String profitPerAction = this.aFundamentalistIndicatorsStatusInvest.getProfitPerAction();
 		
-		assertNotNull( profitPerAction );
-		assertTrue( profitPerAction.contains(",") );
+		assertNotNull(	profitPerAction );
+		assertEquals(	"Lucro por Ação deveria ter 5 Caracteres",	 5,		profitPerAction.length()	);
+		assertTrue(		profitPerAction.contains(",") );
 		
-		//assertEquals("2,61", profitPerAction);
+		//assertEquals("-2,61", profitPerAction);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetBookValueOverStocks() {
 		String bookValueOverStocks = this.aFundamentalistIndicatorsStatusInvest.getBookValueOverStocks();
 		
-		assertNotNull( bookValueOverStocks );
-		assertTrue( bookValueOverStocks.length() == 5);
+		assertNotNull(	bookValueOverStocks );
+		assertEquals(	"Valor Patrimonial por Ação deveria ter 5 Caracteres",	 5,		bookValueOverStocks.length()	);
+		assertTrue(		bookValueOverStocks.contains(",") );
 		
-		//assertEquals("23,48", bookValueOverStocks);
+		//assertEquals("18,61", bookValueOverStocks);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetGrossMargin() {
 		String grossMargin = this.aFundamentalistIndicatorsStatusInvest.getGrossMargin();
 		
-		assertNotNull(grossMargin);
-		assertTrue(grossMargin.length() == 5);
-		//assertEquals("36,7%", grossMargin);
+		assertNotNull(	grossMargin);
+		assertEquals(	"Margem Bruta deveria ter 6 Caracteres",	 6,		grossMargin.length()	);
+		assertTrue(		grossMargin.contains(",") );
+		assertTrue(		grossMargin.contains("%") );
+		
+		//assertEquals("40,99%", grossMargin);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetEbitMargin() {
 		String ebitMargin = this.aFundamentalistIndicatorsStatusInvest.getEbitMargin();
 		
-		assertNotNull( ebitMargin );
-		assertTrue( ebitMargin.length() == 5);
+		assertNotNull(	ebitMargin );
+		assertEquals(	"Margem EBIT deveria ter 6 Caracteres",	 6,		ebitMargin.length()	);
+		assertTrue(		ebitMargin.contains(",") );
+		assertTrue(		ebitMargin.contains("%") );
 		
-		//assertEquals("29,3%", ebitMargin);
+		//assertEquals("-2,80%", ebitMargin);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetNetMargin() {
 		String netMargin = this.aFundamentalistIndicatorsStatusInvest.getNetMargin();
 		
-		assertNotNull( netMargin );
-		assertTrue( netMargin.contains(",") );
-		assertTrue( netMargin.contains("%") );
+		assertNotNull(	netMargin );
+		assertEquals(	"Margem Líquida deveria ter 7 Caracteres",	 7,		netMargin.length()	);
+		assertTrue(		netMargin.contains(",") );
+		assertTrue(		netMargin.contains("%") );
 		
-		//assertEquals("11,0%", netMargin);
+		//assertEquals("-11,92%", netMargin);
 	}
 	
+	/**
+	 * Não parece existir esta Métrica no Status Invest
+	 */
 	@Ignore
 	@Test
-	public void testGetEvitOverAsset() {
+	public void testGetEbitOverAsset() {
 		String evitOverAsset = this.aFundamentalistIndicatorsStatusInvest.getEbitOverAsset();
 		
 		assertNotNull( evitOverAsset );
@@ -223,42 +229,41 @@ public class FundamentalistIndicatorsStatusInvestTest {
 		//assertEquals("10,2%", evitOverAsset);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetReturnOverInvestedCapital() {
 		String returnOverInvestedCapital = this.aFundamentalistIndicatorsStatusInvest.getReturnOverInvestedCapital();
 		
-		assertNotNull( returnOverInvestedCapital );
-		assertTrue( returnOverInvestedCapital.contains(",") );
-		assertTrue( returnOverInvestedCapital.contains("%") );
+		assertNotNull(	returnOverInvestedCapital );
+		assertEquals(	"Retorno sobre Capital Investido deveria ter 6 Caracteres",	 6,		returnOverInvestedCapital.length()	);
+		assertTrue(		returnOverInvestedCapital.contains(",") );
+		assertTrue(		returnOverInvestedCapital.contains("%") );
 		
-		//assertEquals("11,2%", returnOverInvestedCapital);
+		//assertEquals("-3,01%", returnOverInvestedCapital);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetReturnOverEquity() {
 		String returnOverEquity = this.aFundamentalistIndicatorsStatusInvest.getReturnOverEquity();
 		
-		assertNotNull( returnOverEquity );
-		assertTrue( returnOverEquity.contains(",") );
-		assertTrue( returnOverEquity.contains("%") );
+		assertNotNull(	returnOverEquity );
+		assertEquals(	"Retorno sobre Patrimônio Líquido deveria ter 7 Caracteres",	 7,		returnOverEquity.length()	);
+		assertTrue(		returnOverEquity.contains(",") );
+		assertTrue(		returnOverEquity.contains("%") );
 		
-		//assertEquals("11,1%", returnOverEquity);
+		//assertEquals("-14,00%", returnOverEquity);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetCurrentLiquidity() {
 		String currentLiquidity = this.aFundamentalistIndicatorsStatusInvest.getCurrentLiquidity();
 		
-		assertNotNull( currentLiquidity );
-		assertTrue( currentLiquidity.length() == 4);
+		assertNotNull(	currentLiquidity );
+		assertEquals(	"Liquidez Corrente deveria ter 4 Caracteres",	 4,		currentLiquidity.length()	);
+		assertTrue(		currentLiquidity.contains(",") );
 		
-		//assertEquals("1,10", currentLiquidity);
+		//assertEquals("1,40", currentLiquidity);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetGrossDebtOverEquity() {
 		String grossDebtOverEquity = this.aFundamentalistIndicatorsStatusInvest.getGrossDebtOverEquity();
