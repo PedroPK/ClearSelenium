@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import clearSelenium.fundamentus.BalanceSheetIndicatorsTest;
 import clearSelenium.fundamentus.BasicIndicatorsTest;
-import clearSelenium.fundamentus.FundamentalistIndicatorsTest;
+import clearSelenium.fundamentus.FundamentalistIndicatorsFundamentusTest;
 import clearSelenium.fundamentus.IncomeStatementResultsIndicatorsTest;
 import clearSelenium.fundamentus.OscilationIndicatorsTest;
 
@@ -14,7 +14,7 @@ import clearSelenium.fundamentus.OscilationIndicatorsTest;
 @SuiteClasses({
 	BalanceSheetIndicatorsTest.class,
 	BasicIndicatorsTest.class,
-	FundamentalistIndicatorsTest.class,
+	FundamentalistIndicatorsFundamentusTest.class,
 	IncomeStatementResultsIndicatorsTest.class,
 	OscilationIndicatorsTest.class
 })
